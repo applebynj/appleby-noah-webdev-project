@@ -16,5 +16,11 @@
                 controller: "PlaceController",
                 controllerAs: "model"
             })
+            //Default Route
+            .otherwise({
+                templateUrl: "views/poc/templates/search.view.client.html",
+                controller: "SearchController",
+                controllerAs: "model"
+            })
     }
 })();
