@@ -6,11 +6,13 @@
     function SearchController(PlaceService) {
         var model = this;
 
+        model.findPlaceByTextSearch = findPlaceByTextSearch;
+
         function init() { }
         init();
 
         function findPlaceByTextSearch(searchText) {
-            //TODO
+            model.result = PlaceService.findPlaceByTextSearch(searchText);
         }
     }
 })();
