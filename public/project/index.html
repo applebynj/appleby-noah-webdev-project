@@ -2,9 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Project Home Page</title>
+    <title>Project</title>
+
+    <script src="../vendor/angular/angular.js"></script>
+    <script src="../vendor/angular/angular-route.js"></script>
+
+    <script src="app.js"></script>
+    <script src="config.js"></script>
+
+    <!--Proof of Concept-->
+    <script src="services/place.service.client.js"></script>
+    <script src="views/poc/controllers/search.controller.client.js"></script>
+    <script src="views/poc/controllers/place.controller.client.js"></script>
+
 </head>
 <body>
-    <h1>Project Home Page</h1>
+
+    <div ng-view></div>
+
 </body>
+
 </html>

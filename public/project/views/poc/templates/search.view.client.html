@@ -1,0 +1,21 @@
+<div class="container-fluid">
+    <div class="input-group">
+        <h1>
+            Place Text Search
+        </h1>
+        <input name="searchfield"
+               placeholder="pizza near Boston"
+               ng-model="model.searchText"
+               type="text"
+               class="form-control"
+               id="username"/>
+        <span class="input-group-btn">
+            <a ng-click="model.findPlaceByTextSearch(model.searchText)"
+               class="btn btn-default"
+               type="button">
+                <span class="glyphicon glyphicon-search"></span>
+            </a>
+        </span>
+    </div>
+
+</div>
