@@ -12,7 +12,11 @@
         init();
 
         function findPlaceByTextSearch(searchText) {
-            model.result = GooglePlaceService.findPlaceByTextSearch(searchText);
+            GooglePlaceService
+                .findPlaceByTextSearch(searchText)
+                .then(function(response) {
+                    model.result = response;
+                })
 
         }
     }
