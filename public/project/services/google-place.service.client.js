@@ -1,9 +1,9 @@
 (function() {
     angular
         .module("WbdvProject")
-        .factory("PlaceService", PlaceService);
+        .factory("GooglePlaceService", GooglePlaceService);
 
-    function PlaceService($http) {
+    function GooglePlaceService($http) {
 
         var api = {
             'findPlaceById' : findPlaceById,
@@ -17,7 +17,7 @@
         }
 
         function findPlaceByTextSearch(searchText) {
-            var url = '/api/google/place/search";
+            var url = '/api/google/place/search';
             return $http.get(url, {searchText: searchText});
         }
     }
