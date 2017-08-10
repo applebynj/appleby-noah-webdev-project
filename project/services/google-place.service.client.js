@@ -1,11 +1,13 @@
 var app = require("../../express");
+var https = require("https");
+var querystring = require('querystring');
 
 var places = [
 
 ];
 
-app.get("/api/place/:placeId", findPlaceById);
-app.get("/api/place/search", findPlaceByTextSearch);
+app.get("/api/google/place/:placeId", findPlaceById);
+app.get("/api/google/place/search", findPlaceByTextSearch);
 
 
 function findPlaceById(placeId) {
