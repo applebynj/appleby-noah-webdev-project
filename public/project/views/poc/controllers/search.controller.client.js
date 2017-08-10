@@ -13,6 +13,7 @@
 
         function findPlaceByTextSearch(searchText) {
             model.result = GooglePlaceService.findPlaceByTextSearch(searchText);
+
         }
     }
 })();

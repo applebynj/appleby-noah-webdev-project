@@ -17,8 +17,8 @@
         }
 
         function findPlaceByTextSearch(searchText) {
-            var url = '/api/google/place/search';
-            return $http.get(url, {searchText: searchText});
+            var url = '/api/google/place/search/' + searchText;
+            return $http.get(url);
         }
     }
 })();
