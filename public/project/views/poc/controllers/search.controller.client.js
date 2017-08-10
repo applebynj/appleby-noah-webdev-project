@@ -3,7 +3,7 @@
         .module("WbdvProject")
         .controller("SearchController", SearchController)
 
-    function SearchController(PlaceService) {
+    function SearchController(GooglePlaceService) {
         var model = this;
 
         model.findPlaceByTextSearch = findPlaceByTextSearch;
@@ -12,7 +12,7 @@
         init();
 
         function findPlaceByTextSearch(searchText) {
-            model.result = PlaceService.findPlaceByTextSearch(searchText);
+            model.result = GooglePlaceService.findPlaceByTextSearch(searchText);
         }
     }
 })();
