@@ -15,7 +15,7 @@
             GooglePlaceService
                 .findPlaceByTextSearch(searchText)
                 .then(function(response) {
-                    model.result = response;
+                    model.results = response.data.results;
                 })
 
         }
