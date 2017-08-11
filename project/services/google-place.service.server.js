@@ -3,8 +3,8 @@ var app = require("../../express");
 var https = require("https");
 var querystring = require('querystring');
 
-app.get("/api/google/place/:placeId", findPlaceById);
-app.get("/api/google/place/search/:searchText", findPlaceByTextSearch);
+app.get("/project/api/google/place/:placeId", findPlaceById);
+app.get("/project/api/google/place/search/:searchText", findPlaceByTextSearch);
 
 var apiKey = 'AIzaSyDTKeMGhvu0jabXMmqlQK1_kue5NIrgXbk'; //TODO: replace with environment variable
 var googleMapsHost = 'maps.googleapis.com';

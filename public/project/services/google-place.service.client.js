@@ -12,12 +12,12 @@
         return api;
 
         function findPlaceById(placeId) {
-            var url = '/api/google/place/' + placeId;
+            var url = '/project/api/google/place/' + placeId;
             return $http.get(url);
         }
 
         function findPlaceByTextSearch(searchText) {
-            var url = '/api/google/place/search/' + searchText;
+            var url = '/project/api/google/place/search/' + searchText;
             return $http.get(url);
         }
     }
