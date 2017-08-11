@@ -12,6 +12,7 @@
             GooglePlaceService
                 .findPlaceById(model.placeId)
                 .then(function(response) {
+                    console.log(response.data.result);
                     model.place = response.data.result;
                 })
         }
