@@ -3,7 +3,7 @@
         .module("WbdvProject")
         .controller("LoginController", LoginController)
 
-    function LoginController($location, UserService, $rootScope) {
+    function LoginController($location, UserService, PlaceService, $rootScope) {
         var model = this;
 
         model.login = login;
