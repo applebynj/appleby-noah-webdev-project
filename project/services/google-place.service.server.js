@@ -34,7 +34,6 @@ function findPlaceByTextSearch(req, res) {
 
 function googlePlaceQueryById(placeId) {
     var deferred = q.defer();
-
     https.get({
         host: googleMapsHost,
         path: googlePlacesBaseUrl + 'details/json?placeid=' + placeId + "&key=" + apiKey,
@@ -43,12 +42,9 @@ function googlePlaceQueryById(placeId) {
             // "app_key": apiKey
         }
     }, function(response){
-
         var body = '';
-
         response.on('data', function(d) {
             body += d;
-            console.log(d);
         });
         response.on('end', function() {
             try {

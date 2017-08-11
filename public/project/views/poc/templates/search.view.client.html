@@ -20,7 +20,7 @@
 
     <div class="list-group">
         <div ng-repeat="place in model.results">
-        <a href="#" class="list-group-item">
+        <a href="#!/poc/place/{{place.place_id}}" class="list-group-item">
             <h4><img src="{{place.icon}}" style="height:30px; padding-right: 10px;"/>{{place.name}}</h4>
             <h6>{{place.formatted_address}}</h6>
         </a>
