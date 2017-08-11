@@ -1,6 +1,6 @@
 (function() {
     angular
-        .module("WamApp")
+        .module("WbdvProject")
         .controller("LoginController", LoginController)
 
     function LoginController($location, UserService, $rootScope) {

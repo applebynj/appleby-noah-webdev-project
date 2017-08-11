@@ -1,6 +1,6 @@
 (function() {
     angular
-        .module("WamApp")
+        .module("WbdvProject")
         .factory("UserService", UserService);
 
     function UserService($http) {

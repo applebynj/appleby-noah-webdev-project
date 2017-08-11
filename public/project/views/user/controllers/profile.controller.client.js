@@ -1,6 +1,6 @@
 (function() {
     angular
-        .module("WamApp")
+        .module("WbdvProject")
         .controller("ProfileController", ProfileController)
 
     function ProfileController($routeParams, $location, UserService) {

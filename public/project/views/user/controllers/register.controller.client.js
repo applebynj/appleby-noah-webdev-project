@@ -1,6 +1,6 @@
 (function() {
     angular
-        .module("WamApp")
+        .module("WbdvProject")
         .controller("RegisterController", RegisterController);
 
     function RegisterController($location, UserService) {
