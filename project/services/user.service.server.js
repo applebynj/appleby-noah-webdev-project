@@ -7,6 +7,7 @@ app.get("/project/api/user", findUser); /* covers findUserByUserName and findUse
 app.get("/project/api/user/:userId", findUserById);
 app.put("/project/api/user/:userId", updateUser);
 app.delete("/project/api/user/:userId", deleteUser);
+app.put("/project/api/user/:userId/place/:placeId", addPlaceToUser);
 
 function createUser(req, res) {
     /* TODO: further validation */
@@ -87,4 +88,17 @@ function deleteUser(req, res) {
         }, function(err) {
             res.statusCode(404).send(err);
         })
+}
+
+function addPlaceToUser(req, res) {
+    var userId = req.params.userId;
+    var placeId = req.params.placeId;
+
+    userModel
+        .addPlace(userId, placeId)
+        .then(function(user) {
+            res.json(user);
+        }, function(err) {
+            res.statusCode(404).send(err);
+        });
 }
