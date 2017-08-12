@@ -14,14 +14,18 @@
                 .findPlaceById(model.placeId)
                 .then(function(response) {
                     model.place = response.data.result;
-                    console.log(response);
                     PlaceService
-                        .createPlace({
+                        .createPlace({  //if doesnt exist!!! TODO
                             name : model.place.name,
                             address : model.place.formatted_address,
                             place_id : model.place.place_id
                         }).then(function(place) {
                             model.place.id = place.id;
+                            PlaceService
+                                .findAllPlacesForUser(model.userId)
+                                .then(function(res) {
+                                    console.log(res);
+                                })
                     });
                 });
         }

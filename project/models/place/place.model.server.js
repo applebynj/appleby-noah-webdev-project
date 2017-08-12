@@ -18,7 +18,7 @@ function createPlace(place) {
 }
 
 function findAllPlacesForUser(userId) {
-    return placeModel.findUserById(userId)
+    return userModel.findUserById(userId)
         .populate('placesVisited')
         .then(function(user) {
             return user.placesVisited;

@@ -11,7 +11,8 @@
             'findUserByUsername' : findUserByUsername,
             'findUserByCredentials' : findUserByCredentials,
             'updateUser' : updateUser,
-            'deleteUser' : deleteUser
+            'deleteUser' : deleteUser,
+            'addPlaceToUser' : addPlaceToUser
         };
         return api;
 
@@ -43,6 +44,11 @@
         function deleteUser(userId) {
             var url ="/project/api/user/" + userId;
             return $http.delete(url);
+        }
+
+        function addPlaceToUser(userId, placeId) {
+            var url = "/project/api/user/" + userId + "/place/" + placeId;
+            return $http.put(url);
         }
     }
 })();
