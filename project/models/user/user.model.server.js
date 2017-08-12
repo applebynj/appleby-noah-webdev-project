@@ -2,7 +2,7 @@ var mongoose = require("mongoose");
 var userSchema = require("./user.schema.server");
 var db = require("../models.server");
 
-var userModel = mongoose.model("UserModel2", userSchema);
+var userModel = mongoose.model("UserModelProject", userSchema);
 
 userModel.createUser = createUser;
 userModel.findUserById = findUserById;
@@ -10,7 +10,7 @@ userModel.findUserByUsername = findUserByUsername;
 userModel.findUserByCredentials = findUserByCredentials;
 userModel.updateUser = updateUser;
 userModel.deleteUser = deleteUser;
-//userModel.addPlace = addPlace;
+userModel.addPlace = addPlace;
 //userModel.removePlace = removePlace;
 
 module.exports = userModel;
@@ -41,22 +41,22 @@ function deleteUser(userId) {
     return userModel.remove({_id: userId});
 }
 
-/*function addPlace(userId, websiteId) {
+function addPlace(userId, placeId) {
     userModel
         .findById(userId)
         .then(function(user){
-            user.place.push(websiteId);
+            user.placesVisited.push(placeId);
             return user.save();
         });
 }
 
-function removePlace(userId, websiteId) {
-    userModel
-        .findById(userId)
-        .then(function(user){
-            var index = user.websites.indexOf(websiteId);
-            user.places.splice(index, 1);
-            return user.save();
-        });
-}*/
+// function removePlace(userId, websiteId) {
+//     userModel
+//         .findById(userId)
+//         .then(function(user){
+//             var index = user.websites.indexOf(websiteId);
+//             user.places.splice(index, 1);
+//             return user.save();
+//         });
+// }
 
