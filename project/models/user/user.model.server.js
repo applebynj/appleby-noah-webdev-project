@@ -42,11 +42,9 @@ function deleteUser(userId) {
 }
 
 function addPlace(userId, placeId) {
-    userModel
-        .findById(userId)
-        .then(function(user){
-            user.placesVisited.push(placeId);
-            return user.save();
+    return userModel
+        .update({_id: userId},
+            { $push: { placesVisited: placeId }
         });
 }
 
