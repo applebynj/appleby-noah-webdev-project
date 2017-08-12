@@ -57,12 +57,17 @@
            href="#!/user/{{model.user._id}}/website"
            role="button">Place Search</a>
 
-        <div ng-repeat="place in model.places">
-            <a href="#!/poc/place/{{place.place_id}}" class="list-group-item">
-                <h4><img src="{{place.icon}}" style="height:30px; padding-right: 10px;"/>{{place.name}}</h4>
-                <h6>{{place.formatted_address}}</h6>
+        <ul class="list-group">
+            <a class="list-group-item list-group-item-info">
+                Places Visited:
             </a>
-        </div>
+            <div ng-repeat="place in model.places">
+                <a href="#!/poc/place/{{place.place_id}}" class="list-group-item">
+                    <h4>{{place.name}}</h4>
+                    <h6>{{place.address}}</h6>
+                </a>
+            </div>
+        </ul>
 
         <a class="btn btn-default btn-danger btn-block"
            href="#!/login"

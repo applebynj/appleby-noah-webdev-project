@@ -3,7 +3,7 @@
         .module("WbdvProject")
         .controller("ProfileController", ProfileController)
 
-    function ProfileController($routeParams, $location, UserService) {
+    function ProfileController($routeParams, $location, UserService, PlaceService) {
         var model = this;
 
         model.updateUser = updateUser;
@@ -17,9 +17,10 @@
                 .then(function(response) {
                     model.user = response.data;
                     PlaceService
-                        .findAllPlacesForUser(userId)
+                        .findAllPlacesForUser(model.user._id)
                         .then(function(res) {
-                            model.places = res;
+                            model.places = res.data;
+                            console.log(res.data);
                         })
                 });
         }

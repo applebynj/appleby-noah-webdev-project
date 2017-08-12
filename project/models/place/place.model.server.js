@@ -21,6 +21,7 @@ function findAllPlacesForUser(userId) {
     return userModel.findUserById(userId)
         .populate('placesVisited')
         .then(function(user) {
+            console.log(user);
             return user.placesVisited;
         })
 }

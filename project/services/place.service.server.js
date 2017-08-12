@@ -27,8 +27,8 @@ function findAllPlacesForUser(req, res) {
 
     placeModel
         .findAllPlacesForUser(userId)
-        .then(function(user) {
-            res.json(user);
+        .then(function(places) {
+            res.json(places);
         }, function(err) {
             res.statusCode(404).send(err);
         });
