@@ -6,15 +6,21 @@
     function PlaceService($http) {
 
         var api = {
-            // 'findPlaceById' : findPlaceById,
+            'createPlace' : createPlace,
+            'findPlaceById' : findPlaceById,
             'findAllPlacesForUser' : findAllPlacesForUser
         };
         return api;
 
-        // function findPlaceById(placeId) {
-        //     var url = '/project/api/place/' + placeId;
-        //     return $http.get(url);
-        // }
+        function createPlace(place) {
+            var url = '/project/api/place';
+            return $http.post(url, place);
+        }
+
+        function findPlaceById(placeId) {
+            var url = '/project/api/place/' + placeId;
+            return $http.get(url);
+        }
 
         function findAllPlacesForUser(userId) {
             var url = '/project/api/user/' + userId + "/place";

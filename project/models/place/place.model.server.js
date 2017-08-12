@@ -5,13 +5,17 @@ var userModel = require("../user/user.model.server");
 
 var placeModel = mongoose.model("PlaceModelProject", placeSchema);
 
-//placeModel.createUser = createUser;
+placeModel.createPlace = createPlace;
 //placeModel.findUserById = findUserById;
 placeModel.findAllPlacesForUser = findAllPlacesForUser;
 //userModel.updateUser = updateUser;
 //userModel.deleteUser = deleteUser;
 
 module.exports = userModel;
+
+function createPlace(place) {
+    return userModel.create(place);
+}
 
 function findAllPlacesForUser(userId) {
     return userModel.findUserById(userId)
