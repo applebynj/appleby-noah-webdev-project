@@ -9,11 +9,6 @@
         model.login = login;
 
         function init() {
-            PlaceService
-                .findAllPlacesForUser(userId)
-                .then(function(res) {
-                    model.places = res;
-                })
         }
         init();
 

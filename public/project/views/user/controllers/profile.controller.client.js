@@ -16,6 +16,11 @@
                 .findUserById(model.userId)
                 .then(function(response) {
                     model.user = response.data;
+                    PlaceService
+                        .findAllPlacesForUser(userId)
+                        .then(function(res) {
+                            model.places = res;
+                        })
                 });
         }
         init();
