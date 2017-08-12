@@ -11,14 +11,14 @@ placeModel.findAllPlacesForUser = findAllPlacesForUser;
 //userModel.updateUser = updateUser;
 //userModel.deleteUser = deleteUser;
 
-module.exports = userModel;
+module.exports = placeModel;
 
 function createPlace(place) {
-    return userModel.create(place);
+    return placeModel.create(place);
 }
 
 function findAllPlacesForUser(userId) {
-    return userModel.findUserById(userId)
+    return placeModel.findUserById(userId)
         .populate('placesVisited')
         .then(function(user) {
             return user.placesVisited;
