@@ -1,9 +1,9 @@
 (function() {
     angular
         .module("WbdvProject")
-        .controller("SearchController", SearchController)
+        .controller("POCSearchController", POCSearchController)
 
-    function SearchController(GooglePlaceService) {
+    function POCSearchController(GooglePlaceService) {
         var model = this;
 
         model.findPlaceByTextSearch = findPlaceByTextSearch;

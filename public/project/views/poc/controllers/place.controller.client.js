@@ -1,9 +1,9 @@
 (function() {
     angular
         .module("WbdvProject")
-        .controller("PlaceController", PlaceController)
+        .controller("POCPlaceController", POCPlaceController)
 
-    function PlaceController($routeParams, GooglePlaceService) {
+    function POCPlaceController($routeParams, GooglePlaceService) {
         var model = this;
 
         model.placeId = $routeParams["pid"];

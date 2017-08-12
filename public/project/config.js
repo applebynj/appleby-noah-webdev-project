@@ -21,15 +21,20 @@
                 controller: "ProfileController",
                 controllerAs: "model"
             })
+            .when("/user/:uid/place/:pid", {
+                templateUrl: "views/place/templates/place.view.client.html",
+                controller: "PlaceController",
+                controllerAs: "model"
+            })
             //Proof of Concept Pages
             .when("/poc", {
                 templateUrl: "views/poc/templates/search.view.client.html",
-                controller: "SearchController",
+                controller: "POCSearchController",
                 controllerAs: "model"
             })
             .when("/poc/place/:pid", {
                 templateUrl: "views/poc/templates/place.view.client.html",
-                controller: "PlaceController",
+                controller: "POCPlaceController",
                 controllerAs: "model"
             })
             //Default Route

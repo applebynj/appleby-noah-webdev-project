@@ -1,6 +1,6 @@
 var app = require("../../express");
 
-var placeModel = require("../models/user/place.model.server");
+var placeModel = require("../models/place/place.model.server");
 
 app.post("/project/api/place", createPlace);
 app.get("/project/api/user/:userId/place", findAllPlacesForUser);
