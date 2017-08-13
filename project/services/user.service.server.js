@@ -1,14 +1,50 @@
 var app = require("../../express");
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+passport.use(new LocalStrategy(localStrategy));
+passport.serializeUser(serializeUser);
+passport.deserializeUser(deserializeUser);
 
 var userModel = require("../models/user/user.model.server");
 
 app.post("/api/user", createUser);
 app.post("/api/user", findUser); /* covers findUserByUserName and findUserByCredentials based on request body */
-app.post("/api/login", login);
+app.post("/api/login", passport.authenticate('local'), login);
 app.get("/api/user/:userId", findUserById);
 app.put("/api/user/:userId", updateUser);
 app.delete("/api/user/:userId", deleteUser);
 app.put("/api/user/:userId/place/:placeId", addPlaceToUser);
+
+function localStrategy(username, password, done) {
+    userModel
+        .findUserByCredentials({username: username, password: password})
+        .then(
+            function(user) {
+                if (!user) { return done(null, false); }
+                return done(null, user);
+            },
+            function(err) {
+                if (err) { return done(err); }
+            }
+        );
+}
+
+function serializeUser(user, done) {
+    done(null, user);
+}
+
+function deserializeUser(user, done) {
+    userModel
+        .findUserById(user._id)
+        .then(
+            function(user){
+                done(null, user);
+            },
+            function(err){
+                done(err, null);
+            }
+        );
+}
 
 function createUser(req, res) {
     /* TODO: further validation */
@@ -24,16 +60,7 @@ function createUser(req, res) {
 }
 
 function login(req, res) {
-    var username = req.body.username;
-    var password = req.body.password;
-
-    userModel
-        .findUserByCredentials(username, password)
-        .then(function(user) {
-            res.json(user);
-        }, function(err) {
-            res.statusCode(404).send(err);
-        });
+    res.json(req.user);
 }
 
 function findUser(req, res) {
