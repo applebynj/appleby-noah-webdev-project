@@ -23,7 +23,7 @@ function findPlace(place) {
 }
 
 function updatePlace(placeId, place) {
-    return placeModel.update({_id : placeId},
+    return placeModel.findOneAndUpdate({_id : placeId},
         {$set: place});
 }
 

@@ -27,6 +27,7 @@
                             address : model.place.formatted_address,
                             place_id : model.place.place_id
                         }).then(function(place) {
+                            console.log(place);
                             model.place.id = place.data._id;
                             checkIfUserHasVisitedPlace()
                     });
@@ -45,7 +46,9 @@
         }
 
         function checkIfUserHasVisitedPlace(){
-            model.visited = model.user.placesVisited.indexOf(model.placeId);
+            console.log(model.place.id);
+            console.log(model.user.placesVisited);
+            model.visited = model.user.placesVisited.indexOf(model.place.id) >= 0;
         }
     }
 })();
