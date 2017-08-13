@@ -1,0 +1,108 @@
+/*
+ * General
+ */
+body {
+    padding: 60px 0px;
+}
+
+input, textarea, .dropdown, .text-angular-input {
+    margin-bottom: 5px;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.navbar-default {
+    background-color: #337ab7;
+}
+
+.navbar-default .nja-split-nav {
+    padding-left: 0;
+}
+
+/*
+ * Non-Collapsing Nav
+ */
+
+.nja-no-collapse .navbar-header .navbar-right span {
+    padding-right: 10px;
+}
+
+.nja-no-collapse .navbar-brand .glyphicon-chevron-left {
+    padding-right: 20px;
+}
+
+@media (min-width: 0px) {
+    .navbar-right {
+        float: right;
+        margin-right: -15px;
+    }
+}
+
+@media (min-width: 768px) {
+    .nja-no-collapse .navbar-header {
+        float: inherit;
+    }
+}
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    background-color: transparent;
+    color: white;
+}
+
+.navbar-default .navbar-brand, .navbar-default a {
+    color: white;
+    font-weight: bold;
+}
+
+.navbar-default .navbar-nav li a {
+    color: white;
+    font-weight: bold;
+}
+
+.active .glyphicon {
+    color: white;
+}
+
+/*
+ * Split View
+ */
+
+.nja-split-view-left {
+    position: absolute;
+    top: 50px;
+    bottom: 50px;
+    padding-top: 10px;
+    z-index: 1;
+    overflow-y: scroll;
+    border-right: 1px solid #CCCCCC;
+}
+
+@media(min-width: 1200px) {
+    .col-lg-9.nja-split-view-right {
+        width: 75%;
+        position: absolute;
+        right: 0px;
+        overflow-y: scroll;
+        top: 60px;
+        bottom: 60px;
+    }
+}
+
+.nja-split-view-left,.chooser .list-group-item {
+    border: none;
+}
+
+.chooser a.list-group-item {
+    color: #337ab7;
+}
+
+/* TextAngular */
+.ta-toolbar {
+    background-color: #F0F0F0;
+    padding: 10px 10px 5px;
+    margin-left: 0px; /* Override bootstrap */
+    border: 1px solid #EEE;
+}

@@ -1,5 +1,19 @@
 <div class="container-fluid">
 
+    <nav class="nja-no-collapse navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <div class="navbar-brand">
+                    <a href="#!/user/{{model.userId}}"
+                       role="button">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    Place
+                </div>
+            </div>
+        </div>
+    </nav>
+
     <div class="row">
         <div class="col-xs-8">
             <h4><img src="{{model.place.icon}}" style="height:30px; padding-right: 10px;"/>{{model.place.name}}</h4>
