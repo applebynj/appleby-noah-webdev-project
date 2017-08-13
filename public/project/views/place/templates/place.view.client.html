@@ -80,7 +80,7 @@
 
             <div class="col-xs-12"
                  ng-repeat="review in model.place.reviews">
-                <a href="#!/user/{{review._user}}">username</a>
+                <a href="#!/user/{{review._user._id}}">{{review._user.username}}</a>
                 {{review.rating}} / 5
                 <p>{{review.text}}</p>
             </div>

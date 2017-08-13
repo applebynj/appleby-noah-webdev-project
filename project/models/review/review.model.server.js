@@ -20,7 +20,7 @@ function createReview(review) {
 }
 
 function findAllReviewsForPlace(placeId) {
-    return reviewModel.find({_place: placeId});
-
+    return reviewModel.find({_place: placeId})
+        .populate('_user', 'username');
 }
 

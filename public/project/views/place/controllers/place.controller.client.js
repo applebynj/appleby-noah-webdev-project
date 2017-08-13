@@ -49,12 +49,13 @@
             model.visited = model.user.placesVisited.indexOf(model.place.id) >= 0;
         }
 
+        /*Overwrite the API reviews with our reviews*/
         function retrieveReviewsForPlace(){
             ReviewService
                 .findAllReviewsForPlace(model.place._id)
                 .then(function(reviews){
                     model.place.reviews = reviews.data;
-                })
+                });
         }
 
         function createReview(){
