@@ -13,10 +13,27 @@ function createPlace(req, res) {
     /* TODO: further validation */
     var place = req.body;
 
+    /* Do not create if a place with that API id already exists, just update its info */
     placeModel
-        .createPlace(place)
-        .then(function(place) {
-            res.json(place);
+        .findPlace(place)
+        .then(function(existingPlace) {
+            if(existingPlace) {
+                placeModel
+                    .updatePlace(existingPlace._id, place)
+                    .then(function(place) {
+                        res.json(place);
+                    }, function(err) {
+                        res.statusCode(404).send(err);
+                    })
+            } else {
+                placeModel
+                    .createPlace(place)
+                    .then(function(place) {
+                        res.json(place);
+                    }, function(err) {
+                        res.statusCode(404).send(err);
+                    });
+            }
         }, function(err) {
             res.statusCode(404).send(err);
         });

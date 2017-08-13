@@ -12,23 +12,23 @@
         model.addPlaceToUser = addPlaceToUser;
 
         function init() {
+            UserService
+                .findUserById(model.userId)
+                .then(function(response){
+                    model.user = response.data;
+                });
             GooglePlaceService
                 .findPlaceById(model.placeId)
                 .then(function(response) {
                     model.place = response.data.result;
                     PlaceService
-                        .createPlace({  //if doesnt exist!!! TODO
+                        .createPlace({
                             name : model.place.name,
                             address : model.place.formatted_address,
                             place_id : model.place.place_id
                         }).then(function(place) {
-                            console.log(place);
                             model.place.id = place.data._id;
-                            PlaceService
-                                .findAllPlacesForUser(model.userId)
-                                .then(function(res) {
-                                    console.log(res);
-                                })
+                            checkIfUserHasVisitedPlace()
                     });
                 });
         }
@@ -40,13 +40,12 @@
                 .addPlaceToUser(userId, placeId)
                 .then(function(response) {
                     model.user = response.data;
-                    model.visited = hasUserVisitedPlace(placeId);
+                    checkIfUserHasVisitedPlace()
                 });
         }
 
-        function hasUserVisitedPlace(placeId) {
-            return true;
-            //model.user.placesVisited go through and see if placeid exists
+        function checkIfUserHasVisitedPlace(){
+            model.visited = model.user.placesVisited.indexOf(model.placeId);
         }
     }
 })();
