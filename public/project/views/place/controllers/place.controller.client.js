@@ -3,7 +3,7 @@
         .module("WbdvProject")
         .controller("PlaceController", PlaceController)
 
-    function PlaceController($routeParams, GooglePlaceService, PlaceService, UserService) {
+    function PlaceController($routeParams, GooglePlaceService, PlaceService, UserService, ReviewService) {
         var model = this;
 
         model.userId = $routeParams["uid"];
@@ -28,6 +28,11 @@
                                 }).then(function(place) {
                                 model.place.id = place.data._id;
                                 checkIfUserHasVisitedPlace()
+                                ReviewService
+                                    .findAllReviewsForPlace(model.place.id)
+                                    .then(function(reviews){
+                                        model.place.reviews = reviews.data;
+                                    })
                             });
                         });
                 });

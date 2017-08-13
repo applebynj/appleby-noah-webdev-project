@@ -13,7 +13,7 @@ reviewModel.findAllReviewsForPlace = findAllReviewsForPlace;
 //reviewModel.updatePlace = updatePlace;
 //reviewModel.deleteUser = deleteUser;
 
-module.exports = placeModel;
+module.exports = reviewModel;
 
 function createReview(review) {
     return reviewModel.create(review);

@@ -2,8 +2,8 @@ var app = require("../../express");
 
 var reviewModel = require("../models/review/review.model.server");
 
-app.post("/api/review", createReview);
-app.get("/api/place/:placeId/review", findAllReviewsForPlace);
+app.post("/project/api/review", createReview);
+app.get("/project/api/place/:placeId/review", findAllReviewsForPlace);
 //app.get("/api/user/:userId", findUserById);
 //app.put("/api/user/:userId", updateUser);
 //app.delete("/api/user/:userId", deleteUser)
