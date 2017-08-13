@@ -3,7 +3,8 @@ var app = require("../../express");
 var userModel = require("../models/user/user.model.server");
 
 app.post("/api/user", createUser);
-app.get("/api/user", findUser); /* covers findUserByUserName and findUserByCredentials based on request body */
+app.post("/api/user", findUser); /* covers findUserByUserName and findUserByCredentials based on request body */
+app.post("/api/login", login);
 app.get("/api/user/:userId", findUserById);
 app.put("/api/user/:userId", updateUser);
 app.delete("/api/user/:userId", deleteUser);
@@ -22,12 +23,27 @@ function createUser(req, res) {
         });
 }
 
+function login(req, res) {
+    var username = req.body.username;
+    var password = req.body.password;
+
+    userModel
+        .findUserByCredentials(username, password)
+        .then(function(user) {
+            res.json(user);
+        }, function(err) {
+            res.statusCode(404).send(err);
+        });
+}
+
 function findUser(req, res) {
-    var username = req.query.username;
-    var password = req.query.password;
+    var username = req.body.username;
+    var password = req.body.password;
 
     /* findUserByCredentials */
     if(username && password) {
+        var username = req.body.username;
+        var password = req.body.password;
 
         userModel
             .findUserByCredentials(username, password)
@@ -36,7 +52,6 @@ function findUser(req, res) {
             }, function(err) {
                 res.statusCode(404).send(err);
             });
-
     } /* findUserByUserName */
     else if(username) {
 

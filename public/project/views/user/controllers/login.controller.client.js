@@ -17,7 +17,7 @@
                 model.errorMessage = "User not found";
             } else {
                 UserService
-                    .findUserByCredentials(user.username, user.password)
+                    .login(user.username, user.password)
                     .then(function(res){
                         user = res.data;
                         if(user === null) {
