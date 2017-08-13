@@ -24,6 +24,14 @@
                     user: checkLogin
                 }
             })
+            .when("/user/:username", {
+                templateUrl: "views/user/templates/profile.view.client.html",
+                controller: "ProfileController",
+                controllerAs: "model",
+                resolve: {
+                    user: checkLogin
+                }
+            })
             .when("/user/:uid/place/:pid", {
                 templateUrl: "views/place/templates/place.view.client.html",
                 controller: "PlaceController",

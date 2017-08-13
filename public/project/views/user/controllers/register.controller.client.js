@@ -19,7 +19,7 @@
                 .then(function(res) {
                     var _user = res.data;
                     if(!_user) {
-                        if(user.password === user.password2) {
+                        if(user.password && (user.password === user.password2)) {
                             return UserService.createUser(user).then(function(res) {
                                 _user = res.data;
                                 $location.url("/user/" + _user._id);

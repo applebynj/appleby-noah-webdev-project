@@ -8,7 +8,7 @@ passport.deserializeUser(deserializeUser);
 var userModel = require("../models/user/user.model.server");
 
 app.post("/api/user", createUser);
-app.post("/api/user", findUser); /* covers findUserByUserName and findUserByCredentials based on request body */
+app.get("/api/user", findUser); /* covers findUserByUserName and findUserByCredentials based on request body */
 app.post("/api/login", passport.authenticate('local'), login);
 app.get("/api/user/:userId", findUserById);
 app.put("/api/user/:userId", updateUser);
@@ -70,24 +70,8 @@ function login(req, res) {
 }
 
 function findUser(req, res) {
-    var username = req.body.username;
-    var password = req.body.password;
-
-    /* findUserByCredentials */
-    if(username && password) {
-        var username = req.body.username;
-        var password = req.body.password;
-
-        userModel
-            .findUserByCredentials(username, password)
-            .then(function(user) {
-                res.json(user);
-            }, function(err) {
-                res.statusCode(404).send(err);
-            });
-    } /* findUserByUserName */
-    else if(username) {
-
+    var username = req.query.username;
+    if(username) {
         userModel
             .findUserByUsername(username)
             .then(function(user) {
@@ -97,7 +81,7 @@ function findUser(req, res) {
             });
 
     }  else {
-        res.statusCode(404);
+        res.statusCode(404).send(err);
     }
 }
 

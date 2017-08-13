@@ -10,18 +10,26 @@
         model.deleteUser = deleteUser;
 
         model.userId = user._id;
+        model.usernameUrlParam = $routeParams["username"];
 
         function init() {
-            UserService
-                .findUserById(model.userId)
-                .then(function(response) {
-                    model.user = response.data;
-                    PlaceService
-                        .findAllPlacesForUser(model.user._id)
-                        .then(function(res) {
-                            model.places = res.data;
-                        })
-                });
+            if(user.username === model.usernameUrlParam) {
+                $location.url("/user");
+            } else if(model.usernameUrlParam) {
+                UserService
+                    .findUserById(model.userId)
+                    .then(function(response) {
+                        model.user = response.data;
+                    });
+            } else {
+                model.user = user;
+            }
+
+            PlaceService
+                .findAllPlacesForUser(model.user._id)
+                .then(function(res) {
+                    model.places = res.data;
+                })
         }
         init();
 
