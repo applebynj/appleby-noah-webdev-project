@@ -46,11 +46,43 @@
         </div>
 
         <div class="col-xs-6 col-md-3">
-            <div class="col-xs-6 col-md-3" ng-repeat="review in model.place.reviews">
-                <p class="thumbnail">
-                    <a href="#!/user/{{review._user}}">username</a>
-                    {{review.text}}
-                </p>
+            <label for="reviewForm">
+                <h4>Write a Review:</h4>
+            </label>
+            <form id="reviewForm"
+                  name="reviewForm">
+                <div class="form-group">
+                    <label for="exampleSelect1">Rating:</label>
+                    <select class="form-control"
+                            id="exampleSelect1"
+                            ng-model="model.reviewForm.rating"
+                            required>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleTextarea">Review:</label>
+                    <textarea class="form-control"
+                              id="exampleTextarea"
+                              rows="3"
+                              ng-model="model.reviewForm.text"></textarea>
+                </div>
+                <button type="submit"
+                        class="btn btn-primary"
+                        ng-click="reviewForm.$valid && model.createReview()">
+                    Submit
+                </button>
+            </form>
+
+            <div class="col-xs-12"
+                 ng-repeat="review in model.place.reviews">
+                <a href="#!/user/{{review._user}}">username</a>
+                {{review.rating}} / 5
+                <p>{{review.text}}</p>
             </div>
         </div>
     </div>

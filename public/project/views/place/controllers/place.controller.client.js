@@ -10,6 +10,7 @@
         model.placeId = $routeParams["pid"];
 
         model.addPlaceToUser = addPlaceToUser;
+        model.createReview = createReview;
 
         function init() {
             UserService
@@ -26,13 +27,9 @@
                                     address : model.place.formatted_address,
                                     place_id : model.place.place_id
                                 }).then(function(place) {
-                                model.place.id = place.data._id;
-                                checkIfUserHasVisitedPlace()
-                                ReviewService
-                                    .findAllReviewsForPlace(model.place.id)
-                                    .then(function(reviews){
-                                        model.place.reviews = reviews.data;
-                                    })
+                                model.place._id = place.data._id;
+                                checkIfUserHasVisitedPlace();
+                                retrieveReviewsForPlace();
                             });
                         });
                 });
@@ -50,6 +47,28 @@
 
         function checkIfUserHasVisitedPlace(){
             model.visited = model.user.placesVisited.indexOf(model.place.id) >= 0;
+        }
+
+        function retrieveReviewsForPlace(){
+            ReviewService
+                .findAllReviewsForPlace(model.place._id)
+                .then(function(reviews){
+                    model.place.reviews = reviews.data;
+                })
+        }
+
+        function createReview(){
+            model.reviewForm.userId = model.user._id;
+            model.reviewForm.placeId = model.place._id;
+
+            ReviewService
+                .createReview({
+                    rating: model.reviewForm.rating,
+                    text: model.reviewForm.text,
+                    _user: model.user._id,
+                    _place: model.place._id
+                });
+            retrieveReviewsForPlace();
         }
     }
 })();
