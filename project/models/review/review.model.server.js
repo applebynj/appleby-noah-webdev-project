@@ -4,7 +4,7 @@ var userModel = require("../user/user.model.server");
 var placeModel = require("../place/place.model.server");
 
 var reviewSchema = require("./review.schema.server");
-var reviewModel = mongoose.model("ReviewModelProject", reviewSchema);
+var reviewModel = mongoose.model("ReviewModel", reviewSchema);
 
 reviewModel.createReview = createReview;
 //reviewModel.findUserById = findUserById;

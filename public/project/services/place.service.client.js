@@ -13,21 +13,21 @@
         return api;
 
         function createPlace(place) {
-            var url = '/project/api/place';
+            var url = '/api/place';
             return $http.post(url, place);
         }
 
         function findPlaceById(placeId) {
-            var url = '/project/api/place/' + placeId;
+            var url = '/api/place/' + placeId;
             return $http.get(url);
         }
 
         function findPlaceByAPIId(place_id) {
-            var url = "/project/api/place/" + place_id;
+            var url = "/api/place/" + place_id;
         }
 
         function findAllPlacesForUser(userId) {
-            var url = '/project/api/user/' + userId + "/place";
+            var url = '/api/user/' + userId + "/place";
             return $http.get(url);
         }
     }

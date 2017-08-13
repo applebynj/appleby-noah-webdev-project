@@ -12,12 +12,12 @@
         return api;
 
         function createReview(review) {
-            var url = '/project/api/review';
+            var url = '/api/review';
             return $http.post(url, review);
         }
 
         function findAllReviewsForPlace(placeId) {
-            var url = '/project/api/place/' + placeId + "/review";
+            var url = '/api/place/' + placeId + "/review";
             return $http.get(url);
         }
     }

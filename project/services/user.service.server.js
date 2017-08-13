@@ -2,12 +2,12 @@ var app = require("../../express");
 
 var userModel = require("../models/user/user.model.server");
 
-app.post("/project/api/user", createUser);
-app.get("/project/api/user", findUser); /* covers findUserByUserName and findUserByCredentials based on request body */
-app.get("/project/api/user/:userId", findUserById);
-app.put("/project/api/user/:userId", updateUser);
-app.delete("/project/api/user/:userId", deleteUser);
-app.put("/project/api/user/:userId/place/:placeId", addPlaceToUser);
+app.post("/api/user", createUser);
+app.get("/api/user", findUser); /* covers findUserByUserName and findUserByCredentials based on request body */
+app.get("/api/user/:userId", findUserById);
+app.put("/api/user/:userId", updateUser);
+app.delete("/api/user/:userId", deleteUser);
+app.put("/api/user/:userId/place/:placeId", addPlaceToUser);
 
 function createUser(req, res) {
     /* TODO: further validation */

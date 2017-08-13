@@ -3,7 +3,7 @@ var placeSchema = require("./place.schema.server");
 var db = require("../models.server");
 var userModel = require("../user/user.model.server");
 
-var placeModel = mongoose.model("PlaceModelProject", placeSchema);
+var placeModel = mongoose.model("PlaceModel", placeSchema);
 
 placeModel.createPlace = createPlace;
 //placeModel.findUserById = findUserById;

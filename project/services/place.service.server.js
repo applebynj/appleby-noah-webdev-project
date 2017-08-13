@@ -2,11 +2,11 @@ var app = require("../../express");
 
 var placeModel = require("../models/place/place.model.server");
 
-app.post("/project/api/place", createPlace);
-app.get("/project/api/user/:userId/place", findAllPlacesForUser);
-//app.get("/project/api/place/:placeId", findPlaceById);
-//app.put("/project/api/place/:placeId", updatePlace);
-//app.delete("/project/api/place/:placeId", deletePlace)
+app.post("/api/place", createPlace);
+app.get("/api/user/:userId/place", findAllPlacesForUser);
+//app.get("/api/place/:placeId", findPlaceById);
+//app.put("/api/place/:placeId", updatePlace);
+//app.delete("/api/place/:placeId", deletePlace)
 
 
 function createPlace(req, res) {
