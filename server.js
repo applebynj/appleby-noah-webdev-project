@@ -1,6 +1,8 @@
 var app = require('./express');
 var express = app.express;
 var bodyParser = require('body-parser');
+var passport = require('passport');
+var passportLocal = require('passport-local');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -9,10 +11,12 @@ var session = require('express-session');
 
 app.use(cookieParser());
 app.use(session({
-    secret: 'this is the secret',
+    secret: 'this is the secret', //TODO: move to env variable
     resave: true,
     saveUninitialized: true
 }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.set('view engine', 'ejs');
 // require("./utilities/filelist");
