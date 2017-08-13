@@ -26,8 +26,6 @@
                                     address : model.place.formatted_address,
                                     place_id : model.place.place_id
                                 }).then(function(place) {
-                                console.log(place);
-                                console.log(model.user);
                                 model.place.id = place.data._id;
                                 checkIfUserHasVisitedPlace()
                             });
@@ -37,12 +35,9 @@
         init();
 
         function addPlaceToUser(userId, placeId) {
-            console.log(placeId);
             UserService
                 .addPlaceToUser(userId, placeId)
                 .then(function(response) {
-                    console.log(placeId);
-                    console.log(response.data);
                     model.user = response.data;
                     checkIfUserHasVisitedPlace()
                 });
