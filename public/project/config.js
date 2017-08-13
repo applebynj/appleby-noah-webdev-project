@@ -16,12 +16,12 @@
                 controller: "RegisterController",
                 controllerAs: "model"
             })
-            .when("/user/:uid", {
+            .when("/user", {
                 templateUrl: "views/user/templates/profile.view.client.html",
                 controller: "ProfileController",
                 controllerAs: "model",
                 resolve: {
-                    lkjqwelqw: checkLogin
+                    user: checkLogin
                 }
             })
             .when("/user/:uid/place/:pid", {

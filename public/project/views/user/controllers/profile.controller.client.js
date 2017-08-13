@@ -3,13 +3,13 @@
         .module("WbdvProject")
         .controller("ProfileController", ProfileController)
 
-    function ProfileController($routeParams, $location, UserService, PlaceService) {
+    function ProfileController($routeParams, $location, UserService, PlaceService, user) {
         var model = this;
 
         model.updateUser = updateUser;
         model.deleteUser = deleteUser;
 
-        model.userId = $routeParams["uid"];
+        model.userId = user._id;
 
         function init() {
             UserService
@@ -29,7 +29,7 @@
             UserService
                 .updateUser(user._id, user)
                 .then(function() {
-                    $location.url("user/" + user._id);
+                    $location.url("/user");
                 })
         }
 
