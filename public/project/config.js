@@ -26,6 +26,11 @@
                 controller: "PlaceController",
                 controllerAs: "model"
             })
+            .when("/user/:uid/search", {
+                templateUrl: "views/search/templates/search.view.client.html",
+                controller: "SearchController",
+                controllerAs: "model"
+            })
             //Proof of Concept Pages
             .when("/poc", {
                 templateUrl: "views/poc/templates/search.view.client.html",

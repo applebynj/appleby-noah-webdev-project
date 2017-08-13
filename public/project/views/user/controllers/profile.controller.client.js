@@ -20,7 +20,6 @@
                         .findAllPlacesForUser(model.user._id)
                         .then(function(res) {
                             model.places = res.data;
-                            console.log(res.data);
                         })
                 });
         }
