@@ -19,7 +19,10 @@
             .when("/user/:uid", {
                 templateUrl: "views/user/templates/profile.view.client.html",
                 controller: "ProfileController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    lkjqwelqw: checkLogin
+                }
             })
             .when("/user/:uid/place/:pid", {
                 templateUrl: "views/place/templates/place.view.client.html",
@@ -48,5 +51,20 @@
                 controller: "LoginController",
                 controllerAs: "model"
             })
+    }
+
+    function checkLogin(UserService, $q, $location) {
+        var deferred = $q.defer();
+        UserService
+            .checkLogin()
+            .then(function (user) {
+                if(user === '0') {
+                    deferred.reject();
+                    $location.url("/login");
+                } else {
+                    deferred.resolve(user);
+                }
+            });
+        return deferred.promise;
     }
 })();

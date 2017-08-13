@@ -12,7 +12,8 @@
             'login' : login,
             'updateUser' : updateUser,
             'deleteUser' : deleteUser,
-            'addPlaceToUser' : addPlaceToUser
+            'addPlaceToUser' : addPlaceToUser,
+            'checkLogin' : checkLogin
         };
         return api;
 
@@ -49,6 +50,14 @@
         function addPlaceToUser(userId, placeId) {
             var url = "/api/user/" + userId + "/place/" + placeId;
             return $http.put(url);
+        }
+
+        function checkLogin() {
+            var url = "/api/checkLogin";
+            return $http.get(url)
+                .then(function(response) {
+                    return response.data;
+                });
         }
     }
 })();

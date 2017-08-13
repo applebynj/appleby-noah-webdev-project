@@ -14,10 +14,11 @@ app.get("/api/user/:userId", findUserById);
 app.put("/api/user/:userId", updateUser);
 app.delete("/api/user/:userId", deleteUser);
 app.put("/api/user/:userId/place/:placeId", addPlaceToUser);
+app.get("/api/checkLogin", checkLogin)
 
 function localStrategy(username, password, done) {
     userModel
-        .findUserByCredentials({username: username, password: password})
+        .findUserByCredentials(username, password)
         .then(
             function(user) {
                 if (!user) { return done(null, false); }
@@ -27,6 +28,11 @@ function localStrategy(username, password, done) {
                 if (err) { return done(err); }
             }
         );
+}
+
+function checkLogin(req, res) {
+    console.log('here');
+    res.send(req.isAuthenticated() ? req.user : '0');
 }
 
 function serializeUser(user, done) {
