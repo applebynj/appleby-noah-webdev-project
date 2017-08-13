@@ -17,19 +17,16 @@
                 $location.url("/user");
             } else if(model.usernameUrlParam) {
                 UserService
-                    .findUserById(model.userId)
+                    .findUserByUsername(model.usernameUrlParam)
                     .then(function(response) {
                         model.user = response.data;
+                        getPlacesForUser();
+                        console.log(model.user);
                     });
             } else {
                 model.user = user;
+                getPlacesForUser();
             }
-
-            PlaceService
-                .findAllPlacesForUser(model.user._id)
-                .then(function(res) {
-                    model.places = res.data;
-                })
         }
         init();
 
@@ -46,6 +43,14 @@
                 .deleteUser(user._id)
                 .then(function() {
                     $location.url("/login");
+                })
+        }
+
+        function getPlacesForUser() {
+            PlaceService
+                .findAllPlacesForUser(model.user._id)
+                .then(function(res) {
+                    model.places = res.data;
                 })
         }
     }
