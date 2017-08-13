@@ -24,7 +24,8 @@ function findPlace(place) {
 
 function updatePlace(placeId, place) {
     return placeModel.findOneAndUpdate({_id : placeId},
-        {$set: place});
+        {$set: place},
+        { 'new': true });
 }
 
 function findAllPlacesForUser(userId) {

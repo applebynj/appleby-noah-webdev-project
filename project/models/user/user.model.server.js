@@ -43,9 +43,9 @@ function deleteUser(userId) {
 
 function addPlace(userId, placeId) {
     return userModel
-        .update({_id: userId},
-            { $push: { placesVisited: placeId }
-        });
+        .findOneAndUpdate({_id: userId},
+            { $push: { placesVisited: placeId }},
+            { 'new': true });
 }
 
 // function removePlace(userId, websiteId) {

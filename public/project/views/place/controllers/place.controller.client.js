@@ -16,21 +16,22 @@
                 .findUserById(model.userId)
                 .then(function(response){
                     model.user = response.data;
-                });
-            GooglePlaceService
-                .findPlaceById(model.placeId)
-                .then(function(response) {
-                    model.place = response.data.result;
-                    PlaceService
-                        .createPlace({
-                            name : model.place.name,
-                            address : model.place.formatted_address,
-                            place_id : model.place.place_id
-                        }).then(function(place) {
-                            console.log(place);
-                            model.place.id = place.data._id;
-                            checkIfUserHasVisitedPlace()
-                    });
+                    GooglePlaceService
+                        .findPlaceById(model.placeId)
+                        .then(function(response) {
+                            model.place = response.data.result;
+                            PlaceService
+                                .createPlace({
+                                    name : model.place.name,
+                                    address : model.place.formatted_address,
+                                    place_id : model.place.place_id
+                                }).then(function(place) {
+                                console.log(place);
+                                console.log(model.user);
+                                model.place.id = place.data._id;
+                                checkIfUserHasVisitedPlace()
+                            });
+                        });
                 });
         }
         init();
@@ -40,14 +41,14 @@
             UserService
                 .addPlaceToUser(userId, placeId)
                 .then(function(response) {
+                    console.log(placeId);
+                    console.log(response.data);
                     model.user = response.data;
                     checkIfUserHasVisitedPlace()
                 });
         }
 
         function checkIfUserHasVisitedPlace(){
-            console.log(model.place.id);
-            console.log(model.user.placesVisited);
             model.visited = model.user.placesVisited.indexOf(model.place.id) >= 0;
         }
     }
