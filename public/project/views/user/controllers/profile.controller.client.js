@@ -34,6 +34,7 @@
                 model.user = user;
                 getPlacesForUser();
                 checkIfFollowing();
+                console.log(model.user.usersFollowing);
             }
         }
         init();

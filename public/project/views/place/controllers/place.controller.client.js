@@ -34,6 +34,7 @@
                                 }).then(function(place) {
                                 model.place._id = place.data._id;
                                 checkIfUserHasVisitedPlace();
+                                checkIfFollowsHaveVisitedPlace();
                                 retrieveReviewsForPlace();
                             });
                         });
@@ -61,6 +62,12 @@
 
         function checkIfUserHasVisitedPlace(){
             model.visited = model.user.placesVisited.indexOf(model.place._id) >= 0;
+        }
+
+        function checkIfFollowsHaveVisitedPlace(){
+            model.followsVisited = model.user.usersFollowing.filter(function(follow){
+                return follow.placesVisited.indexOf(model.place._id) !== -1;
+            });
         }
 
         /*Overwrite the API reviews with our reviews*/

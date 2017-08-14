@@ -50,6 +50,10 @@
         </div>
 
         <div class="col-xs-6 col-md-3">
+            <h5>You follow {{model.followsVisited.length}}
+                <span ng-if="model.followsVisited.length != 1">people who have visited this place!</span>
+                <span ng-if="model.followsVisited.length == 1">person who has visited this place!</span>
+            </h5>
             <label for="reviewForm">
                 <h4>Write a Review:</h4>
             </label>
