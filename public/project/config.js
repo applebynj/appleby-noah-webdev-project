@@ -40,10 +40,13 @@
                     user: checkLogin
                 }
             })
-            .when("/user/:uid/search", {
+            .when("/search", {
                 templateUrl: "views/search/templates/search.view.client.html",
                 controller: "SearchController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    user: checkLogin
+                }
             })
             //Proof of Concept Pages
             .when("/poc", {

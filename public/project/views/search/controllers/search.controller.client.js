@@ -3,10 +3,8 @@
         .module("WbdvProject")
         .controller("SearchController", SearchController)
 
-    function SearchController($routeParams, GooglePlaceService) {
+    function SearchController(GooglePlaceService) {
         var model = this;
-
-        model.userId = $routeParams["uid"];
 
         model.findPlaceByTextSearch = findPlaceByTextSearch;
 
