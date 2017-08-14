@@ -32,10 +32,13 @@
                     user: checkLogin
                 }
             })
-            .when("/user/:uid/place/:pid", {
+            .when("/place/:pid", {
                 templateUrl: "views/place/templates/place.view.client.html",
                 controller: "PlaceController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    user: checkLogin
+                }
             })
             .when("/user/:uid/search", {
                 templateUrl: "views/search/templates/search.view.client.html",

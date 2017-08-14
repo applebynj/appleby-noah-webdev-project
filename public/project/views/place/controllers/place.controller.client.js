@@ -3,10 +3,9 @@
         .module("WbdvProject")
         .controller("PlaceController", PlaceController)
 
-    function PlaceController($routeParams, GooglePlaceService, PlaceService, UserService, ReviewService) {
+    function PlaceController($routeParams, GooglePlaceService, PlaceService, UserService, ReviewService, user) {
         var model = this;
 
-        model.userId = $routeParams["uid"];
         model.placeId = $routeParams["pid"];
 
         model.addPlaceToUser = addPlaceToUser;
@@ -14,7 +13,7 @@
 
         function init() {
             UserService
-                .findUserById(model.userId)
+                .findUserById(user._id)
                 .then(function(response){
                     model.user = response.data;
                     GooglePlaceService
