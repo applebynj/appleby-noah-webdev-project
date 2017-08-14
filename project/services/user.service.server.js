@@ -10,6 +10,7 @@ var userModel = require("../models/user/user.model.server");
 app.post("/api/user", createUser);
 app.get("/api/user", findUser); /* covers findUserByUserName and findUserByCredentials based on request body */
 app.post("/api/login", passport.authenticate('local'), login);
+app.post("/api/logout", logout);
 app.get("/api/user/:userId", findUserById);
 app.put("/api/user/:userId", updateUser);
 app.delete("/api/user/:userId", deleteUser);
@@ -33,7 +34,6 @@ function localStrategy(username, password, done) {
 }
 
 function checkLogin(req, res) {
-    console.log('here');
     res.send(req.isAuthenticated() ? req.user : '0');
 }
 
@@ -69,6 +69,11 @@ function createUser(req, res) {
 
 function login(req, res) {
     res.json(req.user);
+}
+
+function logout(req, res) {
+    req.logOut();
+    res.send(200);
 }
 
 function findUser(req, res) {

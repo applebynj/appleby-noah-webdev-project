@@ -10,6 +10,7 @@
             'findUserById' : findUserById,
             'findUserByUsername' : findUserByUsername,
             'login' : login,
+            'logout' : logout,
             'updateUser' : updateUser,
             'deleteUser' : deleteUser,
             'addPlaceToUser' : addPlaceToUser,
@@ -37,6 +38,11 @@
         function login(username, password) {
             var url = "/api/login";
             return $http.post(url, {username: username, password: password});
+        }
+
+        function logout() {
+            var url = "/api/logout";
+            return $http.post(url);
         }
 
         function updateUser(userId, user) {

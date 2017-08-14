@@ -124,7 +124,7 @@
 
         <div ng-if="!model.usernameUrlParam">
             <a class="btn btn-default btn-danger btn-block"
-               href="#!/login"
+               ng-click="model.logout()"
                role="button">Logout</a>
 
             <a class="btn btn-default btn-warning btn-block"

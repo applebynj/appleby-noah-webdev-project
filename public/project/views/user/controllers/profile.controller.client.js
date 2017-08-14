@@ -10,6 +10,7 @@
         model.deleteUser = deleteUser;
         model.followUser = followUser;
         model.unfollowUser = unfollowUser;
+        model.logout = logout;
         model.hoverOut = function() { this.applyClass = "btn-success";
                                     this.hover = false;};
         model.hoverIn = function() {this.applyClass = "btn-danger";
@@ -86,6 +87,15 @@
                 function(el) {
                     return el._id === model.user._id;
                 })[0];
+        }
+
+        function logout() {
+            UserService
+                .logout()
+                .then(
+                    function() {
+                        $location.url("/");
+                    });
         }
     }
 })();
