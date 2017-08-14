@@ -13,6 +13,7 @@
             'updateUser' : updateUser,
             'deleteUser' : deleteUser,
             'addPlaceToUser' : addPlaceToUser,
+            'followUser' : followUser,
             'checkLogin' : checkLogin
         };
         return api;
@@ -49,6 +50,11 @@
 
         function addPlaceToUser(userId, placeId) {
             var url = "/api/user/" + userId + "/place/" + placeId;
+            return $http.put(url);
+        }
+
+        function followUser(userId, followUserId) {
+            var url = "/api/user/" + userId + "/follow/" + followUserId;
             return $http.put(url);
         }
 

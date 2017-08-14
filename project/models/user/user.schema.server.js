@@ -8,6 +8,7 @@ var userSchema = mongoose.Schema({
     phone: String,
     //TODO: likely don't need this relationship, no value to order unless making top list
     placesVisited: [{type: mongoose.Schema.Types.ObjectId, ref:"PlaceModel"}],
+    usersFollowing: [{type: mongoose.Schema.Types.ObjectId, ref:"UserModel"}],
     isAdmin: Boolean,
     dateCreated: {type: Date, default: Date.now}
 }, {collection: "user"});

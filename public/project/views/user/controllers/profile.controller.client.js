@@ -8,6 +8,7 @@
 
         model.updateUser = updateUser;
         model.deleteUser = deleteUser;
+        model.followUser = followUser;
 
         model.userId = user._id;
         model.usernameUrlParam = $routeParams["username"];
@@ -52,6 +53,12 @@
                 .then(function(res) {
                     model.places = res.data;
                 })
+        }
+
+        /* Logged in user will follow user of page */
+        function followUser() {
+            UserService
+                .followUser(model.userId, model.user._id)
         }
     }
 })();

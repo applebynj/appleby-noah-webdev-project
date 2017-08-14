@@ -11,6 +11,7 @@ userModel.findUserByCredentials = findUserByCredentials;
 userModel.updateUser = updateUser;
 userModel.deleteUser = deleteUser;
 userModel.addPlace = addPlace;
+userModel.followUser = followUser;
 //userModel.removePlace = removePlace;
 
 module.exports = userModel;
@@ -45,6 +46,13 @@ function addPlace(userId, placeId) {
     return userModel
         .findOneAndUpdate({_id: userId},
             { $push: { placesVisited: placeId }},
+            { 'new': true });
+}
+
+function followUser(userId, followUserId) {
+    return userModel
+        .findOneAndUpdate({_id: userId},
+            { $push: { usersFollowing: followUserId }},
             { 'new': true });
 }
 

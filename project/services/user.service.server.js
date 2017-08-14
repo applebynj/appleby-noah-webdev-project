@@ -14,6 +14,7 @@ app.get("/api/user/:userId", findUserById);
 app.put("/api/user/:userId", updateUser);
 app.delete("/api/user/:userId", deleteUser);
 app.put("/api/user/:userId/place/:placeId", addPlaceToUser);
+app.put("/api/user/:userId/follow/:followUserId", followUser);
 app.get("/api/checkLogin", checkLogin)
 
 function localStrategy(username, password, done) {
@@ -128,6 +129,19 @@ function addPlaceToUser(req, res) {
 
     userModel
         .addPlace(userId, placeId)
+        .then(function(user) {
+            res.json(user);
+        }, function(err) {
+            res.statusCode(404).send(err);
+        });
+}
+
+function followUser(req, res) {
+    var userId = req.params.userId;
+    var followUserId = req.params.followUserId;
+
+    userModel
+        .followUser(userId, followUserId)
         .then(function(user) {
             res.json(user);
         }, function(err) {
