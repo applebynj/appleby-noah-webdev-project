@@ -55,7 +55,6 @@
                 <span ng-if="model.followsVisited.length != 1">people who have visited this place!</span>
                 <span ng-if="model.followsVisited.length == 1">person who has visited this place!</span>
             </h5>
-            <div ng-repeat='follow in model.followsVisited'>{{follow.username}}</div>
             <label for="reviewForm">
                 <h4>Write a Review:</h4>
             </label>
@@ -98,9 +97,11 @@
     </div>
 </div>
 
-<div class="my-drop list-group">
-    <div class='list-group-item' ng-repeat="follow in model.followsVisited">
+<div class="my-drop">
+    <div class="drop-content">
+        <div ng-repeat="follow in model.followsVisited">
             {{follow.username}}
+        </div>
     </div>
 </div>
 
