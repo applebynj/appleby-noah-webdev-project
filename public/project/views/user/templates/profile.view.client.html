@@ -5,57 +5,77 @@
                 <div class="navbar-brand">
                     Profile
                 </div>
-                <a class="navbar-brand navbar-right"
-                   ng-click="model.updateUser(model.user)"
-                   role="button">
-                    <span class="glyphicon glyphicon-ok"></span>
-                </a>
+                <div ng-if="!model.usernameUrlParam">
+                    <a class="navbar-brand navbar-right"
+                       ng-click="model.updateUser(model.user)"
+                       role="button">
+                        <span class="glyphicon glyphicon-ok"></span>
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
 
     <div class="nja-no-collapse container-fluid">
-        <label for="firstName">First Name</label>
-        <input name="firstName"
-               ng-model="model.user.firstName"
-               placeholder="Noah"
-               type="text"
-               class="form-control"
-               id="firstName"/>
+        <div class="row" ng-if="model.usernameUrlParam">
+            <div class="col-sm-6 col-xs-12">
+                <h3>{{model.user.firstName}} {{model.user.lastName}}
+                </h3>
 
-        <label for="lastName">Last Name</label>
-        <input name="lastName"
-               ng-model="model.user.lastName"
-               placeholder="Appleby"
-               type="text"
-               class="form-control"
-               id="lastName"/>
+                <h6>({{model.user.username}})</h6>
+            </div>
+            <div class="col-sm-6 col-xs-12">
+                <a class="btn btn-default btn-primary pull-right"
+                   ng-click="model.addFriend"
+                   role="button">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="glyphicon glyphicon-user"></span>
+                </a>
+            </div>
+        </div>
+        <div ng-if="!model.usernameUrlParam">
+            <label for="firstName">First Name</label>
+            <input name="firstName"
+                   ng-model="model.user.firstName"
+                   placeholder="Noah"
+                   type="text"
+                   class="form-control"
+                   id="firstName"/>
 
-        <label for="username">Username</label>
-        <input name="username"
-               ng-model="model.user.username"
-               readonly
-               value="noah"
-               class="form-control"
-               id="username"/>
+            <label for="lastName">Last Name</label>
+            <input name="lastName"
+                   ng-model="model.user.lastName"
+                   placeholder="Appleby"
+                   type="text"
+                   class="form-control"
+                   id="lastName"/>
 
-        <label for="email">Email</label>
-        <input name="email"
-               ng-model="model.user.email"
-               type="email"
-               placeholder="noah@appleby.com"
-               class="form-control"
-               id="email"/>
+            <label for="username">Username</label>
+            <input name="username"
+                   ng-model="model.user.username"
+                   readonly
+                   value="noah"
+                   class="form-control"
+                   id="username"/>
 
-        <label for="dob">Date of Birth</label>
-        <input name="dob"
-               type="date"
-               class="form-control"
-               id="dob"/>
+            <label for="email">Email</label>
+            <input name="email"
+                   ng-model="model.user.email"
+                   type="email"
+                   placeholder="noah@appleby.com"
+                   class="form-control"
+                   id="email"/>
 
-        <a class="btn btn-default btn-primary btn-block"
-           href="#!/user/{{model.userId}}/search"
-           role="button">Place Search</a>
+            <label for="dob">Date of Birth</label>
+            <input name="dob"
+                   type="date"
+                   class="form-control"
+                   id="dob"/>
+
+            <a class="btn btn-default btn-primary btn-block"
+               href="#!/user/{{model.userId}}/search"
+               role="button">Place Search</a>
+        </div>
 
         <ul class="list-group">
             <a class="list-group-item list-group-item-info">
@@ -72,13 +92,15 @@
             </div>
         </ul>
 
-        <a class="btn btn-default btn-danger btn-block"
-           href="#!/login"
-           role="button">Logout</a>
+        <div ng-if="!model.usernameUrlParam">
+            <a class="btn btn-default btn-danger btn-block"
+               href="#!/login"
+               role="button">Logout</a>
 
-        <a class="btn btn-default btn-warning btn-block"
-           ng-click="model.deleteUser(model.user)"
-           role="button">Delete Account</a>
+            <a class="btn btn-default btn-warning btn-block"
+               ng-click="model.deleteUser(model.user)"
+               role="button">Delete Account</a>
+        </div>
     </div>
 
     <!-- Start Footer (same across all pages) -->
