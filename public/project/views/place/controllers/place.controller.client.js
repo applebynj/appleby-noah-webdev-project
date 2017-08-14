@@ -8,7 +8,7 @@
 
         model.placeId = $routeParams["pid"];
 
-        model.addPlaceToUser = addPlaceToUser;
+        model.addPlaceToUserVisited = addPlaceToUserVisited;
         model.createReview = createReview;
 
         function init() {
@@ -35,9 +35,9 @@
         }
         init();
 
-        function addPlaceToUser(userId, placeId) {
+        function addPlaceToUserVisited() {
             UserService
-                .addPlaceToUser(userId, placeId)
+                .addPlaceToUser(user._id, model.place._id)
                 .then(function(response) {
                     model.user = response.data;
                     checkIfUserHasVisitedPlace()
@@ -45,7 +45,7 @@
         }
 
         function checkIfUserHasVisitedPlace(){
-            model.visited = model.user.placesVisited.indexOf(model.place.id) >= 0;
+            model.visited = model.user.placesVisited.indexOf(model.place._id) >= 0;
         }
 
         /*Overwrite the API reviews with our reviews*/

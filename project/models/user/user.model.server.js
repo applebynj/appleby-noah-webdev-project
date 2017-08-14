@@ -48,6 +48,7 @@ function deleteUser(userId) {
 }
 
 function addPlace(userId, placeId) {
+    console.log(userId + ' ' + placeId);
     return userModel
         .findOneAndUpdate({_id: userId},
             { $push: { placesVisited: placeId }},
