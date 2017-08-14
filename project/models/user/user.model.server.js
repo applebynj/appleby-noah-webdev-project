@@ -22,11 +22,15 @@ function createUser(user) {
 }
 
 function findUserById(userId) {
-    return userModel.findById(userId);
+    return userModel
+        .findById(userId)
+        .populate('usersFollowing', 'username');
 }
 
 function findUserByUsername(username) {
-    return userModel.findOne({username: username.toLowerCase()});
+    return userModel
+        .findOne({username: username.toLowerCase()})
+        .populate('usersFollowing', 'username');;
 }
 
 function findUserByCredentials(username, password) {
