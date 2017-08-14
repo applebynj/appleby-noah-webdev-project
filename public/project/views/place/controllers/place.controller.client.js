@@ -3,7 +3,7 @@
         .module("WbdvProject")
         .controller("PlaceController", PlaceController)
 
-    function PlaceController($routeParams, GooglePlaceService, PlaceService, UserService, ReviewService, user) {
+    function PlaceController($scope, $interval, $routeParams, GooglePlaceService, PlaceService, UserService, ReviewService, user) {
         var model = this;
 
         model.placeId = $routeParams["pid"];
@@ -17,6 +17,16 @@
             this.hover = true;};
 
         function init() {
+
+            /*tooltip?*/
+            new Drop({
+                target: document.querySelector('.drop-target'),
+                content:  document.querySelector('.my-drop'),
+                position: 'top center',
+                openOn: 'hover',
+                remove: 'false'
+            });
+
             model.hoverOut();
             UserService
                 .findUserById(user._id)
