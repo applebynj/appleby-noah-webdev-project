@@ -9,11 +9,16 @@
         model.updateUser = updateUser;
         model.deleteUser = deleteUser;
         model.followUser = followUser;
+        model.hoverOut = function() { this.applyClass = "btn-success";
+                                    this.hover = false;};
+        model.hoverIn = function() {this.applyClass = "btn-danger";
+                                    this.hover = true;};
 
         model.userId = user._id;
         model.usernameUrlParam = $routeParams["username"];
 
         function init() {
+            model.hoverOut();
             if(user.username === model.usernameUrlParam) {
                 $location.url("/user");
             } else if(model.usernameUrlParam) {
@@ -22,11 +27,12 @@
                     .then(function(response) {
                         model.user = response.data;
                         getPlacesForUser();
-                        console.log(model.user);
+                        checkIfFollowing();
                     });
             } else {
                 model.user = user;
                 getPlacesForUser();
+                checkIfFollowing();
             }
         }
         init();
@@ -59,6 +65,14 @@
         function followUser() {
             UserService
                 .followUser(model.userId, model.user._id)
+        }
+
+        function checkIfFollowing(){
+            console.log(user.usersFollowing);
+            model.following = user.usersFollowing.filter(
+                function(el) {
+                    return el._id === model.user._id;
+                });
         }
     }
 })();

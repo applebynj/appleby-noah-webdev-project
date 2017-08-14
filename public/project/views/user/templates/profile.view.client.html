@@ -26,9 +26,22 @@
             </div>
             <div class="col-sm-6 col-xs-12">
                 <a class="btn btn-default btn-primary pull-right"
+                   ng-if="!model.following"
                    ng-click="model.followUser()"
                    role="button">
                     <span class="glyphicon glyphicon-plus"></span>
+                    <span class="glyphicon glyphicon-user"></span>
+                </a>
+
+                <a class="btn btn-default pull-right"
+                   ng-if="model.following"
+                   ng-click="model.followUser()"
+                   ng-mouseover="model.hoverIn()"
+                   ng-mouseLeave="model.hoverOut()"
+                   ng-class="model.applyClass"
+                   role="button">
+                    <span ng-if="model.hover" class="glyphicon glyphicon-remove"></span>
+                    <span ng-if="!model.hover" class="glyphicon glyphicon-ok"></span>
                     <span class="glyphicon glyphicon-user"></span>
                 </a>
             </div>
