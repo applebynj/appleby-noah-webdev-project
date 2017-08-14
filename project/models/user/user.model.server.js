@@ -26,7 +26,7 @@ function createUser(user) {
 function findUserById(userId) {
     return userModel
         .findById(userId)
-        .populate('usersFollowing', 'username');
+        .populate('usersFollowing', 'username placesVisited')
 }
 
 function findUserByUsername(username) {
