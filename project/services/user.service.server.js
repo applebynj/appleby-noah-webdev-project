@@ -14,7 +14,8 @@ app.post("/api/logout", logout);
 app.get("/api/user/:userId", findUserById);
 app.put("/api/user/:userId", updateUser);
 app.delete("/api/user/:userId", deleteUser);
-app.put("/api/user/:userId/place/:placeId", addPlaceToUser);
+app.put("/api/user/:userId/place/:placeId", addPlaceToUserVisited);
+app.delete("/api/user/:userId/place/:placeId", removePlaceFromUserVisited);
 app.put("/api/user/:userId/follow/:followUserId", followUser);
 app.delete("/api/user/:userId/follow/:unfollowUserId", unfollowUser);
 app.get("/api/checkLogin", checkLogin)
@@ -129,12 +130,25 @@ function deleteUser(req, res) {
         })
 }
 
-function addPlaceToUser(req, res) {
+function addPlaceToUserVisited(req, res) {
     var userId = req.params.userId;
     var placeId = req.params.placeId;
 
     userModel
         .addPlace(userId, placeId)
+        .then(function(user) {
+            res.json(user);
+        }, function(err) {
+            res.statusCode(404).send(err);
+        });
+}
+
+function removePlaceFromUserVisited(req, res) {
+    var userId = req.params.userId;
+    var placeId = req.params.placeId;
+
+    userModel
+        .removePlace(userId, placeId)
         .then(function(user) {
             res.json(user);
         }, function(err) {

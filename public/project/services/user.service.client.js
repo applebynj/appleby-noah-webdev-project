@@ -13,7 +13,8 @@
             'logout' : logout,
             'updateUser' : updateUser,
             'deleteUser' : deleteUser,
-            'addPlaceToUser' : addPlaceToUser,
+            'addPlaceToUserVisited' : addPlaceToUserVisited,
+            'removePlaceFromUserVisited' : removePlaceFromUserVisited,
             'followUser' : followUser,
             'unfollowUser' : unfollowUser,
             'checkLogin' : checkLogin
@@ -55,9 +56,14 @@
             return $http.delete(url);
         }
 
-        function addPlaceToUser(userId, placeId) {
+        function addPlaceToUserVisited(userId, placeId) {
             var url = "/api/user/" + userId + "/place/" + placeId;
             return $http.put(url);
+        }
+
+        function removePlaceFromUserVisited(userId, placeId) {
+            var url = "/api/user/" + userId + "/place/" + placeId;
+            return $http.delete(url);
         }
 
         function followUser(userId, followUserId) {

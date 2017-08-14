@@ -28,7 +28,11 @@
                 <span class="glyphicon glyphicon-flag"></span>
             </button>
             <button class="btn btn-success pull-right"
+                    ng-click="model.removePlaceFromUserVisited()"
                     ng-if="model.visited"
+                    ng-mouseover="model.hoverIn()"
+                    ng-mouseLeave="model.hoverOut()"
+                    ng-class="model.applyClass"
                     style="margin:20px;">
                 <!--ng-click="model.removePlaceFromUser(model.userId, model.placeId)"-->
                 <span class="glyphicon glyphicon-flag"></span>

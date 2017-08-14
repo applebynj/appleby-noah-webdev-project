@@ -9,9 +9,15 @@
         model.placeId = $routeParams["pid"];
 
         model.addPlaceToUserVisited = addPlaceToUserVisited;
+        model.removePlaceFromUserVisited = removePlaceFromUserVisited;
         model.createReview = createReview;
+        model.hoverOut = function() { this.applyClass = "btn-success";
+            this.hover = false;};
+        model.hoverIn = function() {this.applyClass = "btn-danger";
+            this.hover = true;};
 
         function init() {
+            model.hoverOut();
             UserService
                 .findUserById(user._id)
                 .then(function(response){
@@ -37,7 +43,16 @@
 
         function addPlaceToUserVisited() {
             UserService
-                .addPlaceToUser(user._id, model.place._id)
+                .addPlaceToUserVisited(user._id, model.place._id)
+                .then(function(response) {
+                    model.user = response.data;
+                    checkIfUserHasVisitedPlace()
+                });
+        }
+
+        function removePlaceFromUserVisited() {
+            UserService
+                .removePlaceFromUserVisited(user._id, model.place._id)
                 .then(function(response) {
                     model.user = response.data;
                     checkIfUserHasVisitedPlace()
