@@ -12,6 +12,7 @@ userModel.updateUser = updateUser;
 userModel.deleteUser = deleteUser;
 userModel.addPlace = addPlace;
 userModel.followUser = followUser;
+userModel.unfollowUser = unfollowUser;
 //userModel.removePlace = removePlace;
 
 module.exports = userModel;
@@ -57,7 +58,16 @@ function followUser(userId, followUserId) {
     return userModel
         .findOneAndUpdate({_id: userId},
             { $push: { usersFollowing: followUserId }},
-            { 'new': true });
+            { 'new': true })
+        .populate('usersFollowing', 'username');
+}
+
+function unfollowUser(userId, unfollowUserId) {
+    return userModel
+        .findOneAndUpdate({_id: userId},
+            { $pull: { usersFollowing: unfollowUserId }},
+            { 'new': true })
+        .populate('usersFollowing', 'username');
 }
 
 // function removePlace(userId, websiteId) {

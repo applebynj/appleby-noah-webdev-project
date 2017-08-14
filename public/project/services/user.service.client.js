@@ -14,6 +14,7 @@
             'deleteUser' : deleteUser,
             'addPlaceToUser' : addPlaceToUser,
             'followUser' : followUser,
+            'unfollowUser' : unfollowUser,
             'checkLogin' : checkLogin
         };
         return api;
@@ -56,6 +57,11 @@
         function followUser(userId, followUserId) {
             var url = "/api/user/" + userId + "/follow/" + followUserId;
             return $http.put(url);
+        }
+
+        function unfollowUser(userId, unfollowUserId) {
+            var url = "/api/user/" + userId + "/follow/" + unfollowUserId;
+            return $http.delete(url);
         }
 
         function checkLogin() {
