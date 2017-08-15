@@ -1,0 +1,15 @@
+<div class="input-group">
+    <input name="searchfield"
+           placeholder="pizza near Boston"
+           ng-model="model.searchText"
+           type="text"
+           class="form-control"
+           id="username"/>
+    <span class="input-group-btn">
+        <a ng-click="model.findPlaceByTextSearch(model.searchText)"
+           class="btn btn-default"
+           type="button">
+            <span class="glyphicon glyphicon-search"></span>
+        </a>
+    </span>
+</div>
