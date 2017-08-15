@@ -1,36 +1,79 @@
-<div class="nja-no-collapse container-fluid">
+<div class="container-fluid">
 
-    <div ng-show="model.error"
-         class="alert alert-danger">
-        {{model.error}}
+    <nav class="nja-no-collapse navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <div class="navbar-brand">
+                    <a href="#!/user/{{model.userId}}"
+                       role="button">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    Search
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="row">
+        <div class="col-sm-4 nja-split-view-left text-center vertical-center">
+            <div class="container-fluid">
+                <h1><span class="glyphicon glyphicon-flag"></span></h1>
+                <h3>wander</h3>
+
+                <a ng-if="!model.user"
+                   href="#!/register"
+                   class="btn btn-warning btn-raised">
+                    Sign up now!
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-8 nja-split-view-right pages">
+            <div class="row">
+                <div class="col-xs-10 vertical-center">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                                <div ng-show="model.error"
+                                     class="alert alert-danger">
+                                    {{model.error}}
+                                </div>
+                                <h2>Register</h2>
+                                <div class="input-group">
+                                    <input name="username"
+                                           ng-model="user.username"
+                                           placeholder="username"
+                                           type="text"
+                                           class="form-control"
+                                           id="username"/>
+
+                                    <input name="password"
+                                           ng-model="user.password"
+                                           placeholder="password"
+                                           type="password"
+                                           class="form-control"
+                                           id="password"/>
+
+                                    <input name="password2"
+                                           ng-model="user.password2"
+                                           placeholder="verify password"
+                                           type="password"
+                                           class="form-control"
+                                           id="password2"/>
+                                </div>
+                            <span class="input-group-btn">
+                                <a class="btn btn-default btn-primary btn-block"
+                                       ng-click="model.registerUser(user)"
+                                       role="button">Register</a> <!-- TODO do not hardcode -->
+
+                                    <a class="btn btn-default btn-danger btn-block"
+                                       href="#!/login"
+                                       role="button">Cancel</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
     </div>
-    <h2>Register</h2>
-    <input name="username"
-           ng-model="user.username"
-           placeholder="username"
-           type="text"
-           class="form-control"
-           id="username"/>
-
-    <input name="password"
-           ng-model="user.password"
-           placeholder="password"
-           type="password"
-           class="form-control"
-           id="password"/>
-
-    <input name="password2"
-           ng-model="user.password2"
-           placeholder="verify password"
-           type="password"
-           class="form-control"
-           id="password2"/>
-
-    <a class="btn btn-default btn-primary btn-block"
-       ng-click="model.registerUser(user)"
-       role="button">Register</a> <!-- TODO do not hardcode -->
-
-    <a class="btn btn-default btn-danger btn-block"
-       href="#!/login"
-       role="button">Cancel</a>
 </div>
