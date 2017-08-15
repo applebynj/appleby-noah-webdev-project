@@ -40,14 +40,14 @@
                     user: checkLogin
                 }
             })
-            .when("/search", {
+            /*.when("/search", {
                 templateUrl: "views/search/templates/search.view.client.html",
                 controller: "SearchController",
                 controllerAs: "model",
                 resolve: {
                     user: checkLogin
                 }
-            })
+            })*/
             //Proof of Concept Pages
             .when("/poc", {
                 templateUrl: "views/poc/templates/search.view.client.html",
@@ -61,8 +61,8 @@
             })
             //Default Route
             .otherwise({
-                templateUrl: "views/user/templates/login.view.client.html",
-                controller: "LoginController",
+                templateUrl: "views/search/templates/search.view.client.html",
+                controller: "SearchController",
                 controllerAs: "model"
             })
     }
