@@ -46,83 +46,96 @@
                 </a>
             </div>
         </div>
-        <div ng-if="!model.usernameUrlParam">
-            <label for="firstName">First Name</label>
-            <input name="firstName"
-                   ng-model="model.user.firstName"
-                   placeholder="Noah"
-                   type="text"
-                   class="form-control"
-                   id="firstName"/>
-
-            <label for="lastName">Last Name</label>
-            <input name="lastName"
-                   ng-model="model.user.lastName"
-                   placeholder="Appleby"
-                   type="text"
-                   class="form-control"
-                   id="lastName"/>
-
-            <label for="username">Username</label>
-            <input name="username"
-                   ng-model="model.user.username"
-                   readonly
-                   value="noah"
-                   class="form-control"
-                   id="username"/>
-
-            <label for="email">Email</label>
-            <input name="email"
-                   ng-model="model.user.email"
-                   type="email"
-                   placeholder="noah@appleby.com"
-                   class="form-control"
-                   id="email"/>
-
-            <label for="dob">Date of Birth</label>
-            <input name="dob"
-                   type="date"
-                   class="form-control"
-                   id="dob"/>
-
-            <a class="btn btn-default btn-primary btn-block"
-               href="#!/search"
-               role="button">Place Search</a>
-        </div>
-
         <div class="row">
             <div class="col-sm-6 col-xs-12">
                 <ul class="list-group">
-                    <a class="list-group-item list-group-item-info">
-                        <h4>Visited:</h4>
-                    </a>
-                    <a href="#!/place/{{place.place_id}}"
-                       ng-repeat="place in model.places"
-                       class="list-group-item">
-                        <p>
-                            <b>{{place.name}}</b>
-                            <br>
-                            {{place.address}}
-                        </p>
-                    </a>
+                    <h3>Visited:</h3>
+                    <div class="panel panel-default"
+                         ng-repeat="place in model.places">
+                        <div class="panel-body">
+                            <a href="#!/place/{{place.place_id}}"
+                               class="list-group-item">
+                                <p>
+                                    <b>{{place.name}}</b>
+                                    <br>
+                                    {{place.address}}
+                                </p>
+                            </a>
+                        </div>
+                    </div>
                 </ul>
             </div>
 
             <div class="col-sm-6 col-xs-12">
-                <ul class="list-group">
-                    <a class="list-group-item list-group-item-info">
-                        <h4>Following:</h4>
-                    </a>
-                    <a class="list-group-item"
-                       ng-repeat="user in model.user.usersFollowing"
-                       href="#!/user/{{user.username}}">
-                        <b>{{user.username}}</b>
-                    </a>
-                </ul>
+                <h3>Following:</h3>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="list-group">
+                            <a class="list-group-item"
+                               ng-repeat="user in model.user.usersFollowing"
+                               href="#!/user/{{user.username}}">
+                                <div class="row-action-primary">
+<!--
+                                    <i class="material-icons">folder</i> TODO: Profile picture?
+-->
+                                </div>
+                                <div class="row-content">
+<!--
+                                    <div class="least-content">15m</div> TODO: hmm
+-->
+                                    <p class="list-group-item-text">{{user.username}}</p>
+                                </div>
+                            </a>
+                </div>
             </div>
         </div>
 
         <div ng-if="!model.usernameUrlParam">
+            <div class="panel">
+                <div class="panel-body">
+                    <label for="firstName">First Name</label>
+                    <input name="firstName"
+                           ng-model="model.user.firstName"
+                           placeholder="Noah"
+                           type="text"
+                           class="form-control"
+                           id="firstName"/>
+
+                    <label for="lastName">Last Name</label>
+                    <input name="lastName"
+                           ng-model="model.user.lastName"
+                           placeholder="Appleby"
+                           type="text"
+                           class="form-control"
+                           id="lastName"/>
+
+                    <label for="username">Username</label>
+                    <input name="username"
+                           ng-model="model.user.username"
+                           readonly
+                           value="noah"
+                           class="form-control"
+                           id="username"/>
+
+                    <label for="email">Email</label>
+                    <input name="email"
+                           ng-model="model.user.email"
+                           type="email"
+                           placeholder="noah@appleby.com"
+                           class="form-control"
+                           id="email"/>
+
+                    <label for="dob">Date of Birth</label>
+                    <input name="dob"
+                           type="date"
+                           class="form-control"
+                           id="dob"/>
+
+                    <a class="btn btn-default btn-primary btn-block"
+                       href="#!/search"
+                       role="button">Place Search</a>
+                </div>
+            </div>
             <a class="btn btn-default btn-danger btn-block"
                ng-click="model.logout()"
                role="button">Logout</a>

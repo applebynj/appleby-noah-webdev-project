@@ -105,6 +105,17 @@ a:hover {
     margin: 0;
 }
 
+.list-group .list-group-item .row-content {
+    min-height: 30px;
+}
+
+.list-group .list-group-separator:before {
+    width: -webkit-calc(100%);
+    width: calc(100%);
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    float: left;
+}
+
 .vertical-center {
     min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
     min-height: 100vh; /* These two lines are counted as one :-)       */
