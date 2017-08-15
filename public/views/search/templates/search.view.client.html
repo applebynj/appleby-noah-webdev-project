@@ -29,10 +29,11 @@
         </div>
         <div class="col-sm-8 nja-split-view-right pages">
             <div class="row">
-                <div class="col-xs-10">
+                <div class="col-xs-10 vertical-center">
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            <ng-include src="'views/search/templates/components/search.component.client.html'">
+                            <h4>Try somewhere new for dinner tonight.</h4>
+                            <div ng-include = "'views/search/templates/components/search.component.client.html'"></div>
                             <div class="list-group">
                                 <div ng-repeat="place in model.results">
                                     <a href="#!/place/{{place.place_id}}" class="list-group-item">

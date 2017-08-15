@@ -72,7 +72,7 @@ a:hover {
 
 .nja-split-view-left {
     position: absolute;
-    top: 50px;
+    top: 0px;
     bottom: 0px;
     padding-top: 10px;
     z-index: 1;
@@ -85,7 +85,7 @@ a:hover {
         position: absolute;
         right: 0px;
         overflow-y: scroll;
-        top: 50px;
+        top: 0px;
         bottom: 0px;
     }
 
@@ -99,13 +99,15 @@ a:hover {
     }
 }
 
-.pages > div {
+.pages > div > div {
     padding: 0 5px;
-    padding-top: 64px;
+    padding-top: 100px;
     margin: 0;
 }
 
 .vertical-center {
+    min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+    min-height: 100vh; /* These two lines are counted as one :-)       */
     display: flex;
     align-items: center;
 }
