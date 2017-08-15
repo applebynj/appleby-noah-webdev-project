@@ -3,12 +3,12 @@
         .module("WbdvProject")
         .controller("SearchController", SearchController)
 
-    function SearchController(GooglePlaceService) {
+    function SearchController(user, GooglePlaceService) {
         var model = this;
 
         model.findPlaceByTextSearch = findPlaceByTextSearch;
 
-        function init() { }
+        function init() { console.log(user);}
         init();
 
         function findPlaceByTextSearch(searchText) {

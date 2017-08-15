@@ -81,13 +81,12 @@ a:hover {
 }
 
 @media(min-width: 1200px) {
-    .col-lg-9.nja-split-view-right {
-        width: 75%;
+    .nja-split-view-right {
         position: absolute;
         right: 0px;
         overflow-y: scroll;
-        top: 60px;
-        bottom: 60px;
+        top: 50px;
+        bottom: 0px;
     }
 }
 
