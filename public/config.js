@@ -63,7 +63,10 @@
             .otherwise({
                 templateUrl: "views/search/templates/search.view.client.html",
                 controller: "SearchController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    user: checkLogin
+                }
             })
     }
 
@@ -73,8 +76,7 @@
             .checkLogin()
             .then(function (user) {
                 if(user === '0') {
-                    deferred.reject();
-                    $location.url("/login");
+                    deferred.resolve(null);
                 } else {
                     deferred.resolve(user);
                 }
