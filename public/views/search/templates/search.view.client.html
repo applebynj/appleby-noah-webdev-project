@@ -15,28 +15,37 @@
     </nav>
 
     <div class="row">
-        <div class="col-sm-5 nja-split-view-left text-center">
-            <h1><span class="glyphicon glyphicon-flag"></span></h1>
-            <h3>wander</h3>
+        <div class="col-sm-4 nja-split-view-left text-center vertical-center">
+            <div class="container-fluid">
+                <h1><span class="glyphicon glyphicon-flag"></span></h1>
+                <h3>wander</h3>
 
-            <a ng-if="!model.user"
-                 href="#!/register"
-                 class="btn btn-warning">
-                Sign up now!
-            </a>
-        </div>
-        <div class="col-sm-7 nja-split-view-right">
-            <div>
-                <ng-include src="'views/search/templates/components/search.component.client.html'">
+                <a ng-if="!model.user"
+                   href="#!/register"
+                   class="btn btn-warning btn-raised">
+                    Sign up now!
+                </a>
             </div>
-                <div class="list-group">
-                    <div ng-repeat="place in model.results">
-                        <a href="#!/place/{{place.place_id}}" class="list-group-item">
-                            <h4><img src="{{place.icon}}" style="height:30px; padding-right: 10px;"/>{{place.name}}</h4>
-                            <h6>{{place.formatted_address}}</h6>
-                        </a>
+        </div>
+        <div class="col-sm-8 nja-split-view-right pages">
+            <div class="row">
+                <div class="col-xs-10">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <ng-include src="'views/search/templates/components/search.component.client.html'">
+                            <div class="list-group">
+                                <div ng-repeat="place in model.results">
+                                    <a href="#!/place/{{place.place_id}}" class="list-group-item">
+                                        <h4><img src="{{place.icon}}" style="height:30px; padding-right: 10px;"/>{{place.name}}</h4>
+                                        <h6>{{place.formatted_address}}</h6>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+
 
         </div>
     </div>
