@@ -20,17 +20,18 @@
 
         function init() {
             model.hoverOut();
-            if(user.username === model.usernameUrlParam) {
+            if(user && user.username === model.usernameUrlParam) {
                 $location.url("/user");
             } else if(model.usernameUrlParam) {
                 UserService
                     .findUserByUsername(model.usernameUrlParam)
                     .then(function(response) {
+                        console.log(response);
                         model.user = response.data;
                         getPlacesForUser();
                         checkIfFollowing();
                     });
-            } else {
+            } else if (user) {
                 model.user = user;
                 getPlacesForUser();
                 checkIfFollowing();
