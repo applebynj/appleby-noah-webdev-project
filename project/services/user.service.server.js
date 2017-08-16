@@ -64,7 +64,7 @@ function createUser(req, res) {
         .then(function(user) {
             res.json(user);
         }, function(err) {
-            res.statusCode(404).send(err);
+            res.status(404).send(err);
         });
 }
 
@@ -83,13 +83,17 @@ function findUser(req, res) {
         userModel
             .findUserByUsername(username)
             .then(function(user) {
-                res.json(user);
+                if(user) {
+                    res.json(user);
+                } else {
+                    res.status(404).send('User not found');
+                }
             }, function(err) {
-                res.statusCode(404).send(err);
+                res.status(404).send(err);
             });
 
     }  else {
-        res.statusCode(404).send(err);
+        res.status(404);
     }
 }
 
@@ -101,7 +105,7 @@ function findUserById(req, res) {
         .then(function(user) {
             res.json(user);
         }, function(err) {
-            res.statusCode(404).send(err);
+            res.status(404).send(err);
         });
 }
 
@@ -114,7 +118,7 @@ function updateUser(req, res) {
         .then(function(status) {
             res.json(status);
         }, function(err) {
-            res.statusCode(404).send(err);
+            res.status(404).send(err);
         })
 }
 
@@ -126,7 +130,7 @@ function deleteUser(req, res) {
         .then(function(status) {
             res.json(status);
         }, function(err) {
-            res.statusCode(404).send(err);
+            res.status(404).send(err);
         })
 }
 
@@ -139,7 +143,7 @@ function addPlaceToUserVisited(req, res) {
         .then(function(user) {
             res.json(user);
         }, function(err) {
-            res.statusCode(404).send(err);
+            res.status(404).send(err);
         });
 }
 
@@ -152,7 +156,7 @@ function removePlaceFromUserVisited(req, res) {
         .then(function(user) {
             res.json(user);
         }, function(err) {
-            res.statusCode(404).send(err);
+            res.status(404).send(err);
         });
 }
 
@@ -165,7 +169,7 @@ function followUser(req, res) {
         .then(function(user) {
             res.json(user);
         }, function(err) {
-            res.statusCode(404).send(err);
+            res.status(404).send(err);
         });
 }
 
@@ -178,6 +182,6 @@ function unfollowUser(req, res) {
         .then(function(user) {
             res.json(user);
         }, function(err) {
-            res.statusCode(404).send(err);
+            res.status(404).send(err);
         });
 }
