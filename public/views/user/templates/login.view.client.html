@@ -1,37 +1,98 @@
 <div class="container-fluid">
-    <div>
 
-        <h2>Login</h2>
+    <nav class="nja-no-collapse navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <div class="navbar-brand">
+                    <a href="#!/user/{{model.userId}}"
+                       role="button">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    Search
+                </div>
 
-<!--        <div ng-show="model.user" class="alert alert-info">
-            Welcome back {{model.user.username}}
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#!/login">LOGIN</a></li>
+                </ul>
+            </div>
         </div>
--->
+    </nav>
 
-        <div ng-show="model.errorMessage" class="alert alert-danger">
-            {{model.errorMessage}}
+    <div class="row">
+        <div class="col-sm-4 nja-split-view-left text-center vertical-center">
+            <div class="container-fluid">
+                <h1><span class="glyphicon glyphicon-flag"></span></h1>
+                <h3>wander</h3>
+            </div>
         </div>
 
-        <input name="username"
-               placeholder="username"
-               ng-model="model.user.username"
-               type="text"
-               class="form-control"
-               id="username"/>
+        <div class="col-sm-8 nja-split-view-right pages">
+            <div class="row vertical-center">
+                <div class="col-xs-10">
+                    <div class="container-fluid">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="form-horizontal">
+                                    <h2>Login</h2>
 
-        <input name="password"
-               placeholder="password"
-               ng-model="model.user.password"
-               type="password"
-               class="form-control"
-               id="password"/>
+                                    <!--        <div ng-show="model.user" class="alert alert-info">
+                                                Welcome back {{model.user.username}}
+                                            </div>
+                                    -->
 
-        <a class="btn btn-default btn-primary btn-block"
-           ng-click="model.login(model.user)"
-           role="button">Login</a>
+                                    <div ng-show="model.errorMessage" class="alert alert-danger">
+                                        {{model.errorMessage}}
+                                    </div>
 
-        <a class="btn btn-default btn-success btn-block"
-           href="#!/register"
-           role="button">Register</a>
+                                    <div class="form-group">
+                                        <label for="username"
+                                               class="col-md-2 control-label">Username</label>
+
+                                        <div class="col-md-10">
+                                            <input name="username"
+                                                   placeholder="username"
+                                                   ng-model="model.user.username"
+                                                   type="text"
+                                                   class="form-control"
+                                                   id="username"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="password"
+                                               class="col-md-2 control-label">Password</label>
+
+                                        <div class="col-md-10">
+                                            <input name="password"
+                                                   placeholder="password"
+                                                   ng-model="model.user.password"
+                                                   type="password"
+                                                   class="form-control"
+                                                   id="password"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-10 col-md-offset-2">
+
+                                            <a class="btn btn-default btn-primary"
+                                               ng-click="model.login(model.user)"
+                                               role="button">Login</a>
+
+                                            <a class="btn btn-default btn-success"
+                                               href="#!/register"
+                                               role="button">Register</a>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
     </div>
-</div>
