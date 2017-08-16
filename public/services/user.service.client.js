@@ -3,7 +3,7 @@
         .module("WbdvProject")
         .factory("UserService", UserService);
 
-    function UserService($http) {
+    function UserService($http, $location) {
 
         var api = {
             'createUser' : createUser,
@@ -33,7 +33,8 @@
 
         function findUserByUsername(username) {
             var url = "/api/user?username=" + username;
-            return $http.get(url);
+            return $http.get(url)
+                        .error($location.url("/"));
         }
 
         function login(username, password) {
