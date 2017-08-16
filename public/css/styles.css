@@ -58,7 +58,6 @@ a:hover {
 
 .navbar-default .navbar-nav li a {
     color: white;
-    font-weight: bold;
 }
 
 .active .glyphicon {
@@ -140,4 +139,15 @@ a:hover {
 
 .nav-search > * {
     padding: 0px 30px;
+}
+
+.navbar {
+    margin: 10px 10px 0px 10px;
+    border-radius: 2px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.12), 0 3px 6px 0 rgba(0, 0, 0, 0.12);
+}
+
+.navbar-brand {
+    padding-left: 50px;
+    padding-right: 50px;
 }

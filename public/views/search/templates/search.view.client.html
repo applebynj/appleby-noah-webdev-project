@@ -4,17 +4,16 @@
         <div class="container-fluid">
             <div class="navbar-header">
                 <div class="navbar-brand">
-                    <a href="#!/user/{{model.userId}}"
+                  <!--  <a href="#!/user/{{model.userId}}"
                        role="button">
                         <span class="glyphicon glyphicon-chevron-left"></span>
-                    </a>
+                    </a>-->
                     <a href="#!/">
                         wander
                         <span class="glyphicon glyphicon-flag"></span>
                     </a>
                 </div>
             </div>
-
 
             <div class="collapse navbar-collapse">
                 <div class="nav navbar-nav nav-search-container">
@@ -32,17 +31,17 @@
 
                 <ul ng-if="!model.user"
                     class="nav navbar-nav navbar-right">
-                    <li><a href="#!/login">LOGIN</a></li>
+                    <li><a href="#!/login">Login</a></li>
                 </ul>
 
                 <ul ng-if="model.user"
                     class="nav navbar-nav navbar-right">
-                    <li><a href="#!/user">PROFILE</a></li>
+                    <li><a href="#!/user">Profile</a></li>
                 </ul>
 
                 <ul ng-if="model.user.isAdmin"
                     class="nav navbar-nav navbar-right">
-                    <li><a href="#!/admin">ADMIN</a></li>
+                    <li><a href="#!/admin">Admin</a></li>
                 </ul>
             </div>
         </div>
