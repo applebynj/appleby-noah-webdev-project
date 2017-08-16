@@ -1,6 +1,6 @@
 <div class="container-fluid">
 
-    <nav class="nja-no-collapse navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
                 <div class="navbar-brand">
@@ -8,13 +8,42 @@
                        role="button">
                         <span class="glyphicon glyphicon-chevron-left"></span>
                     </a>
-                    Search
+                    <a href="#!/">
+                        wander
+                        <span class="glyphicon glyphicon-flag"></span>
+                    </a>
+                </div>
+            </div>
+
+
+            <div class="collapse navbar-collapse">
+                <div class="nav navbar-nav nav-search-container">
+                    <div class="navbar-left navbar-form nav-search">
+                        <div class="form-group">
+                        <input type="text" class="form-control" placeholder="What are you looking for?" style="width: 400px;">
+                        </div>
+                        <span class="glyphicon glyphicon-plus"></span>
+                        <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Where abouts?">
+                        </div>
+                        <span class="glyphicon glyphicon-search"></span>
+                    </div>
                 </div>
 
-                <ul class="nav navbar-nav navbar-right">
+                <ul ng-if="!model.user"
+                    class="nav navbar-nav navbar-right">
                     <li><a href="#!/login">LOGIN</a></li>
                 </ul>
 
+                <ul ng-if="model.user"
+                    class="nav navbar-nav navbar-right">
+                    <li><a href="#!/user">PROFILE</a></li>
+                </ul>
+
+                <ul ng-if="model.user.isAdmin"
+                    class="nav navbar-nav navbar-right">
+                    <li><a href="#!/user">ADMIN</a></li>
+                </ul>
             </div>
         </div>
     </nav>

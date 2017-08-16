@@ -54,7 +54,6 @@ a:hover {
 
 .navbar-default .navbar-brand, .navbar-default a {
     color: white;
-    font-weight: bold;
 }
 
 .navbar-default .navbar-nav li a {
@@ -137,4 +136,8 @@ a:hover {
     padding: 10px 10px 5px;
     margin-left: 0px; /* Override bootstrap */
     border: 1px solid #EEE;
+}
+
+.nav-search > * {
+    padding: 0px 30px;
 }

@@ -6,6 +6,8 @@
     function SearchController(user, GooglePlaceService) {
         var model = this;
 
+        model.user = user;
+
         model.findPlaceByTextSearch = findPlaceByTextSearch;
 
         function init() { console.log(user);}
