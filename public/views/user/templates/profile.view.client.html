@@ -5,13 +5,6 @@
                 <div class="navbar-brand">
                     Profile
                 </div>
-                <div ng-if="!model.usernameUrlParam">
-                    <a class="navbar-brand navbar-right"
-                       ng-click="model.updateUser(model.user)"
-                       role="button">
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </a>
-                </div>
             </div>
         </div>
     </nav>
@@ -25,7 +18,7 @@
                 <h6>({{model.user.username}})</h6>
             </div>
             <div class="col-sm-6 col-xs-12">
-                <a class="btn btn-default btn-primary pull-right"
+                <a class="btn btn-success pull-right"
                    ng-if="!model.following"
                    ng-click="model.followUser()"
                    role="button">
@@ -33,7 +26,7 @@
                     <span class="glyphicon glyphicon-user"></span>
                 </a>
 
-                <a class="btn btn-default pull-right"
+                <a class="btn btn-raised btn-danger pull-right"
                    ng-if="model.following"
                    ng-click="model.unfollowUser()"
                    ng-mouseover="model.hoverIn()"
@@ -46,6 +39,15 @@
                 </a>
             </div>
         </div>
+
+        <button ng-if="!model.usernameUrlParam"
+                type="button"
+                class="btn btn-raised btn-info pull-right"
+                data-toggle="modal"
+                data-target="#userSettings">
+            <span class="glyphicon glyphicon-cog"></span>
+        </button>
+
         <div class="row">
             <div class="col-sm-6 col-xs-12">
                 <ul class="list-group">
@@ -86,13 +88,30 @@
                                     <p class="list-group-item-text">{{user.username}}</p>
                                 </div>
                             </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div ng-if="!model.usernameUrlParam">
-            <div class="panel">
-                <div class="panel-body">
+    <!-- Start Footer (same across all pages) -->
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container-fluid">
+            <a class="navbar-brand navbar-right"
+               href="#!/user/{{model.userId}}">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+        </div>
+    </nav>
+    <div class="modal fade" role="dialog" id="userSettings">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">User Settings</h4>
+                </div>
+                <div class="modal-body">
                     <label for="firstName">First Name</label>
                     <input name="firstName"
                            ng-model="model.user.firstName"
@@ -130,29 +149,24 @@
                            type="date"
                            class="form-control"
                            id="dob"/>
+                    <div class="text-center">
+                        <button class="btn btn-raised btn-info btn-block"
+                                ng-click="model.updateUser(model.user)"
+                                data-dismiss="modal"
+                                role="button">
+                            Save
+                        </button>
+                    </div>
 
-                    <a class="btn btn-default btn-primary btn-block"
-                       href="#!/search"
-                       role="button">Place Search</a>
+                    <a class="btn btn-raised btn-danger btn-block"
+                       ng-click="model.logout()"
+                       role="button">Logout</a>
+
+                    <a class="btn btn-raised btn-warning btn-block"
+                       ng-click="model.deleteUser(model.user)"
+                       role="button">Delete Account</a>
                 </div>
             </div>
-            <a class="btn btn-default btn-danger btn-block"
-               ng-click="model.logout()"
-               role="button">Logout</a>
-
-            <a class="btn btn-default btn-warning btn-block"
-               ng-click="model.deleteUser(model.user)"
-               role="button">Delete Account</a>
         </div>
     </div>
-
-    <!-- Start Footer (same across all pages) -->
-    <nav class="navbar navbar-default navbar-fixed-bottom">
-        <div class="container-fluid">
-            <a class="navbar-brand navbar-right"
-               href="#!/user/{{model.userId}}">
-                <span class="glyphicon glyphicon-user"></span>
-            </a>
-        </div>
-    </nav>
 </div>
