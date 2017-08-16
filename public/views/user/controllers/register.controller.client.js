@@ -22,7 +22,7 @@
                         if(user.password && (user.password === user.password2)) {
                             return UserService.createUser(user).then(function(res) {
                                 _user = res.data;
-                                $location.url("/user/" + _user._id);
+                                $location.url("/user/" + _user.username);
                             });
                         } else {
                             model.error = "Passwords do not match";
