@@ -83,11 +83,7 @@ function findUser(req, res) {
         userModel
             .findUserByUsername(username)
             .then(function(user) {
-                if(user) {
                     res.json(user);
-                } else {
-                    res.status(404).send('User not found');
-                }
             }, function(err) {
                 res.status(404).send(err);
             });

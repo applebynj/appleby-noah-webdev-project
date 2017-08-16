@@ -33,8 +33,7 @@
 
         function findUserByUsername(username) {
             var url = "/api/user?username=" + username;
-            return $http.get(url)
-                        .error($location.url("/"));
+            return $http.get(url);
         }
 
         function login(username, password) {
