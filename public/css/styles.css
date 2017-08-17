@@ -179,5 +179,29 @@ a:hover {
     margin-bottom: 10px !important;
 }
 
-#carouselExampleIndicators {
+
+
+.item {
+    height: 400px;
+}
+
+.item img {
+    max-height: 100%;
+    max-width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+
+.carousel-indicators li {
+    background-color: #999;
+    background-color: rgba(70,70,70,.25);
+}
+
+.carousel-indicators .active {
+    background-color: #444;
 }
