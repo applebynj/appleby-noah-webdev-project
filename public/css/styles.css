@@ -2,7 +2,7 @@
  * General
  */
 body {
-    padding: 60px 0px;
+    padding: 90px 0px;
 }
 
 input, textarea, .dropdown, .text-angular-input {
@@ -21,6 +21,9 @@ a:hover {
     padding-left: 0;
 }
 
+.btn.btn-fab {
+    font-size: 16px;
+}
 /*
  * Non-Collapsing Nav
  */

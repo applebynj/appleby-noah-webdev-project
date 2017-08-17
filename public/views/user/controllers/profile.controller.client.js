@@ -3,7 +3,7 @@
         .module("WbdvProject")
         .controller("ProfileController", ProfileController)
 
-    function ProfileController($routeParams, $location, UserService, PlaceService, user) {
+    function ProfileController($scope, $timeout, $routeParams, $location, UserService, PlaceService, user) {
         var model = this;
 
         model.updateUser = updateUser;
@@ -11,14 +11,21 @@
         model.followUser = followUser;
         model.unfollowUser = unfollowUser;
         model.logout = logout;
-        model.hoverOut = function() { this.applyClass = "btn-success";
+        model.hoverOut = function() {
                                     this.hover = false;};
-        model.hoverIn = function() {this.applyClass = "btn-danger";
+        model.hoverIn = function() {
                                     this.hover = true;};
 
         model.usernameUrlParam = $routeParams["username"];
 
         function init() {
+
+            $scope.$watch('$viewContentLoaded', function(){
+                $timeout(function() {
+                    $.material.init();
+                },0);
+            });
+
             model.hoverOut();
             if(user && user.username === model.usernameUrlParam) {
                 $location.url("/user");
