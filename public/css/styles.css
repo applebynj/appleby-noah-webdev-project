@@ -21,9 +21,6 @@ a:hover {
     padding-left: 0;
 }
 
-.btn.btn-fab {
-    font-size: 16px;
-}
 /*
  * Non-Collapsing Nav
  */
@@ -157,4 +154,17 @@ a:hover {
 
 .noWrap {
     white-space: pre-wrap;
+}
+
+.twoIconButton{
+
+}
+
+.iconLeft {
+    left: 45% !important;
+}
+
+.iconRight {
+    left: 70% !important;
+    font-size: 15px !important;
 }

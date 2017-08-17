@@ -40,8 +40,8 @@
                             ng-if="!model.following"
                             ng-click="model.followUser()"
                             class="btn btn-fab btn-info opensource">
-                        <span class="glyphicon glyphicon-plus"></span>
-                        <span class="glyphicon glyphicon-user"></span>
+                        <i class="material-icons iconLeft">person</i>
+                        <i class="material-icons iconRight">person</i>
                         <div class="ripple-container"></div>
                     </a>
                     <a type="button"
@@ -50,9 +50,9 @@
                             ng-mouseover="model.hoverIn()"
                             ng-mouseLeave="model.hoverOut()"
                             class="btn btn-fab opensource btn-success">
-                        <span ng-if="model.hover" class="glyphicon glyphicon-remove"></span>
-                        <span ng-if="!model.hover" class="glyphicon glyphicon-ok"></span>
-                        <span class="glyphicon glyphicon-user"></span>
+                        <i class="material-icons iconLeft">person</i>
+                        <i ng-if="model.hover" class="material-icons iconRight">remove</i>
+                        <i ng-if="!model.hover" class="material-icons iconRight">check</i>
                         <div class="ripple-container"></div>
                     </a>
 
@@ -65,7 +65,7 @@
                             class="btn btn-fab btn-info opensource"
                             data-toggle="modal"
                             data-target="#userSettings">
-                        <span class="glyphicon glyphicon-cog"></span>
+                        <i class="material-icons">settings</i>
                     </a>
                 </div>
             </div>
