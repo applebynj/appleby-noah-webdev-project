@@ -24,6 +24,14 @@
                     user: checkLogin
                 }
             })
+            .when("/admin", {
+                templateUrl: "views/admin/templates/admin.view.client.html",
+                controller: "AdminController",
+                controllerAs: "model",
+                resolve: {
+                    user: checkLogin
+                }
+            })
             .when("/user/:username", {
                 templateUrl: "views/user/templates/profile.view.client.html",
                 controller: "ProfileController",

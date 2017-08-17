@@ -206,7 +206,7 @@ a:hover {
     background-color: #444;
 }
 
-#reviewPanel {
+#reviewPanel, .adminDeletionPanel {
     height: 430px;
     overflow: scroll;
 }
