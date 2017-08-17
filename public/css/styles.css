@@ -226,3 +226,7 @@ a:hover {
 #whatSearchField {
     width: 300px;
 }
+
+.nav .open .dropdown-toggle, .nav .open .dropdown-toggle:focus {
+    background-color:transparent;
+}

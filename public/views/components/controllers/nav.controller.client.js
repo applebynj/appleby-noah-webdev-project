@@ -3,12 +3,19 @@
         .module("WbdvProject")
         .controller("NavController", NavController)
 
-    function NavController(GooglePlaceService) {
+    function NavController($scope, $timeout, GooglePlaceService) {
         var model = this;
 
         model.findPlaceByTextSearch = findPlaceByTextSearch;
 
-        function init() {}
+        function init() {
+            $scope.$watch('$viewContentLoaded', function(){
+                $timeout(function() {
+                    $.material.init();
+                    console.log('did it');
+                },0);
+            });
+        }
         init();
 
         function findPlaceByTextSearch() {

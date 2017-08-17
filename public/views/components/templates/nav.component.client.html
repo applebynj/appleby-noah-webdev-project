@@ -68,17 +68,18 @@
 
             <ul ng-if="!model.user"
                 class="nav navbar-nav navbar-right">
-                <li><a href="#!/login">Login</a></li>
-            </ul>
+                <li>
+                    <a href="#">Login</a>
+                </li>
 
-            <ul ng-if="model.user"
-                class="nav navbar-nav navbar-right">
-                <li><a href="#!/user">Profile</a></li>
-            </ul>
+                <li ng-if="model.user">
+                    <a href="#!/user">Profile</a>
+                </li>
 
-            <ul ng-if="model.user.isAdmin"
-                class="nav navbar-nav navbar-right">
-                <li><a href="#!/admin">Admin</a></li>
+                <li ng-if="model.user.isAdmin">
+                    <a href="#!/admin">Admin</a>
+                </li>
+
             </ul>
         </div>
     </div>

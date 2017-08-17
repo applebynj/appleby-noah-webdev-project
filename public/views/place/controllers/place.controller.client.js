@@ -3,7 +3,7 @@
         .module("WbdvProject")
         .controller("PlaceController", PlaceController)
 
-    function PlaceController($scope, $interval, $routeParams, GooglePlaceService, PlaceService, UserService, ReviewService, user) {
+    function PlaceController($scope, $timeout, $routeParams, GooglePlaceService, PlaceService, UserService, ReviewService, user) {
         var model = this;
 
         model.placeId = $routeParams["pid"];
@@ -11,16 +11,20 @@
         model.addPlaceToUserVisited = addPlaceToUserVisited;
         model.removePlaceFromUserVisited = removePlaceFromUserVisited;
         model.createReview = createReview;
-        model.hoverOut = function() { this.applyClass = "btn-success";
-            this.hover = false;};
-        model.hoverIn = function() {this.applyClass = "btn-danger";
-            this.hover = true;};
+        model.hoverOut = function() {this.hover = false;};
+        model.hoverIn = function() {this.hover = true;};
         model.loggedIn = user != null;
 
         function init() {
 
             $(document).ready(function() {
                 $('.carousel').carousel()
+            });
+
+            $scope.$watch('$viewContentLoaded', function(){
+                $timeout(function() {
+                    $.material.init();
+                    },0);
             });
 
             /* new Tooltip({
