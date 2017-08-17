@@ -43,6 +43,8 @@
                 getPlacesForUser();
                 checkIfFollowing();
                 console.log(model.user.usersFollowing);
+            } else {
+                $location.url("/login");
             }
         }
         init();
