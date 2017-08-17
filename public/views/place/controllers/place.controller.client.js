@@ -19,12 +19,16 @@
 
         function init() {
 
-           /* new Tooltip({
-                target: document.querySelector('.drop-target'),
-                content:  document.querySelector('.my-drop'),
-                position: 'top center',
-                openOn: 'hover'
-            });*/
+            $(document).ready(function() {
+                $('.carousel').carousel()
+            });
+
+            /* new Tooltip({
+                 target: document.querySelector('.drop-target'),
+                 content:  document.querySelector('.my-drop'),
+                 position: 'top center',
+                 openOn: 'hover'
+             });*/
 
             new Drop({
                 target: document.querySelector('.drop-target'),
