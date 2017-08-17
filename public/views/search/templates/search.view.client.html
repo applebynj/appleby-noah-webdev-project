@@ -1,51 +1,6 @@
 <div class="container-fluid">
 
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <div class="navbar-brand">
-                  <!--  <a href="#!/user/{{model.userId}}"
-                       role="button">
-                        <span class="glyphicon glyphicon-chevron-left"></span>
-                    </a>-->
-                    <a href="#!/">
-                        wander
-                        <span class="glyphicon glyphicon-flag"></span>
-                    </a>
-                </div>
-            </div>
-
-            <div class="collapse navbar-collapse">
-                <div class="nav navbar-nav nav-search-container">
-                    <div class="navbar-left navbar-form nav-search">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="What are you looking for?" style="width: 400px;">
-                        </div>
-                            <span class="glyphicon glyphicon-plus"></span>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Where abouts?">
-                        </div>
-                        <span class="glyphicon glyphicon-search"></span>
-                    </div>
-                </div>
-
-                <ul ng-if="!model.user"
-                    class="nav navbar-nav navbar-right">
-                    <li><a href="#!/login">Login</a></li>
-                </ul>
-
-                <ul ng-if="model.user"
-                    class="nav navbar-nav navbar-right">
-                    <li><a href="#!/user">Profile</a></li>
-                </ul>
-
-                <ul ng-if="model.user.isAdmin"
-                    class="nav navbar-nav navbar-right">
-                    <li><a href="#!/admin">Admin</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <div ng-include="'views/components/templates/nav.component.client.html'" ng-controller="NavController" onload=""></div>
 
     <div class="row">
         <div class="col-sm-4 nja-split-view-left text-center vertical-center">

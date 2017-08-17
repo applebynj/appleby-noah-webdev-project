@@ -1,16 +1,14 @@
 (function() {
     angular
         .module("WbdvProject")
-        .controller("SearchController", SearchController)
+        .controller("NavController", NavController)
 
-    function SearchController(user, GooglePlaceService) {
+    function NavController(GooglePlaceService) {
         var model = this;
-
-        model.user = user;
 
         model.findPlaceByTextSearch = findPlaceByTextSearch;
 
-        function init() { }
+        function init() { console.log(model.user); }
         init();
 
         function findPlaceByTextSearch() {
