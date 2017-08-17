@@ -12,10 +12,11 @@
 
     <div class="nja-no-collapse container-fluid">
         <div class="row">
-            <div class="col-sm-2">
-
+            <div class="col-sm-2 col-xs-12 text-center">
+                <img src="http://via.placeholder.com/200x200"
+                style="max-width: 150px; max-height: 150px; padding-bottom: 20px;"/>
             </div>
-            <div class="col-sm-8">
+            <div class="col-sm-8 col-xs-9">
                 <div class="panel">
                     <div class="panel-heading">
                         <h3>{{model.user.firstName}} {{model.user.lastName}}
@@ -33,7 +34,7 @@
 
 
             </div>
-            <div ng-if="model.loggedIn" class="col-sm-1">
+            <div ng-if="model.loggedIn" class="col-sm-1 col-xs-3">
                 <div  ng-if="model.usernameUrlParam" class="col-sm-6 col-xs-12">
                     <a type="button"
                             ng-if="!model.following"

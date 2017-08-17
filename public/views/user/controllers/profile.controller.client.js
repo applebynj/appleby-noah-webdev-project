@@ -46,7 +46,6 @@
             } else {
                 $location.url("/login");
             }
-            console.log(model.user.bio);
         }
         init();
 
