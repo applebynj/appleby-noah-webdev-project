@@ -14,6 +14,7 @@
         model.hoverOut = function() {this.hover = false;};
         model.hoverIn = function() {this.hover = true;};
         model.loggedIn = user != null;
+        model.pageNeedsSearch = true;
 
         function init() {
 

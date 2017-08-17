@@ -1,18 +1,6 @@
 <div class="container-fluid">
 
-    <nav class="nja-no-collapse navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <div class="navbar-brand">
-                    <a href="#!/user"
-                       role="button">
-                        <span class="glyphicon glyphicon-chevron-left"></span>
-                    </a>
-                    Place
-                </div>
-            </div>
-        </div>
-    </nav>
+    <div ng-include="'views/components/templates/nav.component.client.html'" ng-controller="NavController as navModel" onload="navModel.pageModel = model"></div>
 
     <div class="row">
         <div class="col-sm-2 col-xs-12 text-center">

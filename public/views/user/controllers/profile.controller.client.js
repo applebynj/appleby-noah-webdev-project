@@ -14,6 +14,8 @@
         model.hoverOut = function() { this.hover = false; };
         model.hoverIn = function() { this.hover = true; };
         model.loggedIn = user != null;
+        model.pageNeedsSearch = true;
+
 
         model.usernameUrlParam = $routeParams["username"];
 
@@ -46,7 +48,6 @@
             } else {
                 $location.url("/login");
             }
-            console.log(model.user.bio);
         }
         init();
 

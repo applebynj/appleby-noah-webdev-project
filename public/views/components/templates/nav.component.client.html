@@ -15,11 +15,11 @@
 
         <div class="collapse navbar-collapse">
             <div class="nav navbar-nav nav-search-container">
-                <div class="navbar-left navbar-form nav-search">
+                <div ng-if="navModel.pageModel.pageNeedsSearch" class="navbar-left navbar-form nav-search">
                     <div class="form-group">
                         <input name="whatSearchField"
                                id="whatSearchField"
-                               ng-model="model.whatSearchText"
+                               ng-model="navModel.whatSearchText"
                                type="text"
                                class="form-control"
                                placeholder="What are you looking for?">
@@ -30,7 +30,7 @@
                     <div class="form-group">
                         <input name="whereSearchField"
                                id="whereSearchField"
-                               ng-model="model.whereSearchText"
+                               ng-model="navModel.whereSearchText"
                                type="text"
                                class="form-control"
                                placeholder="Where abouts?">
@@ -38,7 +38,7 @@
                     <div class="form-group">
                         <li class="dropdown">
                             <a href="#"
-                               ng-click="model.findPlaceByTextSearch()"
+                               ng-click="navModel.findPlaceByTextSearch()"
                                class="dropdown-toggle"
                                data-toggle="dropdown"
                                role="button"
@@ -46,10 +46,10 @@
                                aria-expanded="false">
                                 <i class="material-icons">search</i>
                             </a>
-                            <ul ng-if="model.results" class="dropdown-menu pull-right">
+                            <ul ng-if="navModel.results" class="dropdown-menu pull-right">
                                 <div>
                                     <div class="list-group">
-                                        <div ng-repeat="place in model.results">
+                                        <div ng-repeat="place in navModel.results">
                                             <a href="#!/place/{{place.place_id}}" class="list-group-item">
                                                 <h4><img src="{{place.icon}}" style="height:30px; padding-right: 10px;"/>{{place.name}}</h4>
                                                 <h6>{{place.formatted_address}}</h6>
@@ -66,17 +66,16 @@
                 </div>
             </div>
 
-            <ul ng-if="!model.user"
-                class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="#">Login</a>
+            <ul class="nav navbar-nav navbar-right">
+                <li ng-if="!navModel.pageModel.user">
+                    <a href="#!/login">Login</a>
                 </li>
 
-                <li ng-if="model.user">
+                <li ng-if="navModel.pageModel.user">
                     <a href="#!/user">Profile</a>
                 </li>
 
-                <li ng-if="model.user.isAdmin">
+                <li ng-if="navModel.pageModel.user.isAdmin">
                     <a href="#!/admin">Admin</a>
                 </li>
 

@@ -12,7 +12,6 @@
             $scope.$watch('$viewContentLoaded', function(){
                 $timeout(function() {
                     $.material.init();
-                    console.log('did it');
                 },0);
             });
         }

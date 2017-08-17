@@ -7,6 +7,7 @@
         var model = this;
 
         model.login = login;
+        model.pageNeedsSearch = true;
 
         function init() {
         }

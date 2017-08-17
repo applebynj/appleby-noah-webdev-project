@@ -7,6 +7,7 @@
         var model = this;
 
         model.registerUser = registerUser;
+        model.pageNeedsSearch = true;
 
         function init() {
 

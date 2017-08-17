@@ -7,6 +7,7 @@
         var model = this;
 
         model.user = user;
+        model.pageNeedsSearch = false;
 
         model.findPlaceByTextSearch = findPlaceByTextSearch;
 

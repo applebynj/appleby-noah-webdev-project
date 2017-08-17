@@ -1,14 +1,6 @@
 <div class="nja-profile">
 
-    <nav class="nja-no-collapse navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <div class="navbar-brand">
-                    Profile
-                </div>
-            </div>
-        </div>
-    </nav>
+    <div ng-include="'views/components/templates/nav.component.client.html'" ng-controller="NavController as navModel" onload="navModel.pageModel = model"></div>
 
     <div class="nja-no-collapse container-fluid">
         <div class="row">
