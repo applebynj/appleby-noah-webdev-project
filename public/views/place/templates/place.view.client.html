@@ -15,28 +15,72 @@
     </nav>
 
     <div class="row">
+        <div class="col-sm-2 col-xs-12 text-center">
+            <img src="{{model.place.icon}}"
+                 style="max-width: 150px; max-height: 150px; padding-bottom: 20px;"/>
+        </div>
+        <div class="col-sm-8 col-xs-9">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3>{{model.place.name}}</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="col-sm-6">
+                        <i><h5>{{model.place.formatted_address}}</h5></i>
+                        <h5>{{model.place.rating}} / 5</h5>
+                    </div>
+                    <div class="col-sm-6">
+                        <h5>You follow
+                            <a class="drop-target">{{model.followsVisited.length}}</a>
+                            <span ng-if="model.followsVisited.length != 1">people who have visited this place!</span>
+                            <span ng-if="model.followsVisited.length == 1">person who has visited this place!</span>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div ng-if="model.loggedIn" class="col-sm-1 col-xs-3">
+            <div class="col-sm-6 col-xs-12">
+                <a type="button"
+                   ng-if="!model.visited"
+                   ng-click="model.addPlaceToUserVisited()"
+                   class="btn btn-fab btn-info opensource">
+                    <i class="material-icons iconLeft">flag</i>
+                    <i class="material-icons iconRightOffset">add</i>
+                    <div class="ripple-container"></div>
+                </a>
+                <a type="button"
+                   ng-if="model.visited"
+                   ng-click="model.removePlaceFromUserVisited()"
+                   ng-mouseover="model.hoverIn()"
+                   ng-mouseleave="model.hoverOut()"
+                   class="btn btn-fab opensource btn-success">
+                    <i class="material-icons iconLeft">flag</i>
+                    <i ng-if="model.hover" class="material-icons iconRightOffset">remove</i>
+                    <i ng-if="!model.hover" class="material-icons iconRightOffset">check</i>
+                    <div class="ripple-container"></div>
+                </a>
+
+                <a href="javascript:void(0)"
+                   type="button"
+                   class="btn btn-fab opensource"
+                   data-toggle="modal"
+                   data-target="#reviewForm">
+                    <i class="material-icons">mode_edit</i>
+                    <div class="ripple-container"></div>
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
         <div class="col-xs-8">
-            <h4><img src="{{model.place.icon}}" style="height:30px; padding-right: 10px;"/>{{model.place.name}}</h4>
-            <i><h5 style="padding-left: 40px;">{{model.place.formatted_address}}</h5></i>
-            <h5 style="padding-left: 40px;">{{model.place.rating}} / 5</h5>
         </div>
         <div class="col-xs-4">
-            <button class="btn btn-primary pull-right"
-                    ng-click="model.addPlaceToUserVisited()"
-                    ng-if="!model.visited"
-                    style="margin:20px;">
-                <span class="glyphicon glyphicon-flag"></span>
-            </button>
-            <button class="btn btn-success pull-right"
-                    ng-click="model.removePlaceFromUserVisited()"
-                    ng-if="model.visited"
-                    ng-mouseover="model.hoverIn()"
-                    ng-mouseLeave="model.hoverOut()"
-                    ng-class="model.applyClass"
-                    style="margin:20px;">
-                <!--ng-click="model.removePlaceFromUser(model.userId, model.placeId)"-->
-                <span class="glyphicon glyphicon-flag"></span>
-            </button>
+
             </div>
         </div>
     </div>
@@ -50,43 +94,6 @@
         </div>
 
         <div class="col-sm-6 col-xs-12">
-            <h5>You follow
-                <a class="drop-target">{{model.followsVisited.length}}</a>
-                <span ng-if="model.followsVisited.length != 1">people who have visited this place!</span>
-                <span ng-if="model.followsVisited.length == 1">person who has visited this place!</span>
-            </h5>
-            <label for="reviewForm">
-                <h4>Write a Review:</h4>
-            </label>
-            <form id="reviewForm"
-                  name="reviewForm">
-                <div class="form-group">
-                    <label for="exampleSelect1">Rating:</label>
-                    <select class="form-control"
-                            id="exampleSelect1"
-                            ng-model="model.reviewForm.rating"
-                            required>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="exampleTextarea">Review:</label>
-                    <textarea class="form-control"
-                              id="exampleTextarea"
-                              rows="3"
-                              ng-model="model.reviewForm.text"></textarea>
-                </div>
-                <button type="submit"
-                        class="btn btn-primary"
-                        ng-click="reviewForm.$valid && model.createReview()">
-                    Submit
-                </button>
-            </form>
-
             <div class="col-xs-12"
                  ng-repeat="review in model.place.reviews">
                 <a href="#!/user/{{review._user.username}}">{{review._user.username}}</a>
@@ -101,6 +108,48 @@
     <div class="drop-content">
         <div ng-repeat="follow in model.followsVisited">
             {{follow.username}}
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" role="dialog" id="reviewForm">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">User Settings</h4>
+            </div>
+            <div class="modal-body">
+                <form id="reviewForm"
+                      name="reviewForm">
+                    <div class="form-group">
+                        <label for="exampleSelect1">Rating:</label>
+                        <select class="form-control"
+                                id="exampleSelect1"
+                                ng-model="model.reviewForm.rating"
+                                required>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleTextarea">Review:</label>
+                        <textarea class="form-control"
+                                  id="exampleTextarea"
+                                  rows="3"
+                                  ng-model="model.reviewForm.text"></textarea>
+                    </div>
+                    <button type="submit"
+                            class="btn btn-primary"
+                            data-dismiss="modal"
+                            ng-click="reviewForm.$valid && model.createReview()">
+                        Submit
+                    </button>
+                </form>
+            </div>
         </div>
     </div>
 </div>

@@ -168,3 +168,13 @@ a:hover {
     left: 70% !important;
     font-size: 15px !important;
 }
+
+.iconRightOffset {
+    left: 70% !important;
+    top: 65% !important;
+    font-size: 15px !important;
+}
+
+.btn-fab {
+    margin-bottom: 10px !important;
+}

@@ -41,14 +41,14 @@
                             ng-click="model.followUser()"
                             class="btn btn-fab btn-info opensource">
                         <i class="material-icons iconLeft">person</i>
-                        <i class="material-icons iconRight">person</i>
+                        <i class="material-icons iconRight">add</i>
                         <div class="ripple-container"></div>
                     </a>
                     <a type="button"
                             ng-if="model.following"
                             ng-click="model.unfollowUser()"
                             ng-mouseover="model.hoverIn()"
-                            ng-mouseLeave="model.hoverOut()"
+                            ng-mouseleave="model.hoverOut()"
                             class="btn btn-fab opensource btn-success">
                         <i class="material-icons iconLeft">person</i>
                         <i ng-if="model.hover" class="material-icons iconRight">remove</i>
@@ -66,6 +66,7 @@
                             data-toggle="modal"
                             data-target="#userSettings">
                         <i class="material-icons">settings</i>
+                        <div class="ripple-container"></div>
                     </a>
                 </div>
             </div>

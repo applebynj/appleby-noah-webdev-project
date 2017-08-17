@@ -15,6 +15,7 @@
             this.hover = false;};
         model.hoverIn = function() {this.applyClass = "btn-danger";
             this.hover = true;};
+        model.loggedIn = user != null;
 
         function init() {
 
