@@ -11,10 +11,8 @@
         model.followUser = followUser;
         model.unfollowUser = unfollowUser;
         model.logout = logout;
-        model.hoverOut = function() {
-                                    this.hover = false;};
-        model.hoverIn = function() {
-                                    this.hover = true;};
+        model.hoverOut = function() { this.hover = false; };
+        model.hoverIn = function() { this.hover = true; };
 
         model.usernameUrlParam = $routeParams["username"];
 
@@ -33,8 +31,10 @@
                 UserService
                     .findUserByUsername(model.usernameUrlParam)
                     .then(function(response) {
-                        console.log(response);
                         model.user = response.data;
+                        if(!model.user) {
+                            $location.url("/");
+                        }
                         getPlacesForUser();
                         checkIfFollowing();
                     });
