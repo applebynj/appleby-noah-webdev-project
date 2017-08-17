@@ -205,3 +205,8 @@ a:hover {
 .carousel-indicators .active {
     background-color: #444;
 }
+
+#reviewPanel {
+    height: 430px;
+    overflow: scroll;
+}

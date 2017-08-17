@@ -117,7 +117,7 @@
 
         <div class="col-sm-6 col-xs-12">
             <h3>Reviews:</h3>
-            <div class="panel">
+            <div class="panel" id="reviewPanel">
                 <div class="panel-body">
                 <div ng-repeat="review in model.place.reviews">
                     <a href="#!/user/{{review._user.username}}">{{review._user.username}}</a>
