@@ -13,6 +13,7 @@
         model.logout = logout;
         model.hoverOut = function() { this.hover = false; };
         model.hoverIn = function() { this.hover = true; };
+        model.loggedIn = user != null;
 
         model.usernameUrlParam = $routeParams["username"];
 
@@ -42,7 +43,6 @@
                 model.user = user;
                 getPlacesForUser();
                 checkIfFollowing();
-                console.log(model.user.usersFollowing);
             } else {
                 $location.url("/login");
             }

@@ -27,9 +27,7 @@
                     </div>
                 </div>
             </div>
-            <div ng-if="""model.user">
-            </div>
-            <div class="col-sm-1">
+            <div ng-if="model.loggedIn" class="col-sm-1">
                 <div  ng-if="model.usernameUrlParam" class="col-sm-6 col-xs-12">
                     <a type="button"
                             ng-if="!model.following"
