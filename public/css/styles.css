@@ -60,6 +60,10 @@ a:hover {
     color: white;
 }
 
+.navbar-default .navbar-nav li .dropdown-menu  a {
+    color: #555;
+}
+
 .active .glyphicon {
     color: white;
 }
@@ -138,7 +142,7 @@ a:hover {
 }
 
 .nav-search > * {
-    padding: 0px 30px;
+    padding: 0px 10px !important;
 }
 
 .navbar {
@@ -154,10 +158,6 @@ a:hover {
 
 .noWrap {
     white-space: pre-wrap;
-}
-
-.twoIconButton{
-
 }
 
 .iconLeft {
@@ -209,4 +209,20 @@ a:hover {
 #reviewPanel {
     height: 430px;
     overflow: scroll;
+}
+
+.dropdown-menu {
+    height: auto;
+    max-height: 75vh;
+    overflow-x: hidden;
+    width: 500px;
+    margin-top: 16px;
+}
+
+#whereSearchField {
+    width: 200px;
+}
+
+#whatSearchField {
+    width: 300px;
 }

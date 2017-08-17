@@ -17,13 +17,52 @@
             <div class="nav navbar-nav nav-search-container">
                 <div class="navbar-left navbar-form nav-search">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="What are you looking for?" style="width: 400px;">
+                        <input name="whatSearchField"
+                               id="whatSearchField"
+                               ng-model="model.whatSearchText"
+                               type="text"
+                               class="form-control"
+                               placeholder="What are you looking for?">
                     </div>
-                    <span class="glyphicon glyphicon-plus"></span>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Where abouts?">
+                        <i class="material-icons">add</i>
                     </div>
-                    <span class="glyphicon glyphicon-search"></span>
+                    <div class="form-group">
+                        <input name="whereSearchField"
+                               id="whereSearchField"
+                               ng-model="model.whereSearchText"
+                               type="text"
+                               class="form-control"
+                               placeholder="Where abouts?">
+                    </div>
+                    <div class="form-group">
+                        <li class="dropdown">
+                            <a href="#"
+                               ng-click="model.findPlaceByTextSearch()"
+                               class="dropdown-toggle"
+                               data-toggle="dropdown"
+                               role="button"
+                               aria-haspopup="true"
+                               aria-expanded="false">
+                                <i class="material-icons">search</i>
+                            </a>
+                            <ul ng-if="model.results" class="dropdown-menu pull-right">
+                                <div>
+                                    <div class="list-group">
+                                        <div ng-repeat="place in model.results">
+                                            <a href="#!/place/{{place.place_id}}" class="list-group-item">
+                                                <h4><img src="{{place.icon}}" style="height:30px; padding-right: 10px;"/>{{place.name}}</h4>
+                                                <h6>{{place.formatted_address}}</h6>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ul>
+                        </li>
+                        <div class="ripple-container"></div>
+                    </div>
+
+
                 </div>
             </div>
 
