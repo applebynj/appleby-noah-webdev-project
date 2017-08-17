@@ -1,15 +1,33 @@
-<div class="input-group">
-    <input name="searchfield"
-           placeholder="pizza near Boston"
-           ng-model="model.searchText"
-           type="text"
-           class="form-control"
-           id="username"/>
-    <span class="input-group-btn">
-        <a ng-click="model.findPlaceByTextSearch(model.searchText)"
+<div class="row">
+    <div class="col-xs-4">
+        <div class="form-group">
+            <input name="whatSearchField"
+                   ng-model="model.whatSearchText"
+                   type="text"
+                   class="form-control"
+                   placeholder="What are you looking for?">
+        </div>
+    </div>
+    <div class="col-xs-1 text-center">
+        <div class="form-group">
+            <span class="glyphicon glyphicon-plus"></span>
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <div class="form-group">
+            <input name="whereSearchField"
+                   ng-model="model.whereSearchText"
+                   type="text"
+                   class="form-control"
+                   placeholder="Where abouts?">
+        </div>
+    </div>
+    <div class="col-xs-3">
+        <a ng-click="model.findPlaceByTextSearch()"
            class="btn btn-default"
-           type="button">
+           type="button"
+            style="margin-top:20px;">
             <span class="glyphicon glyphicon-search"></span>
         </a>
-    </span>
+    </div>
 </div>

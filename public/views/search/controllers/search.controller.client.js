@@ -13,8 +13,9 @@
         function init() { console.log(user);}
         init();
 
-        function findPlaceByTextSearch(searchText) {
+        function findPlaceByTextSearch() {
             //Remove all spaces TODO: remove other escape chars as it's a url param
+            var searchText = model.whatSearchText + " " + model.whereSearchText;
             searchText = searchText.replace(/ /g, '+');
             GooglePlaceService
                 .findPlaceByTextSearch(searchText)
