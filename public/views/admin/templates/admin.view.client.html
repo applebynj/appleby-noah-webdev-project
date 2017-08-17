@@ -6,10 +6,10 @@
         <div class="row">
             <div class="col-sm-6 col-xs-12">
                 <h3>Users:</h3>
-                <div class="panel panel-default"
-                     ng-repeat="user in model.users">
+                <div class="panel panel-default adminDeletionPanel">
                     <div class="panel-body">
                         <a href="#!/user/{{user.username}}"
+                           ng-repeat="user in model.users"
                            class="list-group-item">
                             <p>
                                 <b>{{user.userName}}</b>
@@ -23,10 +23,10 @@
 
             <div class="col-sm-6 col-xs-12">
                 <h3>Places:</h3>
-                <div class="panel panel-default"
-                     ng-repeat="place in model.places">
+                <div class="panel panel-default adminDeletionPanel">
                     <div class="panel-body">
                         <a href="#!/place/{{place.place_id}}"
+                           ng-repeat="place in model.places"
                            class="list-group-item">
                             <p>
                                 <b>{{place.name}}</b>

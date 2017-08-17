@@ -2,7 +2,7 @@
  * General
  */
 body {
-    padding: 90px 0px;
+    padding-top: 90px;
 }
 
 input, textarea, .dropdown, .text-angular-input {
