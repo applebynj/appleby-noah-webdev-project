@@ -154,3 +154,7 @@ a:hover {
     padding-left: 50px;
     padding-right: 50px;
 }
+
+.noWrap {
+    white-space: pre-wrap;
+}

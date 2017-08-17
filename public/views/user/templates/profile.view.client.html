@@ -22,10 +22,16 @@
                         </h3>
                     </div>
                     <div class="panel-body">
-                        <h6>({{model.user.username}})</h6>
-                        <!-- bio -->
+                        <div class="col-sm-6">
+                            <p class="noWrap">{{model.user.bio}}</p>
+                        </div>
+                        <div class="col-sm-6">
+                            State: {{model.user.homeState}}
+                        </div>
                     </div>
                 </div>
+
+
             </div>
             <div ng-if="model.loggedIn" class="col-sm-1">
                 <div  ng-if="model.usernameUrlParam" class="col-sm-6 col-xs-12">
@@ -166,7 +172,7 @@
                             <label for="homeState"
                                    class="col-md-2 control-label">Home State</label>
 
-                            <div class="col-md-10">
+                            <div class="col-md-10"> <!-- TODO: replace with an API place call -->
                                 <select name="homeState"
                                         ng-model="model.user.homeState"
                                         readonly
@@ -261,9 +267,9 @@
 
                             <div class="col-md-10">
                                 <textarea name="bio"
-                                       ng-model="model.user.bio"
-                                       class="form-control"
-                                       id="bio"
+                                          ng-model="model.user.bio"
+                                          class="form-control"
+                                          id="bio"
                                           rows="3"></textarea>
                             </div>
                         </div>
