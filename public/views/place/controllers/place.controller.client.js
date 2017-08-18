@@ -43,26 +43,31 @@
             });
 
             model.hoverOut();
-            UserService
-                .findUserById(user._id)
-                .then(function(response){
-                    model.user = response.data;
-                    GooglePlaceService
-                        .findPlaceById(model.placeId)
-                        .then(function(response) {
-                            model.place = response.data.result;
-                            PlaceService
-                                .createPlace({
-                                    name : model.place.name,
-                                    address : model.place.formatted_address,
-                                    place_id : model.place.place_id
-                                }).then(function(place) {
-                                model.place._id = place.data._id;
-                                checkIfUserHasVisitedPlace();
-                                checkIfFollowsHaveVisitedPlace();
-                                retrieveReviewsForPlace();
-                            });
-                        });
+
+            GooglePlaceService
+                .findPlaceById(model.placeId)
+                .then(function(response) {
+                    model.place = response.data.result;
+                    PlaceService
+                        .createPlace({
+                            name : model.place.name,
+                            address : model.place.formatted_address,
+                            place_id : model.place.place_id
+                        }).then(function(response){
+                            if(user) {
+                                UserService
+                                    .findUserById(user._id)
+                                    .then(function (response) {
+                                        model.user = response.data;
+                                        then(function (place) {
+                                            model.place._id = place.data._id;
+                                            checkIfUserHasVisitedPlace();
+                                            checkIfFollowsHaveVisitedPlace();
+                                        });
+                                    });
+                            }
+                            retrieveReviewsForPlace();
+                    });
                 });
         }
         init();
@@ -97,6 +102,7 @@
 
         /*Overwrite the API reviews with our reviews*/
         function retrieveReviewsForPlace(){
+            model.place.reviews = null; /*erase api reviews*/
             ReviewService
                 .findAllReviewsForPlace(model.place._id)
                 .then(function(reviews){

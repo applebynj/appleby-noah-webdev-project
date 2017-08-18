@@ -17,7 +17,7 @@
                         <i><h5>{{model.place.formatted_address}}</h5></i>
                         <h5>{{model.place.rating}} / 5</h5>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-6" ng-show="model.loggedIn">
                         <h5>You follow
                             <a class="drop-target">{{model.followsVisited.length}}</a>
                             <span ng-if="model.followsVisited.length != 1">people who have visited this place!</span>
