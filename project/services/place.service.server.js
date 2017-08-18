@@ -3,11 +3,11 @@ var app = require("../../express");
 var placeModel = require("../models/place/place.model.server");
 
 app.post("/api/place", createPlace); /* Handles creation if needed, otherwise update and retrieve */
-app.get("/api/place/all", findAllPlaces);
-app.get("/api/user/:userId/place", findAllPlacesForUser);
-//app.get("/api/place/:placeId", findPlaceById);
+//app.get("/api/place/:placeId", findPlaceById); (not yet needed)
 //app.put("/api/place/:placeId", updatePlace);
 app.delete("/api/place/:placeId", deletePlace)
+app.get("/api/place/all", findAllPlaces);
+app.get("/api/user/:userId/place", findAllPlacesForUser);
 
 
 function createPlace(req, res) {
