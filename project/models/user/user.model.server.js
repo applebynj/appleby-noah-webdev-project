@@ -82,7 +82,7 @@ function unfollowUser(userId, unfollowUserId) {
 function findAllUsers() {
     return userModel
         .find({})
-        .select('username firstName lastName dateCreated');
+        .select('username firstName lastName dateCreated isAdmin');
 }
 
 

@@ -16,6 +16,7 @@
                                 <th>Last Name</th>
                                 <th class="text-center">Edit</th>
                                 <th class="text-center">Delete</th>
+                                <th class="text-center">Admin Status</th>
                             </tr>
                                <tr ng-repeat="user in model.users">
                                     <td class="hidden-xs">{{user._id}}</td>
@@ -32,6 +33,13 @@
                                             <i class="material-icons">delete</i>
                                         </a>
                                     </td>
+                                   <td class="text-center">
+                                       <input type="checkbox"
+                                              ng-click="model.updateUser(user)"
+                                              ng-model="user.isAdmin"
+                                              name="isAdmin"
+                                              ng-checked="user.isAdmin"/>
+                                   </td>
                                 </tr>
                         </table>
                     </div>

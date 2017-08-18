@@ -6,6 +6,7 @@
     function AdminController($scope, $timeout, $routeParams, $location, UserService, PlaceService, user) {
         var model = this;
 
+        model.updateUser = updateUser;
         model.deleteUser = deleteUser;
 
         model.pageNeedsSearch = true;
@@ -15,6 +16,7 @@
                 .findAllUsers()
                 .then(function(response) {
                     model.users = response.data;
+                    console.log(model.users);
                 });
             PlaceService
                 .findAllPlaces()
@@ -28,6 +30,13 @@
                 });
         }
         init();
+
+        function updateUser(user) {
+            UserService
+                .updateUser(user._id, user)
+                .then(function() {
+                });
+        }
 
 
         function deleteUser(user) {
