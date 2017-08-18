@@ -21,6 +21,23 @@ a:hover {
     padding-left: 0;
 }
 
+.noWrap {
+    white-space: pre-wrap;
+}
+
+.nav .open .dropdown-toggle,
+.nav .open .dropdown-toggle:hover,
+.nav .open .dropdown-toggle:active,
+.nav .open .dropdown-toggle:focus {
+    background-color:transparent;
+}
+
+[ng-click],
+[data-ng-click],
+[x-ng-click] {
+    cursor: pointer;
+}
+
 /*
  * Non-Collapsing Nav
  */
@@ -64,6 +81,21 @@ a:hover {
     color: #555;
 }
 
+.nav-search > * {
+    padding: 0px 10px !important;
+}
+
+.navbar {
+    margin: 10px 10px 0px 10px;
+    border-radius: 2px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.12), 0 3px 6px 0 rgba(0, 0, 0, 0.12);
+}
+
+.navbar-brand {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
 .active .glyphicon {
     color: white;
 }
@@ -103,6 +135,19 @@ a:hover {
     }
 }
 
+.nja-split-view-left,.chooser .list-group-item {
+    border: none;
+}
+
+.chooser a.list-group-item {
+    color: #337ab7;
+}
+
+
+/*
+ Page Structure
+ */
+
 .pages > div > div {
     padding: 0 5px;
     padding-top: 100px;
@@ -129,13 +174,6 @@ a:hover {
     }
 }
 
-.nja-split-view-left,.chooser .list-group-item {
-    border: none;
-}
-
-.chooser a.list-group-item {
-    color: #337ab7;
-}
 
 /* TextAngular */
 .ta-toolbar {
@@ -145,25 +183,9 @@ a:hover {
     border: 1px solid #EEE;
 }
 
-.nav-search > * {
-    padding: 0px 10px !important;
-}
-
-.navbar {
-    margin: 10px 10px 0px 10px;
-    border-radius: 2px;
-    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.12), 0 3px 6px 0 rgba(0, 0, 0, 0.12);
-}
-
-.navbar-brand {
-    padding-left: 50px;
-    padding-right: 50px;
-}
-
-.noWrap {
-    white-space: pre-wrap;
-}
-
+/*
+Buttons
+ */
 .iconLeft {
     left: 45% !important;
 }
@@ -183,7 +205,9 @@ a:hover {
     margin-bottom: 10px !important;
 }
 
-
+/*
+Bootstrap Carousel
+ */
 
 .item {
     height: 400px;
@@ -200,7 +224,6 @@ a:hover {
     margin: auto;
 }
 
-
 .carousel-indicators li {
     background-color: #999;
     background-color: rgba(70,70,70,.25);
@@ -210,6 +233,9 @@ a:hover {
     background-color: #444;
 }
 
+/*
+Specific Page Structure (named)
+ */
 #reviewPanel {
     height: 430px;
     overflow: scroll;
@@ -236,20 +262,8 @@ a:hover {
     width: 250px;
 }
 
-.nav .open .dropdown-toggle,
-.nav .open .dropdown-toggle:hover,
-.nav .open .dropdown-toggle:active,
-.nav .open .dropdown-toggle:focus {
-    background-color:transparent;
-}
 
 .adminDeletionPanel .material-icons {
     font-size: 18px;
     color: #555;
-}
-
-[ng-click],
-[data-ng-click],
-[x-ng-click] {
-    cursor: pointer;
 }
