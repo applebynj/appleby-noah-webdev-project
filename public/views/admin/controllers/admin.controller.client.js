@@ -20,6 +20,11 @@
                 .findAllPlaces()
                 .then(function(response) {
                     model.places = response.data;
+                    model.places.forEach(function(place){
+                        place.dateCreated = new Date(place.dateCreated);
+                        console.log(place.dateCreated.toString());
+                    });
+                    console.log(model.places);
                 });
         }
         init();
