@@ -79,6 +79,10 @@
                     <a href="#!/admin">Admin</a>
                 </li>
 
+                <li ng-if="navModel.pageModel.user">
+                    <a ng-click="navModel.logout()">Logout</a>
+                </li>
+
             </ul>
         </div>
     </div>
