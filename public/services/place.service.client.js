@@ -9,7 +9,8 @@
             'createPlace' : createPlace,
             'findPlaceById' : findPlaceById,
             'findAllPlacesForUser' : findAllPlacesForUser,
-            'findAllPlaces' : findAllPlaces
+            'findAllPlaces' : findAllPlaces,
+            'deletePlace' : deletePlace
         };
         return api;
 
@@ -35,6 +36,11 @@
         function findAllPlaces() {
             var url = "/api/place/all";
             return $http.get(url);
+        }
+
+        function deletePlace(placeId) {
+            var url ="/api/place/" + placeId;
+            return $http.delete(url);
         }
     }
 })();

@@ -11,7 +11,7 @@ placeModel.findAllPlacesForUser = findAllPlacesForUser;
 placeModel.findAllPlaces = findAllPlaces;
 placeModel.findPlace = findPlace;
 placeModel.updatePlace = updatePlace;
-//userModel.deleteUser = deleteUser;
+placeModel.deletePlace = deletePlace;
 
 module.exports = placeModel;
 
@@ -44,3 +44,6 @@ function findAllPlaces() {
         .select('name dateCreated place_id');
 }
 
+function deletePlace(placeId) {
+    return placeModel.remove({_id: placeId});
+}

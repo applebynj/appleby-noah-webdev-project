@@ -8,10 +8,12 @@
 
         model.updateUser = updateUser;
         model.deleteUser = deleteUser;
+        model.deletePlace = deletePlace;
 
         model.pageNeedsSearch = true;
 
         function init() {
+            model.user = user;
             UserService
                 .findAllUsers()
                 .then(function(response) {
@@ -46,6 +48,17 @@
                             model.users = response.data;
                         });
                 });
+        }
+
+        function deletePlace(place) {
+            PlaceService
+                .deletePlace(place._id)
+                .then(function() {
+                    PlaceService.findAllPlaces()
+                        .then(function(response) {
+                            model.places = response.data;
+                        })
+                })
         }
     }
 })();

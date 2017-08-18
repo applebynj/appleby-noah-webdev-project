@@ -7,7 +7,7 @@ app.get("/api/place/all", findAllPlaces);
 app.get("/api/user/:userId/place", findAllPlacesForUser);
 //app.get("/api/place/:placeId", findPlaceById);
 //app.put("/api/place/:placeId", updatePlace);
-//app.delete("/api/place/:placeId", deletePlace)
+app.delete("/api/place/:placeId", deletePlace)
 
 
 function createPlace(req, res) {
@@ -38,6 +38,18 @@ function createPlace(req, res) {
         }, function(err) {
             res.statusCode(404).send(err);
         });
+}
+
+function deletePlace(req, res) {
+    var placeId = req.params.placeId;
+
+    placeModel
+        .deletePlace(placeId)
+        .then(function(status) {
+            res.json(status);
+        }, function(err) {
+            res.status(404).send(err);
+        })
 }
 
 function findAllPlacesForUser(req, res) {
