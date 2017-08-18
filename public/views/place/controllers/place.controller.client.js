@@ -51,8 +51,8 @@
                                 UserService
                                     .findUserById(user._id)
                                     .then(function (response) {
-                                        model.user = response.data;
-                                        then(function (place) {
+                                        model.user = response.data
+                                        .then(function (place) {
                                             model.place._id = place.data._id;
                                             checkIfUserHasVisitedPlace();
                                             checkIfFollowsHaveVisitedPlace();
