@@ -38,11 +38,13 @@
                         if(!model.user) {
                             $location.url("/");
                         }
+                        model.user.dateCreated = new Date(model.user.dateCreated);
                         getPlacesForUser();
                         checkIfFollowing();
                     });
             } else if (user) {
                 model.user = user;
+                model.user.dateCreated = new Date(model.user.dateCreated);
                 getPlacesForUser();
                 checkIfFollowing();
             } else {
