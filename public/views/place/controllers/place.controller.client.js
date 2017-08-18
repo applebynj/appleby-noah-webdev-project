@@ -48,12 +48,12 @@
                             place_id: model.place.place_id
                         }).then(function (response) {
                             var place = response.data;
+                            model.place._id = place._id;
                             if (user) {
                                 UserService
                                     .findUserById(user._id)
                                     .then(function (response) {
                                         model.user = response.data;
-                                        model.place._id = place._id;
                                         checkIfUserHasVisitedPlace();
                                         checkIfFollowsHaveVisitedPlace();
                                     });
