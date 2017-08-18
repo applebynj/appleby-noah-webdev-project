@@ -2,7 +2,8 @@ var app = require("../../express");
 
 var placeModel = require("../models/place/place.model.server");
 
-app.post("/api/place", createPlace);
+app.post("/api/place", createPlace); /* Handles creation if needed, otherwise update and retrieve */
+app.get("/api/place/all", findAllPlaces);
 app.get("/api/user/:userId/place", findAllPlacesForUser);
 //app.get("/api/place/:placeId", findPlaceById);
 //app.put("/api/place/:placeId", updatePlace);
@@ -48,5 +49,16 @@ function findAllPlacesForUser(req, res) {
             res.json(places);
         }, function(err) {
             res.statusCode(404).send(err);
+        });
+}
+
+function findAllPlaces(req, res) {
+
+    placeModel
+        .findAllPlaces()
+        .then(function(places) {
+            res.json(places);
+        }, function(err) {
+            res.status(404).send(err);
         });
 }

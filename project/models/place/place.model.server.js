@@ -8,6 +8,7 @@ var placeModel = mongoose.model("PlaceModel", placeSchema);
 placeModel.createPlace = createPlace;
 //placeModel.findUserById = findUserById;
 placeModel.findAllPlacesForUser = findAllPlacesForUser;
+placeModel.findAllPlaces = findAllPlaces;
 placeModel.findPlace = findPlace;
 placeModel.updatePlace = updatePlace;
 //userModel.deleteUser = deleteUser;
@@ -35,5 +36,11 @@ function findAllPlacesForUser(userId) {
             console.log(user);
             return user.placesVisited;
         })
+}
+
+function findAllPlaces() {
+    return placeModel
+        .find({})
+        .select('name dateCreated place_id');
 }
 

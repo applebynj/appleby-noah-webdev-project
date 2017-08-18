@@ -8,7 +8,8 @@
         var api = {
             'createPlace' : createPlace,
             'findPlaceById' : findPlaceById,
-            'findAllPlacesForUser' : findAllPlacesForUser
+            'findAllPlacesForUser' : findAllPlacesForUser,
+            'findAllPlaces' : findAllPlaces
         };
         return api;
 
@@ -28,6 +29,11 @@
 
         function findAllPlacesForUser(userId) {
             var url = '/api/user/' + userId + "/place";
+            return $http.get(url);
+        }
+
+        function findAllPlaces() {
+            var url = "/api/place/all";
             return $http.get(url);
         }
     }

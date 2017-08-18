@@ -16,6 +16,11 @@
                 .then(function(response) {
                     model.users = response.data;
                 });
+            PlaceService
+                .findAllPlaces()
+                .then(function(response) {
+                    model.places = response.data;
+                });
         }
         init();
 
