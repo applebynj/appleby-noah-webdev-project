@@ -5,10 +5,11 @@ if(process.env.MLAB_USERNAME_WEBDEV) { // check if running remotely
     var username = process.env.MLAB_USERNAME_WEBDEV; // get from environment
     var password = process.env.MLAB_PASSWORD_WEBDEV;
     connectionString = 'mongodb://' + username + ':' + password;
-    connectionString += '@ds153412.mlab.com:53412/' + process.env.MONGODB_URI;
+    connectionString += '@ds153412.mlab.com:53412/' + process.env.MONGODB_PRE + process.env.MONGODB_URI;
 }
 
 var mongoose = require("mongoose");
 var db = mongoose.connect(connectionString);
 mongoose.Promise = q.Promise;
 module.exports = db;
+
