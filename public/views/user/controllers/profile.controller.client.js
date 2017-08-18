@@ -12,12 +12,12 @@
         model.unfollowUser = unfollowUser;
         model.hoverOut = function() { this.hover = false; };
         model.hoverIn = function() { this.hover = true; };
-        model.loggedIn = user != null;
-        model.pageNeedsSearch = true;
-
 
         model.usernameUrlParam = $routeParams["username"];
         model.fromLogin = $routeParams["fromLogin"];
+        model.loggedIn = user != null;
+        model.pageNeedsSearch = true;
+        model.user=user;
 
         function init() {
 
@@ -37,22 +37,22 @@
                 UserService
                     .findUserByUsername(model.usernameUrlParam)
                     .then(function(response) {
-                        model.user = response.data;
-                        if(!model.user) {
+                        model.profileUser = response.data;
+                        if(!model.profileUser) {
                             $location.url("/");
                         }
-                        model.user.dateCreated = new Date(model.user.dateCreated);
-                        if(model.user.birthday) {
-                            model.user.birthday = new Date(model.user.birthday);
+                        model.profileUser.dateCreated = new Date(model.profileUser.dateCreated);
+                        if(model.profileUser.birthday) {
+                            model.profileUser.birthday = new Date(model.profileUser.birthday);
                         }
                         getPlacesForUser();
                         checkIfFollowing();
                     });
             } else if (user) {
-                model.user = user;
-                model.user.dateCreated = new Date(model.user.dateCreated);
-                if(model.user.birthday) {
-                    model.user.birthday = new Date(model.user.birthday);
+                model.profileUser = user;
+                model.profileUser.dateCreated = new Date(model.profileUser.dateCreated);
+                if(model.profileUser.birthday) {
+                    model.profileUser.birthday = new Date(model.profileUser.birthday);
                 }                getPlacesForUser();
                 checkIfFollowing();
             } else {
@@ -65,7 +65,6 @@
             UserService
                 .updateUser(user._id, user)
                 .then(function() {
-                    $location.url("/user");
                 });
         }
 
@@ -73,13 +72,13 @@
             UserService
                 .deleteUser(user._id)
                 .then(function() {
-                    $location.url("/login");
+                    $location.url("/");
                 });
         }
 
         function getPlacesForUser() {
             PlaceService
-                .findAllPlacesForUser(model.user._id)
+                .findAllPlacesForUser(model.profileUser._id)
                 .then(function(res) {
                     model.places = res.data;
                 });
@@ -88,7 +87,7 @@
         /* Logged in user will follow user of page */
         function followUser() {
             UserService
-                .followUser(user._id, model.user._id)
+                .followUser(user._id, model.profileUser._id)
                 .then(function(userDoc){
                     user = userDoc.data;
                     checkIfFollowing();
@@ -98,7 +97,7 @@
         /* Logged in user will follow user of page */
         function unfollowUser() {
             UserService
-                .unfollowUser(user._id, model.user._id)
+                .unfollowUser(user._id, model.profileUser._id)
                 .then(function(userDoc){
                     user = userDoc.data;
                     checkIfFollowing();
@@ -108,7 +107,7 @@
         function checkIfFollowing(){
             model.following = user.usersFollowing.filter(
                 function(el) {
-                    return el._id === model.user._id;
+                    return el._id === model.profileUser._id;
                 })[0];
         }
     }

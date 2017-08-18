@@ -13,20 +13,20 @@
             <div class="col-sm-8 col-xs-9">
                 <div class="panel">
                     <div class="panel-heading">
-                        <h3>{{model.user.firstName}} {{model.user.lastName}}
+                        <h3>{{model.profileUser.firstName}} {{model.profileUser.lastName}}
                         </h3>
                     </div>
                     <div class="panel-body">
                         <div class="col-sm-6">
-                            <p class="noWrap">{{model.user.bio}}</p>
+                            <p class="noWrap">{{model.profileUser.bio}}</p>
                         </div>
                         <div class="col-sm-6">
-                            <p ng-if="model.user.homeState">
-                                State: {{model.user.homeState}}
+                            <p ng-if="model.profileUser.homeState">
+                                State: {{model.profileUser.homeState}}
                             </p>
                             <br>
-                            <p ng-if="model.user.birthday">
-                                Birthday: {{model.user.birthday | date:'MMMM dd' }}
+                            <p ng-if="model.profileUser.birthday">
+                                Birthday: {{model.profileUser.birthday | date:'MMMM dd' }}
                             </p>
                         </div>
                     </div>
@@ -36,39 +36,38 @@
             </div>
             <div ng-if="model.loggedIn"
                  class="col-sm-1 col-xs-3">
-                <div ng-if="model.usernameUrlParam"
-                     class="col-sm-6 col-xs-12">
-                    <a type="button"
-                            ng-if="!model.following"
-                            ng-click="model.followUser()"
-                            class="btn btn-fab btn-info opensource">
-                        <i class="material-icons iconLeft">person</i>
-                        <i class="material-icons iconRight">add</i>
-                        <div class="ripple-container"></div>
-                    </a>
-                    <a type="button"
-                            ng-if="model.following"
-                            ng-click="model.unfollowUser()"
-                            ng-mouseover="model.hoverIn()"
-                            ng-mouseleave="model.hoverOut()"
-                            class="btn btn-fab opensource btn-success">
-                        <i class="material-icons iconLeft">person</i>
-                        <i ng-if="model.hover" class="material-icons iconRight">remove</i>
-                        <i ng-if="!model.hover" class="material-icons iconRight">check</i>
-                        <div class="ripple-container"></div>
-                    </a>
-                </div>
-
-                <div  ng-if="!model.usernameUrlParam" class="col-sm-6 col-xs-12">
-                    <a ng-if="!model.usernameUrlParam"
-                            href="javascript:void(0)"
-                            type="button"
-                            class="btn btn-fab btn-info opensource"
-                            data-toggle="modal"
-                            data-target="#userSettings">
-                        <i class="material-icons">settings</i>
-                        <div class="ripple-container"></div>
-                    </a>
+                <div class="col-sm-6 col-xs-12">
+                    <div ng-if="model.usernameUrlParam">
+                        <a type="button"
+                           ng-if="!model.following"
+                           ng-click="model.followUser()"
+                           class="btn btn-fab btn-info opensource">
+                            <i class="material-icons iconLeft">person</i>
+                            <i class="material-icons iconRight">add</i>
+                            <div class="ripple-container"></div>
+                        </a>
+                        <a type="button"
+                           ng-if="model.following"
+                           ng-click="model.unfollowUser()"
+                           ng-mouseover="model.hoverIn()"
+                           ng-mouseleave="model.hoverOut()"
+                           class="btn btn-fab opensource btn-success">
+                            <i class="material-icons iconLeft">person</i>
+                            <i ng-if="model.hover" class="material-icons iconRight">remove</i>
+                            <i ng-if="!model.hover" class="material-icons iconRight">check</i>
+                            <div class="ripple-container"></div>
+                        </a>
+                    </div>
+                    <div ng-if="!model.usernameUrlParam || model.user.isAdmin">
+                        <a      href="javascript:void(0)"
+                                type="button"
+                                class="btn btn-fab btn-info opensource"
+                                data-toggle="modal"
+                                data-target="#userSettings">
+                            <i class="material-icons">settings</i>
+                            <div class="ripple-container"></div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -97,7 +96,7 @@
                     <div class="panel-body">
                         <div class="list-group">
                             <a class="list-group-item"
-                               ng-repeat="user in model.user.usersFollowing"
+                               ng-repeat="user in model.profileUser.usersFollowing"
                                href="#!/user/{{user.username}}">
                                 <div class="row-action-primary">
 <!--
@@ -138,7 +137,7 @@
 
                             <div class="col-md-10">
                                 <input name="firstName"
-                                       ng-model="model.user.firstName"
+                                       ng-model="model.profileUser.firstName"
                                        placeholder="Noah"
                                        type="text"
                                        class="form-control"
@@ -152,7 +151,7 @@
 
                             <div class="col-md-10">
                                 <input name="lastName"
-                                       ng-model="model.user.lastName"
+                                       ng-model="model.profileUser.lastName"
                                        placeholder="Appleby"
                                        type="text"
                                        class="form-control"
@@ -166,7 +165,7 @@
 
                             <div class="col-md-10">
                                 <input name="username"
-                                       ng-model="model.user.username"
+                                       ng-model="model.profileUser.username"
                                        readonly
                                        value="noah"
                                        class="form-control"
@@ -180,7 +179,7 @@
 
                             <div class="col-md-10"> <!-- TODO: replace with an API place call -->
                                 <select name="homeState"
-                                        ng-model="model.user.homeState"
+                                        ng-model="model.profileUser.homeState"
                                         readonly
                                         class="form-control"
                                         id="homeState">
@@ -245,7 +244,7 @@
 
                             <div class="col-md-10">
                                 <input name="email"
-                                       ng-model="model.user.email"
+                                       ng-model="model.profileUser.email"
                                        type="email"
                                        placeholder="noah@appleby.com"
                                        class="form-control"
@@ -259,7 +258,7 @@
 
                             <div class="col-md-10">
                                 <input name="dob"
-                                       ng-model="model.user.birthday"
+                                       ng-model="model.profileUser.birthday"
                                        type="date"
                                        class="form-control"
                                        id="dob"/>
@@ -272,7 +271,7 @@
 
                             <div class="col-md-10">
                                 <textarea name="bio"
-                                          ng-model="model.user.bio"
+                                          ng-model="model.profileUser.bio"
                                           class="form-control"
                                           id="bio"
                                           rows="3"></textarea>
@@ -282,14 +281,14 @@
                     <div class="row">
                         <div class="col-md-10 col-md-offset-2">
                             <button class="btn  btn-info"
-                                    ng-click="model.updateUser(model.user)"
+                                    ng-click="model.updateUser(model.profileUser)"
                                     data-dismiss="modal"
                                     role="button">
                                 Save
                             </button>
 
                             <a class="btn  btn-warning"
-                               ng-click="model.deleteUser(model.user)"
+                               ng-click="model.deleteUser(model.profileUser)"
                                data-dismiss="modal"
                                role="button">
                                Delete Account</a>
