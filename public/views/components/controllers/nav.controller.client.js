@@ -3,7 +3,7 @@
         .module("WbdvProject")
         .controller("NavController", NavController)
 
-    function NavController($location, $scope, $timeout, UserService, GooglePlaceService) {
+    function NavController($window, $location, $scope, $timeout, UserService, GooglePlaceService) {
         var model = this;
 
         model.findPlaceByTextSearch = findPlaceByTextSearch;
@@ -32,11 +32,15 @@
         }
 
         function logout() {
-            console.log('lo');
             UserService
                 .logout()
                 .then(
-                    function() { $location.url("/"); });
+                    function() {
+                       if($location.$$path === "/") {
+                            $window.location.reload();
+                        }
+                        $location.url("/");
+                    });
         }
     }
 })();
