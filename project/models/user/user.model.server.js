@@ -8,6 +8,7 @@ userModel.createUser = createUser;
 userModel.findUserById = findUserById;
 userModel.findUserByUsername = findUserByUsername;
 userModel.findUserByCredentials = findUserByCredentials;
+userModel.findUserByGoogleId = findUserByGoogleId;
 userModel.updateUser = updateUser;
 userModel.deleteUser = deleteUser;
 userModel.addPlace = addPlace;
@@ -38,6 +39,11 @@ function findUserByUsername(username) {
 
 function findUserByCredentials(username, password) {
     return userModel.findOne({username: username.toLowerCase(), password: password});
+}
+
+function findUserByGoogleId(googleId) {
+    return userModel
+        .findOne({'google.id': googleId});
 }
 
 function updateUser(userId, user) {

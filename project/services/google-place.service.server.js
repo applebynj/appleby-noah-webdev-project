@@ -6,7 +6,7 @@ var querystring = require('querystring');
 app.get("/api/google/place/:placeId", findPlaceById);
 app.get("/api/google/place/search/:searchText", findPlaceByTextSearch);
 
-var apiKey = process.env.GOOGLE_API_KEY;'AIzaSyDTKeMGhvu0jabXMmqlQK1_kue5NIrgXbk';
+var apiKey = process.env.GOOGLE_API_KEY;
 var googleMapsHost = 'maps.googleapis.com';
 var googlePlacesBaseUrl = '/maps/api/place/';
 

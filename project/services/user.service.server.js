@@ -1,6 +1,16 @@
 var app = require("../../express");
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+
+var googleConfig = {
+    clientID     : '1098581900345-vcene3petjhn36ic1cbrrv49a6a84ev7.apps.googleusercontent.com',//process.env.GOOGLE_CLIENT_ID,
+    clientSecret : 'DEWEaPlpA1GG1PSLaCTdQbdI',//process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL  : 'http://localhost:3000/auth/google/callback'//process.env.GOOGLE_CALLBACK_URL
+};
+passport.use(new GoogleStrategy(googleConfig, googleStrategy));
+
+
 passport.use(new LocalStrategy(localStrategy));
 passport.serializeUser(serializeUser);
 passport.deserializeUser(deserializeUser);
@@ -19,7 +29,14 @@ app.put("/api/user/:userId/place/:placeId", addPlaceToUserVisited);
 app.delete("/api/user/:userId/place/:placeId", removePlaceFromUserVisited);
 app.put("/api/user/:userId/follow/:followUserId", followUser);
 app.delete("/api/user/:userId/follow/:unfollowUserId", unfollowUser);
-app.get("/api/checkLogin", checkLogin)
+app.get("/api/checkLogin", checkLogin);
+
+app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
+app.get('/auth/google/callback',
+    passport.authenticate('google', {
+        successRedirect: '/#/user',
+        failureRedirect: '/#/login'
+    }));
 
 function localStrategy(username, password, done) {
     userModel
@@ -192,4 +209,41 @@ function unfollowUser(req, res) {
         }, function(err) {
             res.status(404).send(err);
         });
+}
+
+function googleStrategy(token, refreshToken, profile, done) {
+    userModel
+        .findUserByGoogleId(profile.id)
+        .then(
+            function(user) {
+                if(user) {
+                    return done(null, user);
+                } else {
+                    var email = profile.emails[0].value;
+                    var emailParts = email.split("@");
+                    var newGoogleUser = {
+                        username:  emailParts[0],
+                        firstName: profile.name.givenName,
+                        lastName:  profile.name.familyName,
+                        email:     email,
+                        google: {
+                            id:    profile.id,
+                            token: token
+                        }
+                    };
+                    return userModel.createUser(newGoogleUser);
+                }
+            },
+            function(err) {
+                if (err) { return done(err); }
+            }
+        )
+        .then(
+            function(user){
+                return done(null, user);
+            },
+            function(err){
+                if (err) { return done(err); }
+            }
+        );
 }
