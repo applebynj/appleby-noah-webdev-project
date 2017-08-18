@@ -232,7 +232,10 @@ a:hover {
     width: 300px;
 }
 
-.nav .open .dropdown-toggle, .nav .open .dropdown-toggle:focus {
+.nav .open .dropdown-toggle,
+.nav .open .dropdown-toggle:hover,
+.nav .open .dropdown-toggle:active,
+.nav .open .dropdown-toggle:focus {
     background-color:transparent;
 }
 
