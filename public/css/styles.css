@@ -230,3 +230,8 @@ a:hover {
 .nav .open .dropdown-toggle, .nav .open .dropdown-toggle:focus {
     background-color:transparent;
 }
+
+.adminDeletionPanel .material-icons {
+    font-size: 18px;
+    color: #555;
+}

@@ -15,7 +15,7 @@
                 .findAllUsers()
                 .then(function(response) {
                     model.users = response.data;
-                })
+                });
         }
         init();
 
@@ -24,7 +24,11 @@
             UserService
                 .deleteUser(user._id)
                 .then(function() {
-                    $location.url("/login");
+                    UserService
+                        .findAllUsers()
+                        .then(function(response) {
+                            model.users = response.data;
+                        });
                 });
         }
     }

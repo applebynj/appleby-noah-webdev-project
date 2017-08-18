@@ -8,15 +8,32 @@
                 <h3>Users:</h3>
                 <div class="panel panel-default adminDeletionPanel">
                     <div class="panel-body">
-                        <a href="#!/user/{{user.username}}"
-                           ng-repeat="user in model.users"
-                           class="list-group-item">
-                            <p>
-                                <i>{{user.username}}</i>
-                                <br>
-                                {{user.firstName}} {{user.lastName}}
-                            </p>
-                        </a>
+                        <table class="table table-striped table-hover ">
+                            <tr>
+                                <th>ID</th>
+                                <th>Username</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                               <tr ng-repeat="user in model.users">
+                                    <td>{{user._id}}</td>
+                                    <td>{{user.username}}</td>
+                                    <td>{{user.firstName}}</td>
+                                    <td>{{user.lastName}}</td>
+                                    <td class="text-center">
+                                        <a href="#!/user/{{user.username}}">
+                                            <i class="material-icons">edit</i>
+                                        </a>
+                                    </td>
+                                    <td class="text-center">
+                                        <a ng-click="model.deleteUser(user)">
+                                            <i class="material-icons">delete</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -25,15 +42,28 @@
                 <h3>Places:</h3>
                 <div class="panel panel-default adminDeletionPanel">
                     <div class="panel-body">
-                        <a href="#!/place/{{place.place_id}}"
-                           ng-repeat="place in model.places"
-                           class="list-group-item">
-                            <p>
-                                <i>{{place.name}}</i>
-                                <br>
-                                {{place.address}}
-                            </p>
-                        </a>
+                    <!--    <table class="table table-striped table-hover ">
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                            <tr ng-repeat="place in model.places">
+                                <td>{{place._id}}</td>
+                                <td>{{place.name}}</td>
+                                <td class="text-center">
+                                    <a href="#!/place/{{place.place_id}}">
+                                        <i class="material-icons">edit</i>
+                                    </a>
+                                </td>
+                                <td class="text-center">
+                                    <a ng-click="model.deletePlace(place)">
+                                        <i class="material-icons">delete</i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>-->
                     </div>
                 </div>
             </div>
