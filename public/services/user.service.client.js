@@ -9,6 +9,7 @@
             'createUser' : createUser,
             'findUserById' : findUserById,
             'findUserByUsername' : findUserByUsername,
+            'findAllUsers' : findAllUsers,
             'login' : login,
             'logout' : logout,
             'updateUser' : updateUser,
@@ -33,6 +34,11 @@
 
         function findUserByUsername(username) {
             var url = "/api/user?username=" + username;
+            return $http.get(url);
+        }
+
+        function findAllUsers() {
+            var url = "/api/user/all";
             return $http.get(url);
         }
 

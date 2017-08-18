@@ -11,6 +11,11 @@
         model.pageNeedsSearch = true;
 
         function init() {
+            UserService
+                .findAllUsers()
+                .then(function(response) {
+                    model.users = response.data;
+                })
         }
         init();
 

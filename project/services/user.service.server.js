@@ -9,6 +9,7 @@ var userModel = require("../models/user/user.model.server");
 
 app.post("/api/user", createUser);
 app.get("/api/user", findUser); /* covers findUserByUserName and findUserByCredentials based on request body */
+app.get("/api/user/all", findAllUsers);
 app.post("/api/login", passport.authenticate('local'), login);
 app.post("/api/logout", logout);
 app.get("/api/user/:userId", findUserById);
@@ -91,6 +92,17 @@ function findUser(req, res) {
     }  else {
         res.status(404);
     }
+}
+
+function findAllUsers(req, res) {
+
+    userModel
+        .findAllUsers()
+        .then(function(users) {
+            res.json(users);
+        }, function(err) {
+            res.status(404).send(err);
+        });
 }
 
 function findUserById(req, res) {

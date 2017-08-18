@@ -14,6 +14,7 @@ userModel.addPlace = addPlace;
 userModel.removePlace = removePlace;
 userModel.followUser = followUser;
 userModel.unfollowUser = unfollowUser;
+userModel.findAllUsers = findAllUsers;
 //userModel.removePlace = removePlace;
 
 module.exports = userModel;
@@ -77,6 +78,13 @@ function unfollowUser(userId, unfollowUserId) {
             { 'new': true })
         .populate('usersFollowing', 'username');
 }
+
+function findAllUsers() {
+    return userModel
+        .find({})
+        .select('username firstName lastName dateCreated');
+}
+
 
 // function removePlace(userId, websiteId) {
 //     userModel
