@@ -4,9 +4,9 @@ var LocalStrategy = require('passport-local').Strategy;
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 var googleConfig = {
-    clientID     : '1098581900345-vcene3petjhn36ic1cbrrv49a6a84ev7.apps.googleusercontent.com',//process.env.GOOGLE_CLIENT_ID,
-    clientSecret : 'DEWEaPlpA1GG1PSLaCTdQbdI',//process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL  : 'http://localhost:3000/auth/google/callback'//process.env.GOOGLE_CALLBACK_URL
+    clientID     : process.env.GOOGLE_CLIENT_ID,
+    clientSecret : process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL  : process.env.GOOGLE_CALLBACK_URL
 };
 passport.use(new GoogleStrategy(googleConfig, googleStrategy));
 
