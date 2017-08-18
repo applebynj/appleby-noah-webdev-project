@@ -47,16 +47,17 @@
                             address: model.place.formatted_address,
                             place_id: model.place.place_id
                         }).then(function (response) {
-                        if (user) {
-                            UserService
-                                .findUserById(user._id)
-                                .then(function (response) {
-                                    model.user = response.data;
-                                    model.place._id = place.data._id;
-                                    checkIfUserHasVisitedPlace();
-                                    checkIfFollowsHaveVisitedPlace();
-                                });
-                        }
+                            var place = response.data;
+                            if (user) {
+                                UserService
+                                    .findUserById(user._id)
+                                    .then(function (response) {
+                                        model.user = response.data;
+                                        model.place._id = place._id;
+                                        checkIfUserHasVisitedPlace();
+                                        checkIfFollowsHaveVisitedPlace();
+                                    });
+                            }
                         retrieveReviewsForPlace();
                     });
                 });
