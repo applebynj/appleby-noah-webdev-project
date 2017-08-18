@@ -19,9 +19,13 @@
                             <p class="noWrap">{{model.user.bio}}</p>
                         </div>
                         <div class="col-sm-6">
-                            State: {{model.user.homeState}}
+                            <p ng-if="model.user.homeState">
+                                State: {{model.user.homeState}}
+                            </p>
                             <br>
-                            Birthday: {{model.user.dateCreated | date:'MMMM dd' }}
+                            <p ng-if="model.user.birthday">
+                                Birthday: {{model.user.birthday | date:'MMMM dd' }}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -279,6 +283,7 @@
 
                             <a class="btn  btn-warning"
                                ng-click="model.deleteUser(model.user)"
+                               data-dismiss="modal"
                                role="button">
                                Delete Account</a>
                         </div>

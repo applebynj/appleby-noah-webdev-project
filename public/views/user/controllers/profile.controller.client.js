@@ -17,11 +17,15 @@
 
 
         model.usernameUrlParam = $routeParams["username"];
+        model.fromLogin = $routeParams["fromLogin"];
 
         function init() {
 
             $scope.$watch('$viewContentLoaded', function(){
                 $timeout(function() {
+                    if(model.fromLogin) {
+                        $('#userSettings').modal('show');
+                    }
                     $.material.init();
                 },0);
             });
@@ -38,15 +42,18 @@
                             $location.url("/");
                         }
                         model.user.dateCreated = new Date(model.user.dateCreated);
-                        model.user.birthday = new Date(model.user.birthday);
+                        if(model.user.birthday) {
+                            model.user.birthday = new Date(model.user.birthday);
+                        }
                         getPlacesForUser();
                         checkIfFollowing();
                     });
             } else if (user) {
                 model.user = user;
                 model.user.dateCreated = new Date(model.user.dateCreated);
-                model.user.birthday = new Date(model.user.birthday);
-                getPlacesForUser();
+                if(model.user.birthday) {
+                    model.user.birthday = new Date(model.user.birthday);
+                }                getPlacesForUser();
                 checkIfFollowing();
             } else {
                 $location.url("/login");
