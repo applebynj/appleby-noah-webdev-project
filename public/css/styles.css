@@ -72,17 +72,19 @@ a:hover {
  * Split View
  */
 
-.nja-split-view-left {
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
-    padding-top: 10px;
-    z-index: 1;
-    overflow-y: scroll;
-    border-right: 1px solid #CCCCCC;
+@media(min-width: 768px) {
+    .nja-split-view-left {
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        padding-top: 10px;
+        z-index: 1;
+        overflow-y: scroll;
+        border-right: 1px solid #CCCCCC;
+    }
 }
 
-@media(min-width: 1200px) {
+@media(min-width: 768px) {
     .nja-split-view-right {
         position: absolute;
         right: 0px;
@@ -118,11 +120,13 @@ a:hover {
     float: left;
 }
 
-.vertical-center {
-    min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
-    min-height: 100vh; /* These two lines are counted as one :-)       */
-    display: flex;
-    align-items: center;
+@media(min-width: 768px) {
+    .vertical-center {
+        min-height: 100%; /* Fallback for browsers do NOT support vh unit */
+        min-height: 100vh; /* These two lines are counted as one :-)       */
+        display: flex;
+        align-items: center;
+    }
 }
 
 .nja-split-view-left,.chooser .list-group-item {
