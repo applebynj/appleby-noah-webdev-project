@@ -4,13 +4,13 @@
 
     <div class="nja-no-collapse container-fluid">
         <div class="row">
-            <div class="col-xs-10 col-xs-offset-1">
+            <div class="col-sm-10 col-xs-11 col-sm-offset-1">
                 <h3>Users:</h3>
                 <div class="panel panel-default adminDeletionPanel">
                     <div class="panel-body">
                         <table class="table table-striped table-hover ">
                             <tr>
-                                <th>ID</th>
+                                <th class="hidden-xs">ID</th>
                                 <th>Username</th>
                                 <th>First Name</th>
                                 <th>Last Name</th>
@@ -18,7 +18,7 @@
                                 <th class="text-center">Delete</th>
                             </tr>
                                <tr ng-repeat="user in model.users">
-                                    <td>{{user._id}}</td>
+                                    <td class="hidden-xs">{{user._id}}</td>
                                     <td>{{user.username}}</td>
                                     <td>{{user.firstName}}</td>
                                     <td>{{user.lastName}}</td>
@@ -38,20 +38,20 @@
                 </div>
             </div>
 
-            <div class="col-xs-10 col-xs-offset-1">
+            <div class="col-sm-10 col-xs-11 col-sm-offset-1">
                 <h3>Places:</h3>
                 <div class="panel panel-default adminDeletionPanel">
                     <div class="panel-body">
                         <table class="table table-striped table-hover ">
                             <tr>
-                                <th>ID</th>
+                                <th class="hidden-xs">ID</th>
                                 <th>Name</th>
                                 <th>Date Created</th>
                                 <th class="text-center">Edit</th>
                                 <th class="text-center">Delete</th>
                             </tr>
                             <tr ng-repeat="place in model.places">
-                                <td>{{place._id}}</td>
+                                <td class="hidden-xs">{{place._id}}</td>
                                 <td>{{place.name}}</td>
                                 <td>{{place.dateCreated | date:'MMMM dd, yyyy' }}</td>
                                 <td class="text-center">
