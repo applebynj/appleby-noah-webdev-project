@@ -1,6 +1,8 @@
 <div class="nja-profile">
 
-    <div ng-include="'views/components/templates/nav.component.client.html'" ng-controller="NavController as navModel" onload="navModel.pageModel = model"></div>
+    <div ng-include="'views/components/templates/nav.component.client.html'"
+         ng-controller="NavController as navModel"
+         onload="navModel.pageModel = model"></div>
 
     <div class="nja-no-collapse container-fluid">
         <div class="row">
@@ -32,8 +34,10 @@
 
 
             </div>
-            <div ng-if="model.loggedIn" class="col-sm-1 col-xs-3">
-                <div  ng-if="model.usernameUrlParam" class="col-sm-6 col-xs-12">
+            <div ng-if="model.loggedIn"
+                 class="col-sm-1 col-xs-3">
+                <div ng-if="model.usernameUrlParam"
+                     class="col-sm-6 col-xs-12">
                     <a type="button"
                             ng-if="!model.following"
                             ng-click="model.followUser()"
@@ -53,7 +57,6 @@
                         <i ng-if="!model.hover" class="material-icons iconRight">check</i>
                         <div class="ripple-container"></div>
                     </a>
-
                 </div>
 
                 <div  ng-if="!model.usernameUrlParam" class="col-sm-6 col-xs-12">
@@ -103,7 +106,7 @@
                                 </div>
                                 <div class="row-content">
 <!--
-                                    <div class="least-content">15m</div> TODO: hmm
+                                    <div class="least-content">15m</div> TODO: something like last active time?
 -->
                                     <p class="list-group-item-text">{{user.username}}</p>
                                 </div>
@@ -115,41 +118,46 @@
         </div>
     </div>
 
-    <div class="modal fade" role="dialog" id="userSettings">
+    <div class="modal fade"
+         role="dialog"
+         id="userSettings">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <button type="button"
+                            class="close"
+                            data-dismiss="modal"
+                            aria-hidden="true">×</button>
                     <h4 class="modal-title">User Settings</h4>
                 </div>
                 <div class="modal-body">
                     <div class="form-horizontal">
                         <div class="form-group">
-                        <label for="firstName"
-                               class="col-md-2 control-label">First Name</label>
+                            <label for="firstName"
+                                   class="col-md-2 control-label">First Name</label>
 
-                        <div class="col-md-10">
-                            <input name="firstName"
-                                   ng-model="model.user.firstName"
-                                   placeholder="Noah"
-                                   type="text"
-                                   class="form-control"
-                                   id="firstName"/>
-                        </div>
+                            <div class="col-md-10">
+                                <input name="firstName"
+                                       ng-model="model.user.firstName"
+                                       placeholder="Noah"
+                                       type="text"
+                                       class="form-control"
+                                       id="firstName"/>
+                            </div>
                         </div>
 
                         <div class="form-group">
-                        <label for="lastName"
+                            <label for="lastName"
                                class="col-md-2 control-label">Last Name</label>
 
-                        <div class="col-md-10">
-                            <input name="lastName"
-                                   ng-model="model.user.lastName"
-                                   placeholder="Appleby"
-                                   type="text"
-                                   class="form-control"
-                                   id="lastName"/>
-                        </div>
+                            <div class="col-md-10">
+                                <input name="lastName"
+                                       ng-model="model.user.lastName"
+                                       placeholder="Appleby"
+                                       type="text"
+                                       class="form-control"
+                                       id="lastName"/>
+                            </div>
                         </div>
 
                         <div class="form-group">
@@ -229,34 +237,33 @@
                                     <option value="WY">Wyoming</option>
                                 </select>
                             </div>
-
                         </div>
 
                         <div class="form-group">
-                        <label for="email"
-                               class="col-md-2 control-label">Email</label>
+                            <label for="email"
+                                   class="col-md-2 control-label">Email</label>
 
-                        <div class="col-md-10">
-                            <input name="email"
-                                   ng-model="model.user.email"
-                                   type="email"
-                                   placeholder="noah@appleby.com"
-                                   class="form-control"
-                                   id="email"/>
-                        </div>
+                            <div class="col-md-10">
+                                <input name="email"
+                                       ng-model="model.user.email"
+                                       type="email"
+                                       placeholder="noah@appleby.com"
+                                       class="form-control"
+                                       id="email"/>
+                            </div>
                         </div>
 
                         <div class="form-group">
-                        <label for="dob"
-                               class="col-md-2 control-label">Birthday</label>
+                            <label for="dob"
+                                   class="col-md-2 control-label">Birthday</label>
 
-                        <div class="col-md-10">
-                            <input name="dob"
-                                   ng-model="model.user.birthday"
-                                   type="date"
-                                   class="form-control"
-                                   id="dob"/>
-                        </div>
+                            <div class="col-md-10">
+                                <input name="dob"
+                                       ng-model="model.user.birthday"
+                                       type="date"
+                                       class="form-control"
+                                       id="dob"/>
+                            </div>
                         </div>
 
                         <div class="form-group">
@@ -288,7 +295,6 @@
                                Delete Account</a>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

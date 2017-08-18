@@ -1,6 +1,8 @@
 <div class="container-fluid">
 
-    <div ng-include="'views/components/templates/nav.component.client.html'" ng-controller="NavController as navModel" onload="navModel.pageModel = model"></div>
+    <div ng-include="'views/components/templates/nav.component.client.html'"
+         ng-controller="NavController as navModel"
+         onload="navModel.pageModel = model"></div>
 
     <div class="row">
         <div class="col-sm-4 nja-split-view-left hidden-xs text-center vertical-center">
@@ -14,75 +16,74 @@
             <div class="row vertical-center">
                 <div class="col-sm-10 col-xs-12 ">
                     <div class="container-fluid">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <div class="form-horizontal">
-                                <div ng-show="model.error"
-                                         class="alert alert-danger">
-                                        {{model.error}}
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="form-horizontal">
+                                    <div ng-show="model.error"
+                                             class="alert alert-danger">
+                                            {{model.error}}
+                                    </div>
+                                    <h2>Register</h2>
+
+                                        <div class="form-group">
+                                            <label for="username"
+                                                   class="col-md-2 control-label">Username</label>
+
+                                            <div class="col-md-10">
+                                                <input name="username"
+                                                       ng-model="user.username"
+                                                       placeholder="username"
+                                                       type="text"
+                                                       class="form-control"
+                                                       id="username"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="password"
+                                                   class="col-md-2 control-label">Password</label>
+
+                                            <div class="col-md-10">
+                                                <input name="password"
+                                                       ng-model="user.password"
+                                                       placeholder="password"
+                                                       type="password"
+                                                       class="form-control"
+                                                       id="password"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="password2"
+                                                   class="col-md-2 control-label">Verify Password</label>
+
+                                            <div class="col-md-10">
+                                                <input name="password2"
+                                                       ng-model="user.password2"
+                                                       placeholder="verify password"
+                                                       type="password"
+                                                       class="form-control"
+                                                       id="password2"/>
+                                            </div>
+                                        </div>
                                 </div>
-                                <h2>Register</h2>
 
-                                    <div class="form-group">
-                                        <label for="username"
-                                               class="col-md-2 control-label">Username</label>
+                                <div class="row">
+                                    <div class="col-md-10 col-md-offset-2">
+                                        <a class="btn btn-default btn-primary"
+                                           ng-click="model.registerUser(user)"
+                                           role="button">Register</a>
 
-                                        <div class="col-md-10">
-                                            <input name="username"
-                                                   ng-model="user.username"
-                                                   placeholder="username"
-                                                   type="text"
-                                                   class="form-control"
-                                                   id="username"/>
-                                        </div>
+                                        <a class="btn btn-default btn-danger"
+                                           href="#!/login"
+                                           role="button">Cancel</a>
                                     </div>
-
-                                    <div class="form-group">
-                                        <label for="password"
-                                               class="col-md-2 control-label">Password</label>
-
-                                        <div class="col-md-10">
-                                            <input name="password"
-                                                   ng-model="user.password"
-                                                   placeholder="password"
-                                                   type="password"
-                                                   class="form-control"
-                                                   id="password"/>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="password2"
-                                               class="col-md-2 control-label">Verify Password</label>
-
-                                        <div class="col-md-10">
-                                            <input name="password2"
-                                                   ng-model="user.password2"
-                                                   placeholder="verify password"
-                                                   type="password"
-                                                   class="form-control"
-                                                   id="password2"/>
-                                        </div>
-                                    </div>
+                                </div>
                             </div>
-
-                            <div class="row">
-                                <div class="col-md-10 col-md-offset-2">
-                                    <a class="btn btn-default btn-primary"
-                                       ng-click="model.registerUser(user)"
-                                       role="button">Register</a>
-
-                                    <a class="btn btn-default btn-danger"
-                                       href="#!/login"
-                                       role="button">Cancel</a>
-                                </div>
                         </div>
-                    </div>
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
 </div>

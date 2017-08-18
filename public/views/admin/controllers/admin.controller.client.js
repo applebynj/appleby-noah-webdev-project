@@ -3,7 +3,7 @@
         .module("WbdvProject")
         .controller("AdminController", AdminController)
 
-    function AdminController($scope, $timeout, $routeParams, $location, UserService, PlaceService, user) {
+    function AdminController(UserService, PlaceService, user) {
         var model = this;
 
         model.updateUser = updateUser;

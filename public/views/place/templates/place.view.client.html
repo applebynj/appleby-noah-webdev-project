@@ -1,6 +1,8 @@
 <div class="container-fluid">
 
-    <div ng-include="'views/components/templates/nav.component.client.html'" ng-controller="NavController as navModel" onload="navModel.pageModel = model"></div>
+    <div ng-include="'views/components/templates/nav.component.client.html'"
+         ng-controller="NavController as navModel"
+         onload="navModel.pageModel = model"></div>
 
     <div class="row">
         <div class="col-sm-2 col-xs-12 text-center">
@@ -20,8 +22,10 @@
                     <div class="col-sm-6" ng-show="model.loggedIn">
                         <h5>You follow
                             <a class="drop-target">{{model.followsVisited.length}}</a>
-                            <span ng-if="model.followsVisited.length != 1">people who have visited this place!</span>
-                            <span ng-if="model.followsVisited.length == 1">person who has visited this place!</span>
+                            <span ng-if="model.followsVisited.length != 1">
+                                people who have visited this place!</span>
+                            <span ng-if="model.followsVisited.length == 1">
+                                person who has visited this place!</span>
                         </h5>
                     </div>
                 </div>
@@ -54,7 +58,7 @@
                    type="button"
                    class="btn btn-fab opensource"
                    data-toggle="modal"
-                   data-target="#reviewForm">
+                   data-target="#reviewFormModal">
                     <i class="material-icons">mode_edit</i>
                     <div class="ripple-container"></div>
                 </a>
@@ -63,20 +67,14 @@
         </div>
     </div>
 
-
-    <div class="row">
-        <div class="col-xs-8">
-        </div>
-        <div class="col-xs-4">
-
-            </div>
-        </div>
     <div class="row">
         <div class="col-sm-6 col-xs-12">
             <h3>Photos:</h3>
             <div class="panel">
                 <div class="panel-body">
-                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <div id="carouselExampleIndicators"
+                         class="carousel slide"
+                         data-ride="carousel">
                         <ol class="carousel-indicators">
                             <li data-target="#carouselExampleIndicators"
                                 ng-repeat="photo in model.place.photos"
@@ -87,15 +85,22 @@
                             <div class="item"
                                  ng-repeat="photo in model.place.photos"
                                  ng-class="{'active': $first}">
-                                <img class="img-responsive" src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference={{photo.photo_reference}}&key=AIzaSyDTKeMGhvu0jabXMmqlQK1_kue5NIrgXbk"/>
+                                <!-- TODO: remove this API key, requires adding back end call-->
+                                <img class="img-responsive"
+                                     src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference={{photo.photo_reference}}&key=AIzaSyDTKeMGhvu0jabXMmqlQK1_kue5NIrgXbk"/>
                             </div>
                         </div>
-                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators"
+                           role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon"
+                                  aria-hidden="true"></span>
                             <span class="sr-only">Previous</span>
                         </a>
-                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <a class="carousel-control-next"
+                           href="#carouselExampleIndicators"
+                           role="button" data-slide="next">
+                            <span class="carousel-control-next-icon"
+                                  aria-hidden="true"></span>
                             <span class="sr-only">Next</span>
                         </a>
                     </div>
@@ -126,11 +131,16 @@
     </div>
 </div>
 
-<div class="modal fade" role="dialog" id="reviewForm">
+<div class="modal fade"
+     role="dialog"
+     id="reviewFormModal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <button type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-hidden="true">×</button>
                 <h4 class="modal-title">User Settings</h4>
             </div>
             <div class="modal-body">

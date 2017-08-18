@@ -48,14 +48,7 @@
                     user: checkLogin
                 }
             })
-            /*.when("/search", {
-                templateUrl: "views/search/templates/search.view.client.html",
-                controller: "SearchController",
-                controllerAs: "model",
-                resolve: {
-                    user: checkLogin
-                }
-            })*/
+
             //Proof of Concept Pages
             .when("/poc", {
                 templateUrl: "views/poc/templates/search.view.client.html",
@@ -67,7 +60,7 @@
                 controller: "POCPlaceController",
                 controllerAs: "model"
             })
-            //Default Route
+            //Default Route (home page / search page)
             .otherwise({
                 templateUrl: "views/search/templates/search.view.client.html",
                 controller: "SearchController",

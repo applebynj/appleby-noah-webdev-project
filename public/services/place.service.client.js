@@ -24,9 +24,10 @@
             return $http.get(url);
         }
 
+/*      Ultimately unused:
         function findPlaceByAPIId(place_id) {
             var url = "/api/place/" + place_id;
-        }
+        }*/
 
         function findAllPlacesForUser(userId) {
             var url = '/api/user/' + userId + "/place";

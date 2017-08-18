@@ -1,7 +1,11 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navCollapseMenu" aria-expanded="false">
+            <button type="button"
+                    class="navbar-toggle collapsed"
+                    data-toggle="collapse"
+                    data-target="#navCollapseMenu"
+                    aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -15,9 +19,11 @@
             </div>
         </div>
 
-        <div class="collapse navbar-collapse" id="navCollapseMenu">
+        <div class="collapse navbar-collapse"
+             id="navCollapseMenu">
             <div class="nav navbar-nav navbar-left nav-search-container hidden-xs">
-                <div ng-if="navModel.pageModel.pageNeedsSearch" class="navbar-left navbar-form nav-search">
+                <div ng-if="navModel.pageModel.pageNeedsSearch"
+                     class="navbar-left navbar-form nav-search">
                     <div class="form-group">
                         <input name="whatSearchField"
                                id="whatSearchField"
@@ -47,12 +53,15 @@
                                aria-expanded="false">
                                 <i class="material-icons">search</i>
                             </a>
-                            <ul ng-if="navModel.results" class="dropdown-menu pull-right">
+                            <ul ng-if="navModel.results"
+                                class="dropdown-menu pull-right">
                                 <div>
                                     <div class="list-group">
                                         <div ng-repeat="place in navModel.results">
-                                            <a href="#!/place/{{place.place_id}}" class="list-group-item">
-                                                <h4><img ng-src="{{place.icon}}" style="height:30px; padding-right: 10px;"/>{{place.name}}</h4>
+                                            <a href="#!/place/{{place.place_id}}"
+                                               class="list-group-item">
+                                                <h4><img ng-src="{{place.icon}}"
+                                                         style="height:30px; padding-right: 10px;"/>{{place.name}}</h4>
                                                 <h6>{{place.formatted_address}}</h6>
                                             </a>
                                         </div>
@@ -81,7 +90,6 @@
                 <li ng-if="navModel.pageModel.user">
                     <a ng-click="navModel.logout()">Logout</a>
                 </li>
-
             </ul>
         </div>
     </div>
