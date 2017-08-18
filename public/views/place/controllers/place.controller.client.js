@@ -18,19 +18,19 @@
 
         function init() {
 
-            $(document).ready(function() {
+            $(document).ready(function () {
                 $('.carousel').carousel()
             });
 
-            $scope.$watch('$viewContentLoaded', function(){
-                $timeout(function() {
+            $scope.$watch('$viewContentLoaded', function () {
+                $timeout(function () {
                     $.material.init();
-                    },0);
+                }, 0);
             });
 
             new Drop({
                 target: document.querySelector('.drop-target'),
-                content:  document.querySelector('.my-drop'),
+                content: document.querySelector('.my-drop'),
                 position: 'top center',
                 openOn: 'hover'
             });
@@ -39,27 +39,25 @@
 
             GooglePlaceService
                 .findPlaceById(model.placeId)
-                .then(function(response) {
+                .then(function (response) {
                     model.place = response.data.result;
                     PlaceService
                         .createPlace({
-                            name : model.place.name,
-                            address : model.place.formatted_address,
-                            place_id : model.place.place_id
-                        }).then(function(response){
-                            if(user) {
-                                UserService
-                                    .findUserById(user._id)
-                                    .then(function (response) {
-                                        model.user = response.data
-                                        .then(function (place) {
-                                            model.place._id = place.data._id;
-                                            checkIfUserHasVisitedPlace();
-                                            checkIfFollowsHaveVisitedPlace();
-                                        });
-                                    });
-                            }
-                            retrieveReviewsForPlace();
+                            name: model.place.name,
+                            address: model.place.formatted_address,
+                            place_id: model.place.place_id
+                        }).then(function (response) {
+                        if (user) {
+                            UserService
+                                .findUserById(user._id)
+                                .then(function (response) {
+                                    model.user = response.data;
+                                    model.place._id = place.data._id;
+                                    checkIfUserHasVisitedPlace();
+                                    checkIfFollowsHaveVisitedPlace();
+                                });
+                        }
+                        retrieveReviewsForPlace();
                     });
                 });
         }
