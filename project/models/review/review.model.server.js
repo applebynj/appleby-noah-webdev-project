@@ -7,11 +7,11 @@ var reviewSchema = require("./review.schema.server");
 var reviewModel = mongoose.model("ReviewModel", reviewSchema);
 
 reviewModel.createReview = createReview;
-//reviewModel.findUserById = findUserById;
+//reviewModel.findReview = findReview;
+//reviewModel.updateReview = updateReview;
+//reviewModel.deleteReview = deleteReview;
+//reviewModel.findReviewById = findReviewById; (not needed yet)
 reviewModel.findAllReviewsForPlace = findAllReviewsForPlace;
-//reviewModel.findPlace = findPlace;
-//reviewModel.updatePlace = updatePlace;
-//reviewModel.deleteUser = deleteUser;
 
 module.exports = reviewModel;
 

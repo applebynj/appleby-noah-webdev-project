@@ -85,7 +85,6 @@ function findAllUsers() {
         .select('username firstName lastName dateCreated isAdmin');
 }
 
-
 // function removePlace(userId, websiteId) {
 //     userModel
 //         .findById(userId)
