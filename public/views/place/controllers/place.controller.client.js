@@ -101,8 +101,6 @@
                 .findAllReviewsForPlace(model.place._id)
                 .then(function(reviews){
                     model.place.reviews = reviews.data;
-                    console.log(reviews.data);
-                    console.log(model.user);
                 });
         }
 
