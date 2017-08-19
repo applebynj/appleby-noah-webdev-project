@@ -47,6 +47,7 @@ function findUserByGoogleId(googleId) {
 }
 
 function updateUser(userId, user) {
+    console.log('IM UPDATINGGGGGG');
     return userModel.update({_id : userId},
         {$set: user});
 }

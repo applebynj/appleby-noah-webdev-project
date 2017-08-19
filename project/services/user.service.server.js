@@ -1,4 +1,5 @@
 var app = require("../../express");
+var bcrypt = require("bcrypt-nodejs");
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
@@ -40,11 +41,14 @@ app.get('/auth/google/callback',
 
 function localStrategy(username, password, done) {
     userModel
-        .findUserByCredentials(username, password)
+        .findUserByUsername(username)
         .then(
             function(user) {
-                if (!user) { return done(null, false); }
-                return done(null, user);
+                if(user && bcrypt.compareSync(password, user.password)) {
+                    return done(null, user);
+                } else {
+                    return done(null, false);
+                }
             },
             function(err) {
                 if (err) { return done(err); }
@@ -77,6 +81,8 @@ function createUser(req, res) {
     /* TODO: further validation */
     var user = req.body;
 
+    user.password = bcrypt.hashSync(user.password);
+
     userModel
         .createUser(user)
         .then(function(user) {
@@ -101,7 +107,12 @@ function findUser(req, res) {
         userModel
             .findUserByUsername(username)
             .then(function(user) {
-                    res.json(user);
+                console.log('here');
+                console.log(user);
+                user.password = bcrypt.hashSync(user.password);
+                console.log(user);
+                userModel.updateUser(user._id, user).then(function(user){console.log(user);});
+                res.json(user);
             }, function(err) {
                 res.status(404).send(err);
             });
