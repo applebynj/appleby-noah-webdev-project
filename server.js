@@ -1,4 +1,7 @@
 var app = require('./express');
+
+require('dotenv').config();
+
 var express = app.express;
 var bodyParser = require('body-parser');
 var passport = require('passport');

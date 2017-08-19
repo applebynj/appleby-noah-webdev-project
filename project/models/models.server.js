@@ -1,5 +1,4 @@
 var q = require('q');
-require('dotenv').config();
 
 var connectionString = 'mongodb://127.0.0.1:27017/project'; // for local
 if(process.env.MLAB_USERNAME_WEBDEV) { // check if running remotely
