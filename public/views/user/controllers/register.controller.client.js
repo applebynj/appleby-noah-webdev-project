@@ -23,7 +23,7 @@
                         if(user.password && (user.password === user.password2)) {
                             return UserService.createUser(user).then(function(res) {
                                 _user = res.data;
-                                login(_user);
+                                login(user);
                             });
                         } else {
                             model.error = "Passwords do not match";
