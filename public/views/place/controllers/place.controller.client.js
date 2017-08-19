@@ -112,8 +112,9 @@
                     text: model.reviewForm.text,
                     _user: model.user._id,
                     _place: model.place._id
-                });
-            retrieveReviewsForPlace();
+                }).then(function(){
+                    retrieveReviewsForPlace();
+            });
         }
     }
 })();
