@@ -107,11 +107,6 @@ function findUser(req, res) {
         userModel
             .findUserByUsername(username)
             .then(function(user) {
-                console.log('here');
-                console.log(user);
-                user.password = bcrypt.hashSync(user.password);
-                console.log(user);
-                userModel.updateUser(user._id, user).then(function(user){console.log(user);});
                 res.json(user);
             }, function(err) {
                 res.status(404).send(err);
