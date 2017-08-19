@@ -11,9 +11,11 @@
         model.addPlaceToUserVisited = addPlaceToUserVisited;
         model.removePlaceFromUserVisited = removePlaceFromUserVisited;
         model.createReview = createReview;
+        model.deleteReview = deleteReview;
         model.hoverOut = function() {this.hover = false;};
         model.hoverIn = function() {this.hover = true;};
         model.loggedIn = user != null;
+        model.user = user;
         model.pageNeedsSearch = true;
 
         function init() {
@@ -99,6 +101,8 @@
                 .findAllReviewsForPlace(model.place._id)
                 .then(function(reviews){
                     model.place.reviews = reviews.data;
+                    console.log(reviews.data);
+                    console.log(model.user);
                 });
         }
 
@@ -116,5 +120,14 @@
                     retrieveReviewsForPlace();
             });
         }
+
+        function deleteReview(review) {
+            ReviewService
+                .deleteReview(review._id)
+                .then(function() {
+                    retrieveReviewsForPlace();
+                });
+        }
+
     }
 })();

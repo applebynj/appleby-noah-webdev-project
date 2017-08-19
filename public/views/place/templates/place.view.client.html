@@ -62,7 +62,6 @@
                     <i class="material-icons">mode_edit</i>
                     <div class="ripple-container"></div>
                 </a>
-
             </div>
         </div>
     </div>
@@ -111,12 +110,22 @@
         <div class="col-sm-6 col-xs-12">
             <h3>Reviews:</h3>
             <div class="panel" id="reviewPanel">
-                <div class="panel-body">
-                <div ng-repeat="review in model.place.reviews">
-                    <a href="#!/user/{{review._user.username}}">{{review._user.username}}</a>
-                    {{review.rating}} / 5
-                    <p>{{review.text}}</p>
-                </div>
+                <div class="panel-body list-group">
+                    <div class='list-group-item' ng-repeat="review in model.place.reviews">
+                        <div class="row-content">
+                            <div ng-if="review._user._id == model.user._id || model.user.isAdmin" class="least-content">
+                                <i ng-click="model.deleteReview(review)"
+                                   class="material-icons">delete</i>
+                            </div>
+                            <h4 class="list-group-item-heading">
+                                <a href="#!/user/{{review._user.username}}">{{review._user.username}}</a>
+                                {{review.rating}} / 5
+                            </h4>
+
+                            <p class="list-group-item-text">{{review.text}}</p>
+                        </div>
+                        <div class="list-group-separator"></div>
+                    </div>
                 </div>
             </div>
         </div>

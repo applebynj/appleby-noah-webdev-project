@@ -9,7 +9,7 @@ var reviewModel = mongoose.model("ReviewModel", reviewSchema);
 reviewModel.createReview = createReview;
 //reviewModel.findReview = findReview;
 //reviewModel.updateReview = updateReview;
-//reviewModel.deleteReview = deleteReview;
+reviewModel.deleteReview = deleteReview;
 //reviewModel.findReviewById = findReviewById; (not needed yet)
 reviewModel.findAllReviewsForPlace = findAllReviewsForPlace;
 
@@ -19,8 +19,12 @@ function createReview(review) {
     return reviewModel.create(review);
 }
 
+function deleteReview(reviewId) {
+    return reviewModel.remove({_id: reviewId});
+}
+
 function findAllReviewsForPlace(placeId) {
     return reviewModel.find({_place: placeId})
-        .populate('_user', 'username');
+        .populate('_user');
 }
 

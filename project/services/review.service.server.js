@@ -5,7 +5,7 @@ var reviewModel = require("../models/review/review.model.server");
 app.post("/api/review", createReview);
 //app.get("/api/review/:reviewId", findReviewById); (not yet needed)
 //app.put("/api/review/:reviewId", updateReview);
-//app.delete("/api/review/:reviewId", deleteReview)
+app.delete("/api/review/:reviewId", deleteReview);
 app.get("/api/place/:placeId/review", findAllReviewsForPlace);
 
 function createReview(req, res) {
@@ -18,6 +18,18 @@ function createReview(req, res) {
         }, function(err) {
             res.statusCode(404).send(err);
         });
+}
+
+function deleteReview(req, res) {
+    var reviewId = req.params.reviewId;
+
+    reviewModel
+        .deleteReview(reviewId)
+        .then(function(status) {
+            res.json(status);
+        }, function(err) {
+            res.status(404).send(err);
+        })
 }
 
 function findAllReviewsForPlace(req, res) {
