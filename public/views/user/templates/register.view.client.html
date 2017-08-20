@@ -18,7 +18,7 @@
                     <div class="container-fluid">
                         <div class="panel panel-default">
                             <div class="panel-body">
-                                <div class="form-horizontal">
+                                <form class="form-horizontal">
                                     <div ng-show="model.error"
                                              class="alert alert-danger">
                                             {{model.error}}
@@ -35,7 +35,8 @@
                                                        placeholder="username"
                                                        type="text"
                                                        class="form-control"
-                                                       id="username"/>
+                                                       id="username"
+                                                       required/>
                                             </div>
                                         </div>
 
@@ -49,7 +50,8 @@
                                                        placeholder="password"
                                                        type="password"
                                                        class="form-control"
-                                                       id="password"/>
+                                                       id="password"
+                                                       required/>
                                             </div>
                                         </div>
 
@@ -63,16 +65,18 @@
                                                        placeholder="verify password"
                                                        type="password"
                                                        class="form-control"
-                                                       id="password2"/>
+                                                       id="password2"
+                                                       required/>
                                             </div>
                                         </div>
-                                </div>
 
                                 <div class="row">
                                     <div class="col-md-10 col-md-offset-2">
-                                        <a class="btn btn-default btn-primary"
-                                           ng-click="model.registerUser(user)"
-                                           role="button">Register</a>
+                                        <input class="btn btn-default btn-primary"
+                                               ng-click="model.registerUser(user)"
+                                               role="button"
+                                               type="submit"
+                                               value="Submit"/>
 
                                         <a class="btn btn-default btn-danger"
                                            href="#!/login"
@@ -84,6 +88,8 @@
                                         </a>
                                     </div>
                                 </div>
+                                </form>
+
                             </div>
                         </div>
                     </div>
