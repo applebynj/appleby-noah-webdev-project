@@ -173,14 +173,15 @@
                         <textarea class="form-control"
                                   id="exampleTextarea"
                                   rows="3"
-                                  ng-model="model.reviewForm.text"></textarea>
+                                  ng-model="model.reviewForm.text"
+                                  required></textarea>
                     </div>
-                    <button type="submit"
+                    <input type="submit"
                             class="btn btn-primary"
                             data-dismiss="modal"
-                            ng-click="reviewForm.$valid && model.createReview()">
-                        Submit
-                    </button>
+                            ng-click="reviewForm.$valid && model.createReview()"
+                            ng-disabled="reviewForm.$invalid"
+                            ng-class="{ 'disabled': reviewForm.$invalid }"/>
                 </form>
             </div>
         </div>
