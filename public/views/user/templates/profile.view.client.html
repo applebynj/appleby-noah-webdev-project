@@ -130,7 +130,9 @@
                     <h4 class="modal-title">User Settings</h4>
                 </div>
                 <div class="modal-body">
-                    <div class="form-horizontal">
+                    <form class="form-horizontal"
+                          name="userSettingsForm"
+                          ng-class="{ 'has-error': modalForm.modalInput.$invalid }">
                         <div class="form-group">
                             <label for="firstName"
                                    class="col-md-2 control-label">First Name</label>
@@ -141,7 +143,8 @@
                                        placeholder="Noah"
                                        type="text"
                                        class="form-control"
-                                       id="firstName"/>
+                                       id="firstName"
+                                       required/>
                             </div>
                         </div>
 
@@ -155,7 +158,8 @@
                                        placeholder="Appleby"
                                        type="text"
                                        class="form-control"
-                                       id="lastName"/>
+                                       id="lastName"
+                                       required/>
                             </div>
                         </div>
 
@@ -169,7 +173,8 @@
                                        readonly
                                        value="noah"
                                        class="form-control"
-                                       id="username"/>
+                                       id="username"
+                                       disabled/>
                             </div>
                         </div>
 
@@ -248,7 +253,8 @@
                                        type="email"
                                        placeholder="noah@appleby.com"
                                        class="form-control"
-                                       id="email"/>
+                                       id="email"
+                                       required/>
                             </div>
                         </div>
 
@@ -277,15 +283,16 @@
                                           rows="3"></textarea>
                             </div>
                         </div>
-                    </div>
                     <div class="row">
                         <div class="col-md-10 col-md-offset-2">
-                            <button class="btn  btn-info"
-                                    ng-click="model.updateUser(model.profileUser)"
-                                    data-dismiss="modal"
-                                    role="button">
-                                Save
-                            </button>
+                            <input class="btn  btn-info"
+                                   ng-click="model.updateUser(model.profileUser)"
+                                   role="button"
+                                   type="submit"
+                                   data-dismiss="modal"
+                                   ng-disabled="userSettingsForm.$invalid"
+                                   ng-class="{ 'disabled': userSettingsForm.$invalid }"
+                                   value="save">
 
                             <a class="btn  btn-warning"
                                ng-click="model.deleteUser(model.profileUser)"
@@ -294,8 +301,9 @@
                                Delete Account</a>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
 </div>
